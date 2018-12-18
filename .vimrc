@@ -102,19 +102,19 @@ Plug 'Shougo/neomru.vim'
 " 入力モードで開始
 let g:unite_enable_start_insert=1
 " バッファ一覧
-noremap <C-P> :Unite buffer<CR>
+noremap <C-p> :Unite buffer<CR>
 " ファイル一覧
-noremap <C-N> :Unite -buffer-name=file file<CR>
+noremap <C-n> :Unite -buffer-name=file file<CR>
 " 最近使ったファイルの一覧
-noremap <C-Z> :Unite file_mru<CR>
+noremap <C-z> :Unite file_mru<CR>
 " sourcesを「今開いているファイルのディレクトリ」
 noremap :uff :<C-u>UniteWithBufferDir file -buffer-name=file<CR>
 " ウィンドウを分割して開く
-au FileType unite nnoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
-au FileType unite inoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
+au FileType unite nnoremap <silent> <buffer> <expr> <C-k> unite#do_action('split')
+au FileType unite inoremap <silent> <buffer> <expr> <C-k> unite#do_action('split')
 " ウィンドウを縦に分割して開く
-au FileType unite nnoremap <silent> <buffer> <expr> <C-K> unite#do_action('vsplit')
-au FileType unite inoremap <silent> <buffer> <expr> <C-K> unite#do_action('vsplit')
+au FileType unite nnoremap <silent> <buffer> <expr> <C-j> unite#do_action('vsplit')
+au FileType unite inoremap <silent> <buffer> <expr> <C-j> unite#do_action('vsplit')
 " ESCキーを2回押すと終了
 au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
 au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
@@ -125,7 +125,7 @@ Plug 'scrooloose/nerdtree'
 " Ruby向けにendを自動挿入
 Plug 'tpope/vim-endwise'
 " コメントON/OFFを手軽に実行
-" Shift+Vで対象の範囲を選択し、Ctrl+-でコメント付け外し
+" Shift+Vで対象の範囲を選択し、Ctrl--(コントロールキー+ハイフン+ハイフン)でコメント付け外し
 Plug 'tomtom/tcomment_vim'
 " シングルクオートとダブルクオートの入れ替え等
 " cs'"でシングルクオートをダブルクオートに置換
