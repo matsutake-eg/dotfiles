@@ -77,8 +77,8 @@ syntax on
 set backspace=indent,eol,start
 " 入力モード中に素早くjjと入力した場合はESC
 inoremap jj <Esc>
-" 入力モード中に素早くffと入力した場合は予測変換
-inoremap ff <C-n>
+" 入力モード中に素早くkkと入力した場合は予測変換
+inoremap kk <C-n>
 " Ctrlを押した場合は半ページ移動
 nnoremap <C-j> <C-d>
 nnoremap <C-k> <C-u>
