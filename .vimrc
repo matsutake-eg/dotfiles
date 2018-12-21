@@ -79,11 +79,10 @@ set backspace=indent,eol,start
 inoremap jj <Esc>
 " 入力モード中に素早くkkと入力した場合は予測変換
 inoremap kk <C-n>
-" Ctrlを押した場合は半ページ移動
-nnoremap <C-j> <C-d>
-nnoremap <C-k> <C-u>
-" ウィンドウの左右移動を簡略化
+" ウィンドウの移動を簡略化
 nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 " ビジュアルモードの選択範囲を * で検索
 vnoremap <silent> * "vy/\V<C-r>=substitute(escape(@v, '\/'), "\n", '\\n', 'g')<CR><CR>
