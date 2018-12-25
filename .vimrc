@@ -109,11 +109,11 @@ noremap <C-z> :Unite file_mru<CR>
 " sourcesを「今開いているファイルのディレクトリ」
 noremap :uff :<C-u>UniteWithBufferDir file -buffer-name=file<CR>
 " ウィンドウを分割して開く
-au FileType unite nnoremap <silent> <buffer> <expr> <C-k> unite#do_action('split')
-au FileType unite inoremap <silent> <buffer> <expr> <C-k> unite#do_action('split')
+au FileType unite nnoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
+au FileType unite inoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
 " ウィンドウを縦に分割して開く
-au FileType unite nnoremap <silent> <buffer> <expr> <C-j> unite#do_action('vsplit')
-au FileType unite inoremap <silent> <buffer> <expr> <C-j> unite#do_action('vsplit')
+au FileType unite nnoremap <silent> <buffer> <expr> <C-k> unite#do_action('vsplit')
+au FileType unite inoremap <silent> <buffer> <expr> <C-k> unite#do_action('vsplit')
 " ESCキーを2回押すと終了
 au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
 au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
