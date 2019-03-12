@@ -131,6 +131,7 @@ Plug 'tpope/vim-surround'
 " ログファイルを色づけ
 Plug 'vim-scripts/AnsiEsc.vim'
 " TypeScriptファイルをシンタックスハイライト
+Plug 'leafgarland/typescript-vim'
 Plug 'tasn/vim-tsx'
 
 call plug#end()
