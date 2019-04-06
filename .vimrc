@@ -133,5 +133,7 @@ Plug 'vim-scripts/AnsiEsc.vim'
 " TypeScriptファイルをシンタックスハイライト
 Plug 'leafgarland/typescript-vim'
 Plug 'tasn/vim-tsx'
+" Go用のプラグイン
+Plug 'fatih/vim-go'
 
 call plug#end()
