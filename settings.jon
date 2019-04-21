@@ -1,0 +1,15 @@
+{
+    "editor.cursorBlinking": "solid",
+    "editor.fontFamily": "Ricty Diminished",
+    "editor.fontSize": 16,
+    "vim.useSystemClipboard": true,
+    "vim.hlsearch": true,
+    "vim.visualstar": true,
+    "vim.foldfix": true,
+    "vim.insertModeKeyBindings": [
+        {
+            "before": ["j", "j"],
+            "after": ["<Esc>"], 
+        }
+    ]
+}

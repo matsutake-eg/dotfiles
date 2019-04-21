@@ -82,8 +82,6 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 " ビジュアルモードの選択範囲を * で検索
 vnoremap <silent> * "vy/\V<C-r>=substitute(escape(@v, '\/'), "\n", '\\n', 'g')<CR><CR>
-" ノーマルモードのまま改行する
-nnoremap <C-o> o<ESC>
 
 " vim-plugでプラグイン導入
 " :PlugInstallでインストール
