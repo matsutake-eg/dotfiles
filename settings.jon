@@ -2,6 +2,7 @@
     "editor.cursorBlinking": "solid",
     "editor.fontFamily": "Ricty Diminished",
     "editor.fontSize": 16,
+    "editor.parameterHints.enabled": false,
     "vim.useSystemClipboard": true,
     "vim.hlsearch": true,
     "vim.visualstar": true,
@@ -11,5 +12,6 @@
             "before": ["j", "j"],
             "after": ["<Esc>"], 
         }
-    ]
+    ],
+    "workbench.startupEditor": "newUntitledFile"
 }
