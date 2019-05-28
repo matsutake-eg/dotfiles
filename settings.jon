@@ -13,5 +13,6 @@
             "after": ["<Esc>"], 
         }
     ],
-    "workbench.startupEditor": "newUntitledFile"
+    "workbench.startupEditor": "newUntitledFile",
+    "terminal.integrated.fontSize": 14
 }
