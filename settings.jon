@@ -1,7 +1,7 @@
 {
     "editor.cursorBlinking": "solid",
     "editor.fontFamily": "Ricty Diminished",
-    "editor.fontSize": 16,
+    "editor.fontSize": 14,
     "editor.parameterHints.enabled": false,
     "vim.useSystemClipboard": true,
     "vim.hlsearch": true,
