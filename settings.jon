@@ -3,16 +3,17 @@
     "editor.fontFamily": "Ricty Diminished",
     "editor.fontSize": 14,
     "editor.parameterHints.enabled": false,
-    "vim.useSystemClipboard": true,
-    "vim.hlsearch": true,
-    "vim.visualstar": true,
+    "terminal.integrated.fontSize": 14,
+    "workbench.startupEditor": "newUntitledFile",
     "vim.foldfix": true,
+    "vim.hlsearch": true,
     "vim.insertModeKeyBindings": [
         {
             "before": ["j", "j"],
             "after": ["<Esc>"], 
         }
     ],
-    "workbench.startupEditor": "newUntitledFile",
-    "terminal.integrated.fontSize": 14
+    "vim.useSystemClipboard": true,
+    "vim.visualstar": true,
+    "scrolloff.scrolloff"   : 5
 }
