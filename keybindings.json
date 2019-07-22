@@ -31,18 +31,28 @@
     "when": "editorFocus"
   },
   {
-    "key": "shift+cmd+g",
-    "command": "-editor.action.previousMatchFindAction",
-    "when": "editorFocus"
-  },
-  {
     "key": "cmd+g",
     "command": "editor.action.goToDeclaration",
     "when": "editorTextFocus"
   },
   {
     "key": "shift+cmd+g",
+    "command": "-editor.action.previousMatchFindAction",
+    "when": "editorFocus"
+  },
+  {
+    "key": "shift+cmd+g",
     "command": "editor.action.referenceSearch.trigger",
     "when": "editorTextFocus"
-  }
+  },
+  {
+    "key": "cmd+k cmd+i",
+    "command": "-editor.action.showHover",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "cmd+i",
+    "command": "editor.action.showHover",
+    "when": "editorTextFocus"
+  },
 ]
