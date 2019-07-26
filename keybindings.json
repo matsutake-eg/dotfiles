@@ -6,9 +6,19 @@
     "when": "editorTextFocus"
   },
   {
+    "key": "ctrl+h",
+    "command": "workbench.action.toggleSidebarVisibility",
+    "when": "filesExplorerFocus"
+  },
+  {
     "key": "ctrl+j",
     "command": "workbench.action.terminal.focus",
     "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "workbench.action.terminal.toggleTerminal",
+    "when": "terminalFocus"
   },
   {
     "key": "ctrl+l",
