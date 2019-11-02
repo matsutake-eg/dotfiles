@@ -15,6 +15,8 @@ set autoindent
 set smartindent
 " 256色対応
 set t_Co=256
+" カラースキームをmonokaiに
+colorscheme monokai
 " エンコード, ファイルエンコード
 set encoding=utf-8
 set fileencoding=utf-8
