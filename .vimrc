@@ -34,8 +34,6 @@ set belloff=all
 set clipboard=unnamed
 " 行番号を表示
 set number
-" compatibleオプションをオフ
-set nocompatible
 " 対応括弧に<と>のペアを追加
 set matchpairs& matchpairs+=<:>
 " 対応括弧をハイライト表示
@@ -85,55 +83,35 @@ nnoremap <C-l> <C-w>l
 " ビジュアルモードの選択範囲を * で検索
 vnoremap <silent> * "vy/\V<C-r>=substitute(escape(@v, '\/'), "\n", '\\n', 'g')<CR><CR>
 
-" vim-plugでプラグイン導入
-" :PlugInstallでインストール
-call plug#begin('~/.vim/plugged')
+" プラグイン用の設定
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
 
-" ファイルオープンを便利に
-Plug 'Shougo/unite.vim'
-" Unite.vimで最近使ったファイルを表示できるようにする
-Plug 'Shougo/neomru.vim'
-""""""""""""""""""""""""""""""
-" Unite.vimの設定
-""""""""""""""""""""""""""""""
-" 入力モードで開始
-let g:unite_enable_start_insert=1
-" バッファ一覧
-noremap <C-p> :Unite buffer<CR>
-" ファイル一覧
-noremap <C-n> :Unite -buffer-name=file file<CR>
-" 最近使ったファイルの一覧
-noremap <C-z> :Unite file_mru<CR>
-" sourcesを「今開いているファイルのディレクトリ」
-noremap :uff :<C-u>UniteWithBufferDir file -buffer-name=file<CR>
-" ウィンドウを分割して開く
-au FileType unite nnoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
-au FileType unite inoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
-" ウィンドウを縦に分割して開く
-au FileType unite nnoremap <silent> <buffer> <expr> <C-k> unite#do_action('vsplit')
-au FileType unite inoremap <silent> <buffer> <expr> <C-k> unite#do_action('vsplit')
-" ESCキーを2回押すと終了
-au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
-au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
-""""""""""""""""""""""""""""""
-" ファイルをtree表示してくれる
-" :NERDTreeでカレントディレクトリをツリー表示
-Plug 'scrooloose/nerdtree'
-" Ruby向けにendを自動挿入
-Plug 'tpope/vim-endwise'
-" コメントON/OFFを手軽に実行
-" Shift+Vで対象の範囲を選択し、Ctrl--(コントロールキー+ハイフン+ハイフン)でコメント付け外し
-Plug 'tomtom/tcomment_vim'
-" シングルクオートとダブルクオートの入れ替え等
-" cs'"でシングルクオートをダブルクオートに置換
-" cs'<p>でシングルクオート文字列を<p>タグで囲む
-Plug 'tpope/vim-surround'
-" ログファイルを色づけ
-Plug 'vim-scripts/AnsiEsc.vim'
-" TypeScriptファイルをシンタックスハイライト
-Plug 'leafgarland/typescript-vim'
-Plug 'tasn/vim-tsx'
-" Go用のプラグイン
-Plug 'fatih/vim-go'
+" 導入したいプラグインを以下に列挙
+" plugin on GitHub repo
+Plugin 'tpope/vim-fugitive'
+" Surround.vim is all about surroundings: parentheses, brackets, quotes, XML tags, and more. The plugin provides mappings to easily delete, change and add such surroundings in pairs.
+Plugin 'tpope/vim-surround'
+"The NERDTree is a file system explorer for the Vim editor. Using this plugin, users can visually browse complex directory hierarchies, quickly open files for reading or editing, and perform basic file system operations.
+Plugin 'scrooloose/nerdtree'
+" Syntastic is a syntax checking plugin for Vim created by Martin Grenfell. It runs files through external syntax checkers and displays any resulting errors to the user.
+Plugin 'scrooloose/syntastic'
+" A vim plugin wrapper for prettier, pre-configured with custom default prettier settings.
+Plugin 'prettier/vim-prettier'
+" Full path fuzzy file, buffer, mru, tag, ... finder for Vim.
+Plugin 'kien/ctrlp.vim'
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+" Syntax file and other settings for TypeScript. The syntax file is taken from this blog post.
+Plugin 'leafgarland/typescript-vim'
+" JavaScript bundle for vim, this bundle provides syntax highlighting and improved indentation.
+Plugin 'pangloss/vim-javascript'
+" Vim syntax highlighting for Vue components.
+Plugin 'posva/vim-vue'
+" This plugin adds Go language support for Vim, with the following main features
+Plugin 'fatih/vim-go'
 
-call plug#end()
+call vundle#end()
+filetype plugin indent on
