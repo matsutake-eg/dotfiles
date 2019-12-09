@@ -46,7 +46,7 @@ set wrap
 set textwidth=0
 " 不可視文字を表示
 set list
-set listchars=tab:»-,trail:-,extends:»,precedes:«,nbsp:%,eol:↲
+set listchars=trail:-,extends:»,precedes:«,nbsp:%,eol:↲
 " インデントをshiftwidthの倍数に丸める
 set shiftround
 " 行末1文字までカーソルを移動
@@ -91,19 +91,15 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 " 導入したいプラグインを以下に列挙
-" plugin on GitHub repo
-Plugin 'tpope/vim-fugitive'
-" Surround.vim is all about surroundings: parentheses, brackets, quotes, XML tags, and more. The plugin provides mappings to easily delete, change and add such surroundings in pairs.
-Plugin 'tpope/vim-surround'
 "The NERDTree is a file system explorer for the Vim editor. Using this plugin, users can visually browse complex directory hierarchies, quickly open files for reading or editing, and perform basic file system operations.
 Plugin 'scrooloose/nerdtree'
-" Syntastic is a syntax checking plugin for Vim created by Martin Grenfell. It runs files through external syntax checkers and displays any resulting errors to the user.
-Plugin 'scrooloose/syntastic'
-" A vim plugin wrapper for prettier, pre-configured with custom default prettier settings.
-Plugin 'prettier/vim-prettier'
+" A light and configurable statusline/tabline plugin for Vim
+Plugin 'itchyny/lightline.vim'
 " Full path fuzzy file, buffer, mru, tag, ... finder for Vim.
 Plugin 'kien/ctrlp.vim'
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+" plugin on GitHub repo
+Plugin 'tpope/vim-fugitive'
 " Syntax file and other settings for TypeScript. The syntax file is taken from this blog post.
 Plugin 'leafgarland/typescript-vim'
 " JavaScript bundle for vim, this bundle provides syntax highlighting and improved indentation.
@@ -112,6 +108,27 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'posva/vim-vue'
 " This plugin adds Go language support for Vim, with the following main features
 Plugin 'fatih/vim-go'
+" This is an EditorConfig plugin for Vim. This plugin can be found on both GitHub and Vim online.
+Plugin 'editorconfig/editorconfig-vim'
+" A vim plugin wrapper for prettier, pre-configured with custom default prettier settings.
+Plugin 'prettier/vim-prettier'
+let g:prettier#autoformat = 0
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
+" ALE (Asynchronous Lint Engine) is a plugin providing linting (syntax checking and semantic errors) in NeoVim 0.2.0+ and Vim 8 while you edit your text files, and acts as a Vim Language Server Protocol client.
+Plugin 'w0rp/ale'
+let g:ale_enabled = 1
+let g:ale_lint_on_text_changed = 0
+let g:ale_sign_column_always = 1
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\   'typescript': ['eslint'],
+\}
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_statusline_format = ['E%d', 'W%d', '']
+highlight link ALEErrorSign Tag
+highlight link ALEWarningSign StorageClass
 
 call vundle#end()
 filetype plugin indent on
