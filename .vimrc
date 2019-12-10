@@ -13,10 +13,10 @@ set softtabstop=2
 set autoindent
 " 改行時に入力された行の末尾に合わせて次の行のインデントを増減
 set smartindent
+" ステータスを2行に
+set laststatus=2
 " 256色対応
 set t_Co=256
-" カラースキームをmonokaiに
-colorscheme monokai
 " エンコード, ファイルエンコード
 set encoding=utf-8
 set fileencoding=utf-8
@@ -68,7 +68,9 @@ set showcmd
 " ◆や○文字が崩れる問題を解決
 set ambiwidth=double
 " 構文毎に文字色を変化
-syntax on
+syntax enable
+" カラースキームをmonokaiに
+colorscheme monokai
 
 " 操作系
 " インサートモードでbackspaceを有効
@@ -106,6 +108,8 @@ Plugin 'leafgarland/typescript-vim'
 Plugin 'pangloss/vim-javascript'
 " Vim syntax highlighting for Vue components.
 Plugin 'posva/vim-vue'
+" This  plugin was  born  as a  personal  need to  get  some little  special features from other editors into my  preferred one
+Plugin 'townk/vim-autoclose'
 " This plugin adds Go language support for Vim, with the following main features
 Plugin 'fatih/vim-go'
 " This is an EditorConfig plugin for Vim. This plugin can be found on both GitHub and Vim online.
@@ -116,19 +120,41 @@ let g:prettier#autoformat = 0
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
 " ALE (Asynchronous Lint Engine) is a plugin providing linting (syntax checking and semantic errors) in NeoVim 0.2.0+ and Vim 8 while you edit your text files, and acts as a Vim Language Server Protocol client.
 Plugin 'w0rp/ale'
-let g:ale_enabled = 1
-let g:ale_lint_on_text_changed = 0
-let g:ale_sign_column_always = 1
 let g:ale_linters = {
 \   'javascript': ['eslint'],
 \   'typescript': ['eslint'],
+\   'vue': ['eslint'],
 \}
+let g:ale_sign_column_always = 1
+let g:ale_lint_on_text_changed = 0
+let g:ale_sign_error = '>>'
+let g:ale_sign_warning = '--'
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-let g:ale_statusline_format = ['E%d', 'W%d', '']
-highlight link ALEErrorSign Tag
-highlight link ALEWarningSign StorageClass
+function! LinterStatus() abort
+    let l:counts = ale#statusline#Count(bufnr(''))
+
+    let l:all_errors = l:counts.error + l:counts.style_error
+    let l:all_non_errors = l:counts.total - l:all_errors
+
+    return l:counts.total == 0 ? 'OK' : printf(
+    \   '%dE %dW',
+    \   all_errors,
+    \   all_non_errors
+    \)
+endfunction
+let g:lightline = {
+  \'active': {
+  \  'left': [
+  \    ['mode', 'paste'],
+  \    ['readonly', 'filename', 'modified', 'ale'],
+  \  ]
+  \},
+  \'component_function': {
+  \  'ale': 'LinterStatus'
+  \}
+\ }
 
 call vundle#end()
 filetype plugin indent on
