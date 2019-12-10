@@ -155,6 +155,7 @@ let g:lightline = {
   \  'ale': 'LinterStatus'
   \}
 \ }
+highlight ALEError ctermbg=DarkMagenta
 
 call vundle#end()
 filetype plugin indent on
