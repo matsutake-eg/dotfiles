@@ -457,6 +457,17 @@ if !reflect.DeepEqual(${1:expected}, ${2:actual}) {
 }
 endsnippet
 
+snippet abs "get absolute value of an integer"
+func abs(x int) int {
+	if x < 0 {
+		return -x
+	}
+	return x
+}
+
+abs(${1:n})
+endsnippet
+
 global !p
 
 import re
