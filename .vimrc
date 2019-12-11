@@ -112,6 +112,7 @@ Plugin 'posva/vim-vue'
 Plugin 'townk/vim-autoclose'
 " This plugin adds Go language support for Vim, with the following main features
 Plugin 'fatih/vim-go'
+let g:go_fmt_command = "goimports"
 " This is an EditorConfig plugin for Vim. This plugin can be found on both GitHub and Vim online.
 Plugin 'editorconfig/editorconfig-vim'
 " A vim plugin wrapper for prettier, pre-configured with custom default prettier settings.
