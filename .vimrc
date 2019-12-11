@@ -113,6 +113,13 @@ Plugin 'townk/vim-autoclose'
 " This plugin adds Go language support for Vim, with the following main features
 Plugin 'fatih/vim-go'
 let g:go_fmt_command = "goimports"
+" UltiSnips is the ultimate solution for snippets in Vim. It has many features, speed being one of them.
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsEditSplit="vertical"
 " This is an EditorConfig plugin for Vim. This plugin can be found on both GitHub and Vim online.
 Plugin 'editorconfig/editorconfig-vim'
 " A vim plugin wrapper for prettier, pre-configured with custom default prettier settings.
