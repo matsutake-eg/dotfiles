@@ -122,11 +122,11 @@ autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.gra
 Plugin 'w0rp/ale'
 let g:ale_linters = {
 \   'javascript': ['eslint'],
-\   'typescript': ['eslint'],
-\   'vue': ['eslint'],
+\   'typescript': ['eslint', 'tslint'],
+\   'vue': ['vls'],
 \}
 let g:ale_sign_column_always = 1
-let g:ale_lint_on_enter = 1
+let g:ale_lint_on_enter = 0
 let g:ale_lint_on_insert_leave = 0
 let g:ale_lint_on_text_changed = 0
 let g:ale_lint_on_save = 1
