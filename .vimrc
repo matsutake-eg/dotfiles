@@ -117,7 +117,7 @@ Plugin 'editorconfig/editorconfig-vim'
 " A vim plugin wrapper for prettier, pre-configured with custom default prettier settings.
 Plugin 'prettier/vim-prettier'
 let g:prettier#autoformat = 0
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.yml,*.html PrettierAsync
 " ALE (Asynchronous Lint Engine) is a plugin providing linting (syntax checking and semantic errors) in NeoVim 0.2.0+ and Vim 8 while you edit your text files, and acts as a Vim Language Server Protocol client.
 Plugin 'w0rp/ale'
 let g:ale_linters = {
