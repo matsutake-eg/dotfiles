@@ -105,6 +105,7 @@ Plugin 'townk/vim-autoclose'
 " This plugin adds Go language support for Vim, with the following main features
 Plugin 'fatih/vim-go'
 let g:go_fmt_command = "goimports"
+:command GR GoRun
 " UltiSnips is the ultimate solution for snippets in Vim. It has many features, speed being one of them.
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
