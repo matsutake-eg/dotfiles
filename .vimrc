@@ -1,91 +1,64 @@
-" 表示・設定系
-" カーソルが何行目の何列目に置かれているかを表示
-set ruler
-" 改行時に前の行のインデントを継続
-set autoindent
-" 改行時に入力された行の末尾に合わせて次の行のインデントを増減
-set smartindent
-" ステータスを2行に
-set laststatus=2
-" 256色対応
-set t_Co=256
-" エンコード, ファイルエンコード
+set noswapfile
+set nowritebackup
+set nobackup
+
 set encoding=utf-8
 set fileencoding=utf-8
-" スクロールする時に下を空ける
-set scrolloff=5
-" .swapファイルを作らない
-set noswapfile
-" バックアップファイルを作らない
-set nowritebackup
-" バックアップをしない
-set nobackup
-" ビープ音を消す
+
+set hidden
+set switchbuf=useopen
+
 set belloff=all
-" OSのクリップボードを使う
+
+set mouse=a
 set clipboard=unnamed
-" 行番号を表示
+
 set number
-" 対応括弧に<と>のペアを追加
-set matchpairs& matchpairs+=<:>
-" 対応括弧をハイライト表示
-set showmatch
-" 対応括弧の表示秒数を3秒
-set matchtime=3
-" ウィンドウの幅より長い行を折り返し、次の行に続けて表示
+set ruler
 set wrap
-" 入力されているテキストの最大幅を無効
+set laststatus=2
+set showcmd
+set scrolloff=5
+
 set textwidth=0
-" 不可視文字を表示
+set autoindent
+set smartindent
+
+set shiftround
+
+set virtualedit=onemore
+
 set list
 set listchars=trail:-,extends:»,precedes:«,nbsp:%,eol:↲
-" インデントをshiftwidthの倍数に丸める
-set shiftround
-" 行末1文字までカーソルを移動
-set virtualedit=onemore
-" 変更中のファイルでも、保存しないで他のファイルを表示
-set hidden
-" 新しく開く代わりにすでに開いてあるバッファを開く
-set switchbuf=useopen
-" 小文字のみで検索したときに大文字小文字を無視
-set smartcase
-" インクリメンタルサーチ
-set incsearch
-" 検索結果をハイライト表示
-set hlsearch
-" マウスモード有効
-set mouse=a
-" コマンドを画面最下部に表示
-set showcmd
-" ◆や○文字が崩れる問題を解決
 set ambiwidth=double
-" 構文毎に文字色を変化
+
+set smartcase
+set incsearch
+set hlsearch
+
+set matchpairs& matchpairs+=<:>
+set showmatch
+set matchtime=3
+
+set t_Co=256
 syntax enable
-" カラースキームをmonokaiに
 colorscheme monokai
 
-" 操作系
-" インサートモードでbackspaceを有効
-set backspace=indent,eol,start
-" 入力モード中に素早くjjと入力した場合はESC
 inoremap jj <Esc>
-" ウィンドウの移動を簡略化
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
-" ビジュアルモードの選択範囲を * で検索
-vnoremap <silent> * "vy/\V<C-r>=substitute(escape(@v, '\/'), "\n", '\\n', 'g')<CR><CR>
+set backspace=indent,eol,start
 
-" プラグイン用の設定
+" Vundle is short for Vim bundle and is a Vim plugin manager.
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
-" 導入したいプラグインを以下に列挙
-"The NERDTree is a file system explorer for the Vim editor. Using this plugin, users can visually browse complex directory hierarchies, quickly open files for reading or editing, and perform basic file system operations.
+" The NERDTree is a file system explorer for the Vim editor. Using this plugin, users can visually browse complex directory hierarchies, quickly open files for reading or editing, and perform basic file system operations.
 Plugin 'scrooloose/nerdtree'
 " A light and configurable statusline/tabline plugin for Vim
 Plugin 'itchyny/lightline.vim'
