@@ -115,22 +115,30 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:UltiSnipsEditSplit="vertical"
 " This is an EditorConfig plugin for Vim. This plugin can be found on both GitHub and Vim online.
 Plugin 'editorconfig/editorconfig-vim'
-" A vim plugin wrapper for prettier, pre-configured with custom default prettier settings.
-Plugin 'prettier/vim-prettier'
-let g:prettier#autoformat = 0
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.yml,*.html PrettierAsync
 " ALE (Asynchronous Lint Engine) is a plugin providing linting (syntax checking and semantic errors) in NeoVim 0.2.0+ and Vim 8 while you edit your text files, and acts as a Vim Language Server Protocol client.
 Plugin 'w0rp/ale'
 let g:ale_linters = {
 \   'javascript': ['eslint'],
 \   'typescript': ['eslint', 'tslint'],
-\   'vue': ['vls'],
+\   'vue': ['eslint', 'vls'],
 \}
-let g:ale_sign_column_always = 1
 let g:ale_lint_on_enter = 0
 let g:ale_lint_on_insert_leave = 0
 let g:ale_lint_on_text_changed = 0
 let g:ale_lint_on_save = 1
+let g:ale_fixers = {
+\   'javascript': ['prettier'],
+\   'typescript': ['prettier'],
+\   'html': ['prettier'],
+\   'vue': ['prettier'],
+\   'css': ['prettier'],
+\   'less': ['prettier'],
+\   'scss': ['prettier'],
+\   'json': ['prettier'],
+\   'yaml': ['prettier'],
+\}
+let g:ale_fix_on_save = 1
+let g:ale_sign_column_always = 1
 let g:ale_sign_error = '>>'
 let g:ale_sign_warning = '--'
 let g:ale_echo_msg_error_str = 'E'
