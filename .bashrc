@@ -1,3 +1,8 @@
+if [[ -t 0 ]]; then
+  stty stop undef
+  stty start undef
+fi
+
 source /usr/local/etc/bash_completion.d/git-prompt.sh
 source /usr/local/etc/bash_completion.d/git-completion.bash
 GIT_PS1_SHOWDIRTYSTATE=true
