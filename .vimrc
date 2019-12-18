@@ -29,7 +29,7 @@ set shiftround
 set virtualedit=onemore
 
 set list
-set listchars=trail:-,extends:»,precedes:«,nbsp:%,eol:↲
+set listchars=trail:-,extends:»,precedes:«,nbsp:%
 set ambiwidth=double
 
 set smartcase
