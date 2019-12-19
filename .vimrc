@@ -64,7 +64,12 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'itchyny/lightline.vim'
 " Full path fuzzy file, buffer, mru, tag, ... finder for Vim.
 Plugin 'kien/ctrlp.vim'
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+let g:ctrlp_working_path_mode = 'a'
+let g:ctrlp_custom_ignore = {
+\   'dir':  '\v[\/](node_modules|build|dist|\.(git|hg|svn))$',
+\   'file': '\v\.(exe|so|dll|swp|zip|gif|jpg|png)$',
+\   'link': 'some_bad_symbolic_links',
+\}
 " plugin on GitHub repo
 Plugin 'tpope/vim-fugitive'
 " Syntax file and other settings for TypeScript. The syntax file is taken from this blog post.
