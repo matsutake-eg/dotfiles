@@ -28,8 +28,9 @@ set shiftround
 
 set virtualedit=onemore
 
+set tabstop=2
 set list
-set listchars=trail:-,extends:»,precedes:«,nbsp:%
+set listchars=tab:__,trail:-,extends:»,precedes:«,nbsp:%
 set ambiwidth=double
 
 set smartcase
