@@ -35,6 +35,7 @@ set list
 set listchars=tab:__,trail:-,extends:»,precedes:«,nbsp:%
 set ambiwidth=double
 
+set ignorecase
 set smartcase
 set incsearch
 set hlsearch
