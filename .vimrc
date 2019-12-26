@@ -18,7 +18,6 @@ set ruler
 set wrap
 set laststatus=2
 set showcmd
-set scrolloff=5
 
 set textwidth=0
 set autoindent
