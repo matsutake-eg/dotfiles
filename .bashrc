@@ -15,3 +15,4 @@ export PS1='\[\033[37m\][\[\033[36m\]\u\[\033[37m\]@\h \[\033[32m\]\W\[\033[37m\
 alias ls='ls -FG'
 alias ll='ls -ahlFG'
 alias v='vim'
+alias ggrep='grep -r --exclude-dir=node_modules'
