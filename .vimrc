@@ -55,6 +55,8 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 inoremap jj <Esc>
 inoremap {<Enter> {}<Left><CR><ESC><S-o>
+inoremap [<Enter> []<Left><CR><ESC><S-o>
+inoremap (<Enter> ()<Left><CR><ESC><S-o>
 set backspace=indent,eol,start
 
 " Vundle is short for Vim bundle and is a Vim plugin manager.
@@ -153,7 +155,7 @@ let g:lightline = {
   \}
 \ }
 highlight ALEError ctermbg=DarkMagenta
-" This  plugin was  born  as a  personal  need to  get  some little  special features from other editors into my  preferred one
+" This  plugin was  born  as a  personal  need to  get  some little  special features from other editors into my  preferred one.
 Plugin 'townk/vim-autoclose'
 "Indent Guides is a plugin for visually displaying indent levels in Vim.
 Plugin 'nathanaelkane/vim-indent-guides'
