@@ -32,7 +32,7 @@ set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 set list
-set listchars=tab:__,trail:-,extends:»,precedes:«,nbsp:%
+set listchars=tab:\ \ ,trail:-,extends:»,precedes:«,nbsp:%
 set ambiwidth=double
 
 set ignorecase
