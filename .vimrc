@@ -48,11 +48,13 @@ set t_Co=256
 syntax enable
 colorscheme monokai
 
-inoremap jj <Esc>
+nnoremap <Esc><Esc> :noh<CR>
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+inoremap jj <Esc>
+inoremap {<Enter> {}<Left><CR><ESC><S-o>
 set backspace=indent,eol,start
 
 " Vundle is short for Vim bundle and is a Vim plugin manager.
@@ -83,8 +85,6 @@ Plugin 'leafgarland/typescript-vim'
 Plugin 'pangloss/vim-javascript'
 " Vim syntax highlighting for Vue components.
 Plugin 'posva/vim-vue'
-" This  plugin was  born  as a  personal  need to  get  some little  special features from other editors into my  preferred one
-Plugin 'townk/vim-autoclose'
 " This plugin adds Go language support for Vim, with the following main features
 Plugin 'fatih/vim-go'
 let g:go_fmt_command = "goimports"
@@ -153,6 +153,8 @@ let g:lightline = {
   \}
 \ }
 highlight ALEError ctermbg=DarkMagenta
+" This  plugin was  born  as a  personal  need to  get  some little  special features from other editors into my  preferred one
+Plugin 'townk/vim-autoclose'
 "Indent Guides is a plugin for visually displaying indent levels in Vim.
 Plugin 'nathanaelkane/vim-indent-guides'
 let g:indent_guides_enable_on_vim_startup = 1
