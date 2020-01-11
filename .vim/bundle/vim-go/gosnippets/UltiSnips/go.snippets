@@ -647,7 +647,24 @@ func lcm(x, y int) int {
 lcm(${1:a}, ${2:b})
 endsnippet
 
-snippet prm "get answer of Prime Factorization"
+snippet prm "get answer which is Prime Number or not"
+func isPrime(x int) bool {
+	if x < 2 {
+		return false
+	}
+
+	for i := 2; i*i <= x; i++ {
+		if x%i == 0 {
+			return false
+		}
+	}
+	return true
+}
+
+isPrime(${1:n})
+endsnippet
+
+snippet prf "get answer of Prime Factorization"
 func prmFac(x int) map[int]bool {
 	pfm := make(map[int]bool)
 	pfm[1] = true
