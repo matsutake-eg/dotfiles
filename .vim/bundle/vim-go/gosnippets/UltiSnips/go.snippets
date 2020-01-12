@@ -543,6 +543,39 @@ func base(x, b int) string {
 base(${1:n}, ${2:2})
 endsnippet
 
+snippet per "get permutations array"
+func permutations(xs []int) [][]int {
+	l := 1
+	for i := 2; i <= len(xs); i++ {
+		l *= i
+	}
+	ans := make([][]int, 0, l)
+
+	var rec func([]int, int)
+	rec = func(xs []int, n int) {
+		if n == 1 {
+			tmp := make([]int, len(xs))
+			copy(tmp, xs)
+			ans = append(ans, tmp)
+			return
+		}
+		for i := 0; i < n; i++ {
+			rec(xs, n-1)
+			if n%2 == 1 {
+				xs[i], xs[n-1] = xs[n-1], xs[i]
+				continue
+			}
+			xs[0], xs[n-1] = xs[n-1], xs[0]
+		}
+	}
+	rec(xs, len(xs))
+	return ans
+}
+
+x := []int{${1:1, 2, 3}}
+fmt.Println(permutations(x))
+endsnippet
+
 snippet cmb "get combination value by using inverse element"
 const mod = 1000000007
 
