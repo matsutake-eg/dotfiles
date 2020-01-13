@@ -843,6 +843,26 @@ func init() {
 ${1:s} := readStr()
 endsnippet
 
+snippet ris "read standard input by scanner and return value as integer or string"
+var sc = bufio.NewScanner(os.Stdin)
+
+func readInt() int {
+	iv, _ := strconv.Atoi(readStr())
+	return iv
+}
+
+func readStr() string {
+	sc.Scan()
+	return sc.Text()
+}
+
+func init() {
+	sc.Split(bufio.ScanWords)
+}
+
+${1:n}, ${2:s} := readInt(), readStr()
+endsnippet
+
 snippet wr "write standard output by writer"
 var wr = bufio.NewWriter(os.Stdout)
 
