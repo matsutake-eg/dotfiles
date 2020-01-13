@@ -718,6 +718,16 @@ for k := range m {
 }
 endsnippet
 
+snippet que "get queue of integers"
+qu := list.New()
+for i := 0; i < ${1:n}; i++ {
+	qu.PushBack(i)
+}
+fmt.Println(qu.Len())
+x := qu.Remove(qu.Front()).(int)
+fmt.Println(x, qu.Len())
+endsnippet
+
 snippet pqi "get priority queue of integers"
 type prQue []int
 
