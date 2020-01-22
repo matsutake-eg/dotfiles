@@ -8,6 +8,7 @@ set fileencoding=utf-8
 set hidden
 set switchbuf=useopen
 
+set vb t_vb=
 set belloff=all
 
 set mouse=a
@@ -61,6 +62,12 @@ inoremap (<Enter> ()<Left><CR><ESC><S-o>
 set backspace=indent,eol,start
 
 set tags=.tags;$HOME
+
+if has('vim_starting')
+  let &t_SI .= "\e[6 q"
+  let &t_EI .= "\e[2 q"
+  let &t_SR .= "\e[4 q"
+endif
 
 " Vundle is short for Vim bundle and is a Vim plugin manager.
 set nocompatible
