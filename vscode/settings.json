@@ -1,19 +1,7 @@
 {
-    "editor.cursorBlinking": "solid",
     "editor.fontFamily": "Ricty Diminished",
     "editor.fontSize": 14,
-    "editor.parameterHints.enabled": false,
     "terminal.integrated.fontSize": 14,
     "workbench.startupEditor": "newUntitledFile",
-    "vim.foldfix": true,
-    "vim.hlsearch": true,
-    "vim.insertModeKeyBindings": [
-        {
-            "before": ["j", "j"],
-            "after": ["<Esc>"], 
-        }
-    ],
-    "vim.useSystemClipboard": true,
-    "vim.visualstar": true,
-    "scrolloff.scrolloff"   : 5
+    "workbench.colorTheme": "Monokai"
 }
