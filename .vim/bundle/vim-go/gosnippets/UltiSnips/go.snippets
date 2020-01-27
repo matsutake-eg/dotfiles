@@ -888,6 +888,26 @@ wr.WriteString(strconv.Itoa($1) + "\n")
 wr.Flush()
 endsnippet
 
+snippet mod "a prime number used many times in programing contest"
+const mod = 1000000007
+endsnippet
+
+snippet sort "type and methods for sort"
+type ${1:data} struct{ ${2:x} int }
+type ${3:datas} []$1
+
+func (${4:d} $3) Len() int           { return len($4) }
+func ($4 $3) Swap(i, j int)      { $4[i], $4[j] = $4[j], $4[i] }
+func ($4 $3) Less(i, j int) bool { return $4[i].$2 < $4[j].$2 }
+
+${5:xs}:= $3(make([]$1, ${6:n}))
+sort.Sort($5)
+endsnippet
+
+snippet sortr "sort reversely for Ints"
+sort.Sort(sort.Reverse(sort.IntSlice(${1:xs})))
+endsnippet
+
 global !p
 
 import re
