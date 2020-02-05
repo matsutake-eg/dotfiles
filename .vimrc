@@ -54,8 +54,9 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
-nnoremap <F3> :TagbarToggle<CR>
+nnoremap <F2> :ALERename<CR>
 nnoremap <F4> :GoRun<CR>
+nnoremap <F5> :TagbarToggle<CR>
 nnoremap <F10> :ALEHover<CR>
 nnoremap <F11> :ALEFindReferences<CR>
 nnoremap <F12> :ALEGoToDefinition<CR>
@@ -122,6 +123,8 @@ let g:ale_linters = {
 \   'typescript': ['eslint', 'tsserver'],
 \   'vue': ['eslint', 'vls'],
 \}
+let g:ale_rename_tsserver_find_in_comments = 1
+let g:ale_rename_tsserver_find_in_strings = 1
 let g:ale_lint_on_enter = 0
 let g:ale_lint_on_insert_leave = 0
 let g:ale_lint_on_text_changed = 0
