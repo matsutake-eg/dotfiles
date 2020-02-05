@@ -54,7 +54,11 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
-nnoremap <F12> :TagbarToggle<CR>
+nnoremap <F3> :TagbarToggle<CR>
+nnoremap <F4> :GoRun<CR>
+nnoremap <F10> :ALEHover<CR>
+nnoremap <F11> :ALEFindReferences<CR>
+nnoremap <F12> :ALEGoToDefinition<CR>
 inoremap jj <Esc>
 inoremap {<Enter> {}<Left><CR><ESC><S-o>
 inoremap [<Enter> []<Left><CR><ESC><S-o>
@@ -102,7 +106,6 @@ Plugin 'posva/vim-vue'
 " This plugin adds Go language support for Vim, with the following main features
 Plugin 'fatih/vim-go'
 let g:go_fmt_command = "goimports"
-:command GR GoRun
 " UltiSnips is the ultimate solution for snippets in Vim. It has many features, speed being one of them.
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
@@ -115,8 +118,8 @@ Plugin 'editorconfig/editorconfig-vim'
 " ALE (Asynchronous Lint Engine) is a plugin providing linting (syntax checking and semantic errors) in NeoVim 0.2.0+ and Vim 8 while you edit your text files, and acts as a Vim Language Server Protocol client.
 Plugin 'w0rp/ale'
 let g:ale_linters = {
-\   'javascript': ['eslint'],
-\   'typescript': ['eslint', 'tslint'],
+\   'javascript': ['eslint', 'tsserver'],
+\   'typescript': ['eslint', 'tsserver'],
 \   'vue': ['eslint', 'vls'],
 \}
 let g:ale_lint_on_enter = 0
