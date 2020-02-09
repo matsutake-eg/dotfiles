@@ -912,6 +912,30 @@ snippet fs "fmt.Scan(...)"
 fmt.Scan(&${1:n})
 endsnippet
 
+snippet sorts "sort string by character"
+type sortString []rune
+
+func (s sortString) Len() int           { return len(s) }
+func (s sortString) Swap(i, j int)      { s[i], s[j] = s[j], s[i] }
+func (s sortString) Less(i, j int) bool { return s[i] < s[j] }
+
+ss := sortString(${1:s})
+sort.Sort(ss)
+fmt.Println(string(ss)))
+endsnippet
+
+snippet sortsr "sort string by character reversely"
+type sortStringR []rune
+
+func (s sortStringR) Len() int           { return len(s) }
+func (s sortStringR) Swap(i, j int)      { s[i], s[j] = s[j], s[i] }
+func (s sortStringR) Less(i, j int) bool { return s[i] > s[j] }
+
+rs := sortStringR(${1:s})
+sort.Sort(rs)
+fmt.Println(string(rs)))
+endsnippet
+
 global !p
 
 import re
