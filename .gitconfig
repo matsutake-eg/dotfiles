@@ -1,0 +1,5 @@
+[alias]
+    s = status
+    d = diff
+    l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    delete-merged-branch = !git branch --merged | grep -v \\* | xargs -I % git branch -d %
