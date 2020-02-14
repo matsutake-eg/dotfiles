@@ -5,6 +5,7 @@
     "editor.parameterHints.enabled": false,
     "terminal.integrated.fontSize": 14,
     "workbench.startupEditor": "newUntitledFile",
+    "workbench.colorTheme": "Monokai",
     "vim.foldfix": true,
     "vim.hlsearch": true,
     "vim.insertModeKeyBindings": [
