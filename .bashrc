@@ -7,6 +7,7 @@ export NVM_DIR=~/.nvm
 export GOPATH=$HOME/dev/go
 
 source $(brew --prefix nvm)/nvm.sh
+
 source /usr/local/etc/bash_completion.d/git-prompt.sh
 source /usr/local/etc/bash_completion.d/git-completion.bash
 GIT_PS1_SHOWDIRTYSTATE=true
@@ -16,4 +17,3 @@ alias ls='ls -FG'
 alias ll='ls -ahlFG'
 alias v='vim'
 alias ggrep='grep -r --exclude-dir={node_modules,.webpack}'
-alias cctags='ctags -R -f .tags'
