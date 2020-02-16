@@ -936,6 +936,16 @@ sort.Sort(rs)
 fmt.Println(string(rs)))
 endsnippet
 
+snippet war "Warshall Floyd Algorithm"
+for k := 0; k < ${1:10}; k++ {
+	for i := 0; i < $1; i++ {
+		for j := 0; j < $1; j++ {
+			${2:dist}[i][j] = min($2[i][j], $2[i][k]+$2[k][j])
+		}
+	}
+}
+endsnippet
+
 global !p
 
 import re
