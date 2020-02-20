@@ -55,8 +55,9 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap <F2> :ALERename<CR>
+nnoremap <F3> :TagbarToggle<CR>
 nnoremap <F4> :GoRun<CR>
-nnoremap <F5> :TagbarToggle<CR>
+nnoremap <F5> :ALEResetBuffer<CR>
 nnoremap <F10> :ALEHover<CR>
 nnoremap <F11> :ALEFindReferences<CR>
 nnoremap <F12> :ALEGoToDefinition<CR>
