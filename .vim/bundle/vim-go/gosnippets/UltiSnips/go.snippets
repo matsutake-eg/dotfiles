@@ -469,7 +469,7 @@ func base(x, b int) string {
 	}
 
 	bs := ""
-	for x != 0 {
+	for x > 0 {
 		r := abs(x % b)
 		bs = strconv.Itoa(r) + bs
 		x -= r
