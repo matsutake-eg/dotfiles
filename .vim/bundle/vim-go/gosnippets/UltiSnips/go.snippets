@@ -149,15 +149,15 @@ for _, ${2:v} := range ${1:xs} {
 endsnippet
 
 snippet sort "type and methods for sort"
-type ${1:data} struct{ ${2:x} int }
-type ${3:datas} []$1
+type ${1:data} struct{ ${2:x}, ${3:y} int }
+type ${4:datas} []$1
 
-func (${4:d} $3) Len() int           { return len($4) }
-func ($4 $3) Swap(i, j int)      { $4[i], $4[j] = $4[j], $4[i] }
-func ($4 $3) Less(i, j int) bool { return $4[i].$2 < $4[j].$2 }
+func (${5:d} $4) Len() int           { return len($5) }
+func ($5 $4) Swap(i, j int)      { $5[i], $5[j] = $5[j], $5[i] }
+func ($5 $4) Less(i, j int) bool { return $5[i].$2 < $5[j].$2 }
 
-${5:xs}:= $3(make([]$1, ${6:n}))
-sort.Sort($5)
+${6:xs}:= $4(make([]$1, ${7:n}))
+sort.Sort($6)
 endsnippet
 
 snippet sortr "sort reversely for Ints"
@@ -199,13 +199,13 @@ fmt.Println(x, qu.Len())
 endsnippet
 
 snippet pq "get priority queue"
-type data struct{ a, b, c int }
-type prQue []*data
+type ${1:data} struct{ ${2:x}, ${3:y} int }
+type prQue []*$1
 
 func (p prQue) Len() int            { return len(p) }
-func (p prQue) Less(i, j int) bool  { return p[i].a > p[j].a }
+func (p prQue) Less(i, j int) bool  { return p[i].$2 > p[j].$2 }
 func (p prQue) Swap(i, j int)       { p[i], p[j] = p[j], p[i] }
-func (p *prQue) Push(x interface{}) { *p = append(*p, x.(*data)) }
+func (p *prQue) Push(x interface{}) { *p = append(*p, x.(*$1)) }
 func (p *prQue) Pop() interface{} {
 	old := *p
 	n := len(old)
@@ -214,12 +214,12 @@ func (p *prQue) Pop() interface{} {
 	return x
 }
 
-pq := make(prQue, 0, ${1:n})
-heap.Push(&pq, &data{1, 2, 3})
-heap.Push(&pq, &data{2, 3, 4})
-heap.Push(&pq, &data{1, 3, 4})
+pq := make(prQue, 0, ${4:n})
+heap.Push(&pq, &$1{2, 1})
+heap.Push(&pq, &$1{3, 2})
+heap.Push(&pq, &$1{1, 3})
 for len(pq) > 0 {
-	v := heap.Pop(&pq).(*data)
+	v := heap.Pop(&pq).(*$1)
 }
 endsnippet
 
@@ -640,7 +640,7 @@ for qu.Len() > 0 {
 endsnippet
 
 snippet war "Warshall Floyd Algorithm"
-for k := 0; k < ${1:10}; k++ {
+for k := 0; k < ${1:n}; k++ {
 	for i := 0; i < $1; i++ {
 		for j := 0; j < $1; j++ {
 			${2:dist}[i][j] = min($2[i][j], $2[i][k]+$2[k][j])
