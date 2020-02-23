@@ -622,6 +622,23 @@ func dfs(v int) {
 dfs(1)
 endsnippet
 
+snippet bfs "Breadth First Search in graph"
+seen := make(map[int]bool, n)
+qu := list.New()
+qu.PushBack(${1:1})
+seen[$1] = true
+for qu.Len() > 0 {
+	v := qu.Remove(qu.Front()).(int)
+	for _, nv := range G[v] {
+		if seen[nv] {
+			continue
+		}
+		seen[nv] = true
+		qu.PushBack(nv)
+	}
+}
+endsnippet
+
 snippet war "Warshall Floyd Algorithm"
 for k := 0; k < ${1:10}; k++ {
 	for i := 0; i < $1; i++ {
