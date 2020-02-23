@@ -606,6 +606,22 @@ for i := 0; i < $4; i++ {
 }
 endsnippet
 
+snippet dfs "Depth First Search in graph"
+var seen = make(map[int]bool, n)
+
+func dfs(v int) {
+	seen[v] = true
+	for _, nv := range G[v] {
+		if seen[nv] {
+			continue
+		}
+		dfs(nv)
+	}
+}
+
+dfs(1)
+endsnippet
+
 snippet war "Warshall Floyd Algorithm"
 for k := 0; k < ${1:10}; k++ {
 	for i := 0; i < $1; i++ {
