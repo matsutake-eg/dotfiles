@@ -554,6 +554,58 @@ func fib(x int) int {
 fib(${1:n})
 endsnippet
 
+snippet gr "Data structure for graph"
+var n int
+var G map[int][]int
+
+func initGraph() {
+	G = make(map[int][]int, n)
+}
+
+func add(x, y int) {
+	if _, ok := G[x]; !ok {
+		G[x] = make([]int, 0, n)
+	}
+	G[x] = append(G[x], y)
+}
+
+n = readInt()
+${1:m} := readInt()
+initGraph()
+for i := 0; i < $1; i++ {
+	${2:a}, ${3:b} := readInt(), readInt()
+	add($2, $3)
+	add($3, $2)
+}
+endsnippet
+
+snippet grt "Data structure for graph with type"
+type ${1:data} struct{ ${2:x}, ${3:y} int }
+
+var n int
+var G map[int][]$1
+
+func initGraph() {
+	G = make(map[int][]$1, n)
+}
+
+func add(x int, y $1) {
+	if _, ok := G[x]; !ok {
+		G[x] = make([]$1, 0, n)
+	}
+	G[x] = append(G[x], y)
+}
+
+n = readInt()
+${4:m} := readInt()
+initGraph()
+for i := 0; i < $4; i++ {
+	${5:a}, ${6:b} := readInt(), readInt()
+	add($5, $1{$5, $6})
+	add($6, $1{$6, $5})
+}
+endsnippet
+
 snippet war "Warshall Floyd Algorithm"
 for k := 0; k < ${1:10}; k++ {
 	for i := 0; i < $1; i++ {
