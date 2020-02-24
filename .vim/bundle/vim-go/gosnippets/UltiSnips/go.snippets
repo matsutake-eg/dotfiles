@@ -4,30 +4,37 @@ priority -10
 
 snippet mod "a prime number used many times in programing contest"
 const mod = 1000000007
+${0:${VISUAL}}
 endsnippet
 
 snippet az "string which is a to z"
 az := "abcdefghijklmnopqrstuvwxyz"
+${0:${VISUAL}}
 endsnippet
 
 snippet maxi "max value of int(int64)"
 ans := math.MaxInt64
+${0:${VISUAL}}
 endsnippet
 
 snippet mini "min value of int(int64)"
 ans := math.MinInt64
+${0:${VISUAL}}
 endsnippet
 
 snippet maxf "max value of float(float64)"
 ans := math.MaxFloat64
+${0:${VISUAL}}
 endsnippet
 
 snippet minf "min value of float(float64)"
 ans := math.SmallestNonzeroFloat64
+${0:${VISUAL}}
 endsnippet
 
 snippet fs "fmt.Scan(...)"
 fmt.Scan(&${1:n})
+${0:${VISUAL}}
 endsnippet
 
 snippet ri "read standard input by scanner and return value as integer"
@@ -42,8 +49,17 @@ func readInt() int {
 func init() {
 	sc.Split(bufio.ScanWords)
 }
+${0:${VISUAL}}
+endsnippet
 
-${1:n} := readInt()
+snippet r2 "... := readInt(), readInt()"
+${1:x}, ${2:y} := readInt(), readInt()
+${0:${VISUAL}}
+endsnippet
+
+snippet r3 "... := readInt(), readInt(), readInt()"
+${1:x}, ${2:y}, ${3:z} := readInt(), readInt(), readInt()
+${0:${VISUAL}}
 endsnippet
 
 snippet rs "read standard input by scanner and return value as string"
@@ -57,8 +73,7 @@ func readStr() string {
 func init() {
 	sc.Split(bufio.ScanWords)
 }
-
-${1:s} := readStr()
+${0:${VISUAL}}
 endsnippet
 
 snippet ris "read standard input by scanner and return value as integer or string"
@@ -83,14 +98,17 @@ endsnippet
 
 snippet type "type T struct { ... }"
 type ${1:Type} struct { ${0} }
+${0:${VISUAL}}
 endsnippet
 
 snippet ms "make slice"
 ${1:xs} := make([]${3:int}, ${2:n})
+${0:${VISUAL}}
 endsnippet
 
 snippet mm "make map"
 ${1:xm} := make(map[${2:int}]${3:int})
+${0:${VISUAL}}
 endsnippet
 
 snippet if "if ... { ... }"
@@ -162,6 +180,7 @@ endsnippet
 
 snippet sortr "sort reversely for Ints"
 sort.Sort(sort.Reverse(sort.IntSlice(${1:xs})))
+${0:${VISUAL}}
 endsnippet
 
 snippet sorts "sort string by character"
@@ -654,6 +673,7 @@ for qu.Len() > 0 {
 		qu.PushBack(t)
 	}
 }
+${0:${VISUAL}}
 endsnippet
 
 snippet war "Warshall Floyd Algorithm"
@@ -664,6 +684,7 @@ for k := 0; k < ${1:n}; k++ {
 		}
 	}
 }
+${0:${VISUAL}}
 endsnippet
 
 snippet uft "get Union Find Tree"
