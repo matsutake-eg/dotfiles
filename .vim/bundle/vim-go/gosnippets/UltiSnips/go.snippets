@@ -37,6 +37,36 @@ fmt.Scan(&${1:n})
 ${0:${VISUAL}}
 endsnippet
 
+snippet fs1 "make variable and use fmt.Scan(...)"
+var ${1:n} int
+fmt.Scan(&$1)
+${0:${VISUAL}}
+endsnippet
+
+snippet fs2 "make two variables and use fmt.Scan(...)"
+var ${1:a}, ${2:b} int
+fmt.Scan(&$1, &$2)
+${0:${VISUAL}}
+endsnippet
+
+snippet fs3 "make three variables and use fmt.Scan(...)"
+var ${1:a}, ${2:b}, ${3:c} int
+fmt.Scan(&$1, &$2, &$3)
+${0:${VISUAL}}
+endsnippet
+
+snippet fs4 "make four variables and use fmt.Scan(...)"
+var ${1:a}, ${2:b}, ${3:c}, ${4:d} int
+fmt.Scan(&$1, &$2, &$3, &$4)
+${0:${VISUAL}}
+endsnippet
+
+snippet fs5 "make five variables and use fmt.Scan(...)"
+var ${1:a}, ${2:b}, ${3:c}, ${4:d}, ${5:e} int
+fmt.Scan(&$1, &$2, &$3, &$4, &$5)
+${0:${VISUAL}}
+endsnippet
+
 snippet ri "read standard input by scanner and return value as integer"
 var sc = bufio.NewScanner(os.Stdin)
 
@@ -52,12 +82,17 @@ func init() {
 ${0:${VISUAL}}
 endsnippet
 
-snippet r2 "... := readInt(), readInt()"
+snippet ri1 "... := readInt()"
+${1:n} := readInt()
+${0:${VISUAL}}
+endsnippet
+
+snippet ri2 "... := readInt(), readInt()"
 ${1:x}, ${2:y} := readInt(), readInt()
 ${0:${VISUAL}}
 endsnippet
 
-snippet r3 "... := readInt(), readInt(), readInt()"
+snippet ri3 "... := readInt(), readInt(), readInt()"
 ${1:x}, ${2:y}, ${3:z} := readInt(), readInt(), readInt()
 ${0:${VISUAL}}
 endsnippet
