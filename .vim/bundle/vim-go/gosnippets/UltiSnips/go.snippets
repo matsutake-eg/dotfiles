@@ -111,6 +111,18 @@ ${1:xm} := make(map[${2:int}]${3:int})
 ${0:${VISUAL}}
 endsnippet
 
+snippet mmm "make mapped map"
+${1:xm} := make(map[int]map[int]bool, ${2:n})
+for i := 0; i < ${3:m}; i++ {
+	${4:a}, ${5:b} := readInt(), readInt()
+	if _, ok := $1[$4]; !ok {
+		$1[$4] = make(map[int]bool)
+	}
+	$1[$4][$5] = true
+}
+${0:${VISUAL}}
+endsnippet
+
 snippet if "if ... { ... }"
 if ${1:condition} {
 	${0:${VISUAL}}
