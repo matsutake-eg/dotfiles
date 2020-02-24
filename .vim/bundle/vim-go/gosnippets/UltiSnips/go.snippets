@@ -579,21 +579,19 @@ for i := 0; i < $1; i++ {
 }
 endsnippet
 
-snippet grt "Data structure for graph with type"
-type edge struct{ to, weight int }
-
+snippet grw "Data structure for graph with weight"
 var n int
-var G map[int][]edge
+var G map[int]map[int]int
 
 func initGraph() {
-	G = make(map[int][]edge, n)
+	G = make(map[int]map[int]int, n)
 }
 
-func add(x int, y edge) {
-	if _, ok := G[x]; !ok {
-		G[x] = make([]edge, 0, n)
+func add(from, to, weight int) {
+	if _, ok := G[from]; !ok {
+		G[from] = make(map[int]int)
 	}
-	G[x] = append(G[x], y)
+	G[from][to] = weight
 }
 
 n = readInt()
@@ -601,8 +599,8 @@ ${1:m} := readInt()
 initGraph()
 for i := 0; i < $1; i++ {
 	${2:a}, ${3:b}, ${4:c} := readInt(), readInt(), readInt()
-	add($2, edge{$3, $4})
-	add($3, edge{$2, $4})
+	add($2, $3, $4)
+	add($3, $2, $4)
 }
 endsnippet
 
@@ -621,6 +619,24 @@ func dfs(v int) {
 
 seen = make(map[int]bool, n)
 dfs(1)
+endsnippet
+
+snippet sdfs "Get shortest path in graph by Depth First Search"
+var depth []int
+
+func dfs(v, p, d int) {
+	depth[v] = d
+	for t, w := range G[v] {
+		if t == p {
+			continue
+		}
+		dfs(t, v, d+w)
+	}
+}
+
+depth = make([]int, n+1)
+dfs(${1:k}, -1, 0)
+fmt.Println(depth)
 endsnippet
 
 snippet bfs "Breadth First Search in graph"
