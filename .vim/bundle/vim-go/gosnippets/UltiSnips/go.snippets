@@ -328,11 +328,7 @@ func gcd(x, y int) int {
 }
 
 func lcm(x, y int) int {
-	g := gcd(x, y)
-	if x%g == 0 {
-		return x / g * y
-	}
-	return y / g * x
+	return x / gcd(x, y) * y
 }
 
 lcm(${1:a}, ${2:b})
