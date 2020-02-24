@@ -575,17 +575,17 @@ endsnippet
 
 snippet gr "Data structure for graph"
 var n int
-var G map[int]map[int]bool
+var g map[int]map[int]bool
 
 func initGraph() {
-	G = make(map[int]map[int]bool, n)
+	g = make(map[int]map[int]bool, n)
 }
 
 func add(from, to int) {
-	if _, ok := G[from]; !ok {
-		G[from] = make(map[int]bool)
+	if _, ok := g[from]; !ok {
+		g[from] = make(map[int]bool)
 	}
-	G[from][to] = true
+	g[from][to] = true
 }
 
 n = readInt()
@@ -600,17 +600,17 @@ endsnippet
 
 snippet grw "Data structure for graph with weight"
 var n int
-var G map[int]map[int]int
+var g map[int]map[int]int
 
 func initGraph() {
-	G = make(map[int]map[int]int, n)
+	g = make(map[int]map[int]int, n)
 }
 
 func add(from, to, weight int) {
-	if _, ok := G[from]; !ok {
-		G[from] = make(map[int]int)
+	if _, ok := g[from]; !ok {
+		g[from] = make(map[int]int)
 	}
-	G[from][to] = weight
+	g[from][to] = weight
 }
 
 n = readInt()
@@ -628,7 +628,7 @@ var seen map[int]bool
 
 func dfs(v int) {
 	seen[v] = true
-	for t := range G[v] {
+	for t := range g[v] {
 		if seen[t] {
 			continue
 		}
@@ -645,7 +645,7 @@ var depth []int
 
 func dfs(v, p, d int) {
 	depth[v] = d
-	for t, w := range G[v] {
+	for t, w := range g[v] {
 		if t == p {
 			continue
 		}
@@ -665,7 +665,7 @@ qu.PushBack(${1:1})
 seen[$1] = true
 for qu.Len() > 0 {
 	v := qu.Remove(qu.Front()).(int)
-	for t := range G[v] {
+	for t := range g[v] {
 		if seen[t] {
 			continue
 		}
