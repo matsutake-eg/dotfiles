@@ -580,34 +580,34 @@ for i := 0; i < $1; i++ {
 endsnippet
 
 snippet grt "Data structure for graph with type"
-type ${1:data} struct{ ${2:to}, ${3:weight} int }
+type edge struct{ to, weight int }
 
 var n int
-var G map[int][]$1
+var G map[int][]edge
 
 func initGraph() {
-	G = make(map[int][]$1, n)
+	G = make(map[int][]edge, n)
 }
 
-func add(x int, y $1) {
+func add(x int, y edge) {
 	if _, ok := G[x]; !ok {
-		G[x] = make([]$1, 0, n)
+		G[x] = make([]edge, 0, n)
 	}
 	G[x] = append(G[x], y)
 }
 
 n = readInt()
-${4:m} := readInt()
+${1:m} := readInt()
 initGraph()
-for i := 0; i < $4; i++ {
-	${5:a}, ${6:b} := readInt(), readInt()
-	add($5, $1{$6, $5})
-	add($6, $1{$5, $6})
+for i := 0; i < $1; i++ {
+	${2:a}, ${3:b}, ${4:c} := readInt(), readInt(), readInt()
+	add($2, edge{$3, $4})
+	add($3, edge{$2, $4})
 }
 endsnippet
 
 snippet dfs "Depth First Search in graph"
-var seen = make(map[int]bool, n)
+var seen map[int]bool
 
 func dfs(v int) {
 	seen[v] = true
@@ -619,6 +619,7 @@ func dfs(v int) {
 	}
 }
 
+seen = make(map[int]bool, n)
 dfs(1)
 endsnippet
 
