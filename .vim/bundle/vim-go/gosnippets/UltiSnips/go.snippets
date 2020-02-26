@@ -636,11 +636,10 @@ fib(${1:n})
 endsnippet
 
 snippet gr "Data structure for graph"
-var n int
 var G map[int]map[int]bool
 
-func initGraph() {
-	G = make(map[int]map[int]bool, n)
+func initGraph(x int) {
+	G = make(map[int]map[int]bool, x)
 }
 
 func add(from, to int) {
@@ -650,9 +649,9 @@ func add(from, to int) {
 	G[from][to] = true
 }
 
-n = scanInt()
+n := scanInt()
+initGraph(n)
 ${1:m} := scanInt()
-initGraph()
 for i := 0; i < $1; i++ {
 	${2:a}, ${3:b} := scanInt(), scanInt()
 	add($2, $3)
@@ -661,11 +660,10 @@ for i := 0; i < $1; i++ {
 endsnippet
 
 snippet grw "Data structure for graph with weight"
-var n int
 var G map[int]map[int]int
 
-func initGraph() {
-	G = make(map[int]map[int]int, n)
+func initGraph(x int) {
+	G = make(map[int]map[int]int, x)
 }
 
 func add(from, to, weight int) {
@@ -675,9 +673,9 @@ func add(from, to, weight int) {
 	G[from][to] = weight
 }
 
-n = scanInt()
+n := scanInt()
+initGraph(n)
 ${1:m} := scanInt()
-initGraph()
 for i := 0; i < $1; i++ {
 	${2:a}, ${3:b}, ${4:c} := scanInt(), scanInt(), scanInt()
 	add($2, $3, $4)
