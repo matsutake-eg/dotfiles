@@ -5,8 +5,7 @@ fi
 
 export NVM_DIR=~/.nvm
 export GOPATH=$HOME/dev/go
-
-source $(brew --prefix nvm)/nvm.sh
+export PATH=$GOPATH/bin:$PATH
 
 source /usr/local/etc/bash_completion.d/git-prompt.sh
 source /usr/local/etc/bash_completion.d/git-completion.bash

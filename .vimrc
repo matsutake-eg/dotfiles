@@ -61,6 +61,12 @@ nnoremap <F5> :ALEResetBuffer<CR>
 nnoremap <F10> :ALEHover<CR>
 nnoremap <F11> :ALEFindReferences<CR>
 nnoremap <F12> :ALEGoToDefinition<CR>
+if has("autocmd")
+  autocmd FileType go nnoremap <F2> :GoRename<CR>
+  autocmd FileType go nnoremap <F10> :GoInfo<CR>
+  autocmd FileType go nnoremap <F11> :GoReferrers<CR>
+  autocmd FileType go nnoremap <F12> :GoDef<CR>
+endif
 inoremap jj <Esc>
 inoremap {<Enter> {}<Left><CR><ESC><S-o>
 inoremap [<Enter> []<Left><CR><ESC><S-o>
@@ -108,6 +114,7 @@ Plugin 'posva/vim-vue'
 " This plugin adds Go language support for Vim, with the following main features
 Plugin 'fatih/vim-go'
 let g:go_fmt_command = "goimports"
+let g:go_rename_command = "gorename"
 " UltiSnips is the ultimate solution for snippets in Vim. It has many features, speed being one of them.
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
