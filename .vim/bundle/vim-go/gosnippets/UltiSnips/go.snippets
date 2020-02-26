@@ -351,7 +351,7 @@ max(${1:a}, ${2:b})
 endsnippet
 
 snippet maxs "get maximum value of multiple integers"
-func max(x ...int) int {
+func maxs(x ...int) int {
 	mv := x[0]
 	for _, v := range x[1:] {
 		if v > mv {
@@ -361,7 +361,7 @@ func max(x ...int) int {
 	return mv
 }
 
-max(${1:a}, ${2:b}, ${3:c})
+maxs(${1:a}, ${2:b}, ${3:c})
 endsnippet
 
 snippet min "get minimum value of two integers"
@@ -376,7 +376,7 @@ min(${1:a}, ${2:b})
 endsnippet
 
 snippet mins "get minimum value of multiple integers"
-func min(x ...int) int {
+func mins(x ...int) int {
 	mv := x[0]
 	for _, v := range x[1:] {
 		if v < mv {
@@ -386,7 +386,7 @@ func min(x ...int) int {
 	return mv
 }
 
-min(${1:a}, ${2:b}, ${3:c})
+mins(${1:a}, ${2:b}, ${3:c})
 endsnippet
 
 snippet gcd "get GCD(Greatest Common Divisor)"
