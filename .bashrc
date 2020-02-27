@@ -7,6 +7,7 @@ export NVM_DIR=~/.nvm
 export GOPATH=$HOME/dev/go
 export PATH=$GOPATH/bin:$PATH
 
+source $(brew --prefix nvm)/nvm.sh
 source /usr/local/etc/bash_completion.d/git-prompt.sh
 source /usr/local/etc/bash_completion.d/git-completion.bash
 GIT_PS1_SHOWDIRTYSTATE=true
