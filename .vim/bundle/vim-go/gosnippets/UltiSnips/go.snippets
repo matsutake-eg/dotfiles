@@ -147,7 +147,7 @@ ${1:n}, ${2:s} := scanInt(), scanString()
 endsnippet
 
 snippet type "type T struct { ... }"
-type ${1:Type} struct { ${0} }
+type ${1:data} struct { ${0} }
 ${0:${VISUAL}}
 endsnippet
 
@@ -636,17 +636,17 @@ fib(${1:n})
 endsnippet
 
 snippet gr "Data structure for graph"
-var G map[int]map[int]bool
+var graph map[int]map[int]bool
 
 func initGraph(x int) {
-	G = make(map[int]map[int]bool, x)
+	graph = make(map[int]map[int]bool, x)
 }
 
 func add(from, to int) {
-	if _, ok := G[from]; !ok {
-		G[from] = make(map[int]bool)
+	if _, ok := graph[from]; !ok {
+		graph[from] = make(map[int]bool)
 	}
-	G[from][to] = true
+	graph[from][to] = true
 }
 
 ${1:n}, ${2:m} := scanInt(), scanInt()
@@ -659,17 +659,17 @@ for i := 0; i < $2; i++ {
 endsnippet
 
 snippet grw "Data structure for graph with weight"
-var G map[int]map[int]int
+var graph map[int]map[int]int
 
 func initGraph(x int) {
-	G = make(map[int]map[int]int, x)
+	graph = make(map[int]map[int]int, x)
 }
 
 func add(from, to, weight int) {
-	if _, ok := G[from]; !ok {
-		G[from] = make(map[int]int)
+	if _, ok := graph[from]; !ok {
+		graph[from] = make(map[int]int)
 	}
-	G[from][to] = weight
+	graph[from][to] = weight
 }
 
 ${1:n}, ${2:m} := scanInt(), scanInt()
@@ -686,7 +686,7 @@ var seen map[int]bool
 
 func dfs(v int) {
 	seen[v] = true
-	for t := range G[v] {
+	for t := range graph[v] {
 		if seen[t] {
 			continue
 		}
@@ -703,7 +703,7 @@ var depth []int
 
 func dfs(v, p, d int) {
 	depth[v] = d
-	for t, w := range G[v] {
+	for t, w := range graph[v] {
 		if t == p {
 			continue
 		}
@@ -723,7 +723,7 @@ qu.PushBack(${1:1})
 seen[$1] = true
 for qu.Len() > 0 {
 	v := qu.Remove(qu.Front()).(int)
-	for t := range G[v] {
+	for t := range graph[v] {
 		if seen[t] {
 			continue
 		}
