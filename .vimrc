@@ -54,16 +54,16 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+nnoremap <F1> :ALEHover<CR>
 nnoremap <F2> :ALERename<CR>
 nnoremap <F3> :TagbarToggle<CR>
-nnoremap <F4> :GoRun<CR>
 nnoremap <F5> :ALEResetBuffer<CR>
-nnoremap <F10> :ALEHover<CR>
 nnoremap <F11> :ALEFindReferences<CR>
 nnoremap <F12> :ALEGoToDefinition<CR>
 if has("autocmd")
+  autocmd FileType go nnoremap <F1> :GoInfo<CR>
   autocmd FileType go nnoremap <F2> :GoRename<CR>
-  autocmd FileType go nnoremap <F10> :GoInfo<CR>
+  autocmd FileType go nnoremap <F4> :GoRun<CR>
   autocmd FileType go nnoremap <F11> :GoReferrers<CR>
   autocmd FileType go nnoremap <F12> :GoDef<CR>
 endif
