@@ -649,13 +649,12 @@ func add(from, to int) {
 	G[from][to] = true
 }
 
-n := scanInt()
-initGraph(n)
-${1:m} := scanInt()
-for i := 0; i < $1; i++ {
-	${2:a}, ${3:b} := scanInt(), scanInt()
-	add($2, $3)
-	add($3, $2)
+${1:n}, ${2:m} := scanInt(), scanInt()
+initGraph($1)
+for i := 0; i < $2; i++ {
+	${3:a}, ${4:b} := scanInt(), scanInt()
+	add($3, $4)
+	add($4, $3)
 }
 endsnippet
 
@@ -673,13 +672,12 @@ func add(from, to, weight int) {
 	G[from][to] = weight
 }
 
-n := scanInt()
-initGraph(n)
-${1:m} := scanInt()
-for i := 0; i < $1; i++ {
-	${2:a}, ${3:b}, ${4:c} := scanInt(), scanInt(), scanInt()
-	add($2, $3, $4)
-	add($3, $2, $4)
+${1:n}, ${2:m} := scanInt(), scanInt()
+initGraph($1)
+for i := 0; i < $2; i++ {
+	${3:a}, ${4:b}, ${5:c} := scanInt(), scanInt(), scanInt()
+	add($3, $4, $5)
+	add($4, $3, $5)
 }
 endsnippet
 
