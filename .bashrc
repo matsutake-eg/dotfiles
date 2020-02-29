@@ -18,7 +18,7 @@ fi
 GIT_PS1_SHOWUPSTREAM="auto"
 GIT_PS1_SHOWDIRTYSTATE=true
 GIT_PS1_SHOWUNTRACKEDFILES=true
-export PS1='\[\033[37m\][\[\033[36m\]\u\[\033[37m\]@\h \[\033[32m\]\W\[\033[37m\]]\[\033[31m\]$(__git_ps1)\[\033[00m\]\$ '
+export PS1='\[\e[37m\]\t\[\e[0m\] \[\e[36m\]\u\[\e[0m\]\[\e[37m\]@\h\[\e[0m\] \[\e[32m\]\W\[\e[0m\]\[\e[31m\]$(__git_ps1)\[\e[0m\] \$ '
 
 alias ls='ls -FG'
 alias ll='ls -ahlFG'
