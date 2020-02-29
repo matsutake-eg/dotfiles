@@ -117,7 +117,6 @@ let g:go_fmt_command = "goimports"
 let g:go_rename_command = "gorename"
 let g:go_highlight_functions = 1
 let g:go_highlight_function_calls = 1
-let g:go_highlight_fields = 1
 " UltiSnips is the ultimate solution for snippets in Vim. It has many features, speed being one of them.
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
