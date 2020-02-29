@@ -179,8 +179,20 @@ if ${1:condition} {
 }
 endsnippet
 
-snippet else
+snippet ef " else if ... { ... }"
+else if ${1:condition} {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet else "else ... { ... }"
 else {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet ok  "if _, ok := xm[x]; ok { ... }"
+if _, ok := ${1:xm}[${2:x}]; ok {
 	${0:${VISUAL}}
 }
 endsnippet
