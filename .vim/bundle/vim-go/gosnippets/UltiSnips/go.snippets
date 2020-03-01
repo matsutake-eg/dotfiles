@@ -838,6 +838,8 @@ snippet wr "write standard output by writer"
 var wr = bufio.NewWriter(os.Stdout)
 
 wr.WriteString(strconv.Itoa(${1:n}) + "\n")
+wr.WriteString(strconv.Itoa($1))
+wr.WriteString("\n")
 wr.Flush()
 endsnippet
 
