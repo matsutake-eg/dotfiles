@@ -37,8 +37,14 @@ fmt.Scan(&${1:n})
 ${0:${VISUAL}}
 endsnippet
 
-snippet fs1 "make variable and use fmt.Scan(...)"
+snippet fs1 "make variable(int) and use fmt.Scan(...)"
 var ${1:n} int
+fmt.Scan(&$1)
+${0:${VISUAL}}
+endsnippet
+
+snippet fs1s "make variable(string) and use fmt.Scan(...)"
+var ${1:s} string
 fmt.Scan(&$1)
 ${0:${VISUAL}}
 endsnippet
