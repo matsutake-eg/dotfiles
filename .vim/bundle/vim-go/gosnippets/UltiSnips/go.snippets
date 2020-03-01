@@ -67,6 +67,24 @@ fmt.Scan(&$1, &$2, &$3, &$4, &$5)
 ${0:${VISUAL}}
 endsnippet
 
+snippet fsis "make variables(int, string) and use fmt.Scan(...)"
+var (
+	${1:n} int
+	${2:s} string
+)
+fmt.Scan(&$1, &$2)
+${0:${VISUAL}}
+endsnippet
+
+snippet fssi "make variables(string, int) and use fmt.Scan(...)"
+var (
+	${1:s} string
+	${2:n} int
+)
+fmt.Scan(&$1, &$2)
+${0:${VISUAL}}
+endsnippet
+
 snippet si "scan standard input as integer"
 var sc = bufio.NewScanner(os.Stdin)
 
