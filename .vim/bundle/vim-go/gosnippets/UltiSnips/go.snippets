@@ -165,6 +165,8 @@ func scanString() string {
 
 func init() {
 	sc.Split(bufio.ScanWords)
+	buf := make([]byte, 10000)
+	sc.Buffer(buf, 10000000)
 }
 
 ${1:n}, ${2:s} := scanInt(), scanString()
@@ -305,14 +307,17 @@ sort.Sort(rs)
 fmt.Println(string(rs)))
 endsnippet
 
-snippet que "get queue of integers"
-qu := list.New()
+snippet ls "use container/list of integers"
+ls := list.New()
 for i := 0; i < ${1:n}; i++ {
-	qu.PushBack(i)
+	ls.PushBack(i)
 }
-fmt.Println(qu.Len())
-x := qu.Remove(qu.Front()).(int)
-fmt.Println(x, qu.Len())
+
+sum := 0
+for e := ls.Front(); e != nil; e = e.Next() {
+	sum += e.Value.(int)
+}
+fmt.Println(sum)
 endsnippet
 
 snippet pq "get priority queue"
