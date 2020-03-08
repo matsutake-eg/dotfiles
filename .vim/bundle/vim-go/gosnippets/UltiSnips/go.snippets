@@ -131,8 +131,7 @@ func scanString() string {
 
 func init() {
 	sc.Split(bufio.ScanWords)
-	buf := make([]byte, 10000)
-	sc.Buffer(buf, 10000000)
+	sc.Buffer(make([]byte, 100001), 100001*100)
 }
 ${0:${VISUAL}}
 endsnippet
@@ -167,8 +166,7 @@ func scanString() string {
 
 func init() {
 	sc.Split(bufio.ScanWords)
-	buf := make([]byte, 10000)
-	sc.Buffer(buf, 10000000)
+	sc.Buffer(make([]byte, 100001), 100001*100)
 }
 
 ${1:n}, ${2:s} := scanInt(), scanString()
