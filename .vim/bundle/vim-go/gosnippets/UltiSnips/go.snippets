@@ -182,6 +182,16 @@ ${1:xs} := make([]${3:int}, ${2:n})
 ${0:${VISUAL}}
 endsnippet
 
+snippet iio "return true if index out of slice range"
+func isIndexOutOfRange(xs []int, i int) bool {
+	return i < 0 || i >= len(xs)
+}
+
+if isIndexOutOfRange(${1:xs}, ${2:ni}) {
+	continue
+}
+endsnippet
+
 snippet mm "make map"
 ${1:xm} := make(map[${2:int}]${3:int})
 ${0:${VISUAL}}
