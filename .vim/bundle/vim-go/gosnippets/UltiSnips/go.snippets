@@ -103,7 +103,8 @@ func scanInt() int {
 func init() {
 	sc.Split(bufio.ScanWords)
 }
-${0:${VISUAL}}
+
+${1:n} := scanInt()
 endsnippet
 
 snippet si1 "... := scanInt()"
@@ -133,7 +134,8 @@ func init() {
 	sc.Split(bufio.ScanWords)
 	sc.Buffer(make([]byte, 100001), 100001*100)
 }
-${0:${VISUAL}}
+
+${1:s} := scanString()
 endsnippet
 
 snippet ss1 "... := scanString()"
