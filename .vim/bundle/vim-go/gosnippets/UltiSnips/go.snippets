@@ -184,6 +184,17 @@ ${1:xs} := make([]${3:int}, ${2:n})
 ${0:${VISUAL}}
 endsnippet
 
+snippet mms "make multiple slice"
+${1:xs} := make([][]int, ${2:n})
+for ${4:i} := range $1 {
+	$1[$4] = make([]int, ${3:k})
+	for ${5:j} := range $1[$4] {
+		$1[$4][$5] = scanInt()
+	}
+}
+${0:${VISUAL}}
+endsnippet
+
 snippet iio "return true if index out of slice range"
 func isIndexOutOfRange(xs []int, i int) bool {
 	return i < 0 || i >= len(xs)
