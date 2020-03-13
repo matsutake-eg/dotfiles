@@ -58,6 +58,7 @@ nnoremap <F1> :ALEHover<CR>
 nnoremap <F2> :ALERename<CR>
 nnoremap <F3> :TagbarToggle<CR>
 nnoremap <F5> :ALEResetBuffer<CR>
+nnoremap <F10> :ALEGoToDefinitionInSplit<CR>
 nnoremap <F11> :ALEFindReferences<CR>
 nnoremap <F12> :ALEGoToDefinition<CR>
 if has("autocmd")
