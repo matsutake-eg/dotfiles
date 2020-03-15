@@ -813,14 +813,44 @@ ${0:${VISUAL}}
 endsnippet
 
 snippet war "Warshall Floyd Algorithm"
-for k := 0; k < ${1:n}; k++ {
+${1:n} := scanInt()
+${2:dist} := make([][]int, $1)
+for i := range $2 {
+	$2[i] = make([]int, $1)
+	for j := 0; j < $1; j++ {
+		$2[i][j] = ${3:1001*300}
+	}
+}
+
+${4:m} := scanInt()
+for i := 0; i < $4; i++ {
+	a, b, t := scanInt(), scanInt(), scanInt()
+	a--
+	b--
+	$2[a][b] = t
+	$2[b][a] = t
+}
+
+for k := 0; k < $1; k++ {
 	for i := 0; i < $1; i++ {
 		for j := 0; j < $1; j++ {
-			${2:dist}[i][j] = min($2[i][j], $2[i][k]+$2[k][j])
+			$2[i][j] = min($2[i][j], $2[i][k]+$2[k][j])
 		}
 	}
 }
-${0:${VISUAL}}
+
+ans := math.MaxInt64
+for i := range $2 {
+	x := 0
+	for j := range $2[i] {
+		if i == j {
+			continue
+		}
+		x = max(x, $2[i][j])
+	}
+	ans = min(ans, x)
+}
+fmt.Println(ans)
 endsnippet
 
 snippet uft "get Union Find Tree"
