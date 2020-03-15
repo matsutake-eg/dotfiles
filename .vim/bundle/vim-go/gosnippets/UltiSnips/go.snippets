@@ -346,11 +346,15 @@ for i := 0; i < ${1:n}; i++ {
 	ls.PushBack(i)
 }
 
-sum := 0
 for e := ls.Front(); e != nil; e = e.Next() {
-	sum += e.Value.(int)
+	v := e.Value.(int)
+	fmt.Println(v)
 }
-fmt.Println(sum)
+
+for ls.Len() > 0 {
+	v := ls.Remove(ls.Front()).(int)
+	fmt.Println(v)
+}
 endsnippet
 
 snippet pq "get priority queue"
@@ -792,17 +796,17 @@ endsnippet
 
 snippet bfs "Breadth First Search in graph"
 seen := make(map[int]bool, n)
-qu := list.New()
-qu.PushBack(${1:1})
+ls := list.New()
+ls.PushBack(${1:1})
 seen[$1] = true
-for qu.Len() > 0 {
-	v := qu.Remove(qu.Front()).(int)
+for ls.Len() > 0 {
+	v := ls.Remove(ls.Front()).(int)
 	for t := range graph[v] {
 		if seen[t] {
 			continue
 		}
 		seen[t] = true
-		qu.PushBack(t)
+		ls.PushBack(t)
 	}
 }
 ${0:${VISUAL}}
