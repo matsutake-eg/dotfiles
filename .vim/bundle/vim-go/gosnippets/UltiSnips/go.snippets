@@ -818,6 +818,9 @@ ${2:dist} := make([][]int, $1)
 for i := range $2 {
 	$2[i] = make([]int, $1)
 	for j := 0; j < $1; j++ {
+		if i == j {
+			continue
+		}
 		$2[i][j] = ${3:1001*300}
 	}
 }
@@ -843,9 +846,6 @@ ans := math.MaxInt64
 for i := range $2 {
 	x := 0
 	for j := range $2[i] {
-		if i == j {
-			continue
-		}
 		x = max(x, $2[i][j])
 	}
 	ans = min(ans, x)
