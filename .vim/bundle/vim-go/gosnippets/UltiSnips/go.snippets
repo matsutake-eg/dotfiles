@@ -129,6 +129,10 @@ func init() {
 }
 
 ${1:n} := scanInt()
+${2:xs} := make([]int, $1)
+for i := range $2 {
+	$2[i] = scanInt()
+}
 endsnippet
 
 snippet si1 "... := scanInt()"
@@ -195,7 +199,11 @@ func init() {
 	sc.Buffer(make([]byte, 100001), 100001*100)
 }
 
-${1:n}, ${2:s} := scanInt(), scanString()
+${1:n} := scanInt()
+${2:xs} := make([]int, $1)
+for i := range $2 {
+	$2[i] = scanInt()
+}
 endsnippet
 
 snippet type "type T struct { ... }"
