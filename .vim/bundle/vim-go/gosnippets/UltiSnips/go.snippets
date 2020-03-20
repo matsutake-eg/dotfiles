@@ -12,6 +12,30 @@ az := "abcdefghijklmnopqrstuvwxyz"
 ${0:${VISUAL}}
 endsnippet
 
+snippet dxy "move x and y in 4 way of 2 dimensional"
+dx := []int{0, 1, 0, -1}
+dy := []int{1, 0, -1, 0}
+
+for ${1:i} := 0; $1 < 4; $1++ {
+	nx, ny := j+dx[$1], i+dy[$1]
+	if nx < 0 || nx >= w || ny < 0 || ny >= h || s[ny][nx] == '#' {
+		continue
+	}
+}
+endsnippet
+
+snippet dxy8 "move x and y in 8 way of 2 dimensional"
+dx := []int{0, 1, 1, 1, 0, -1, -1, -1}
+dy := []int{1, 1, 0, -1, -1, -1, 0, 1}
+
+for ${1:i} := 0; $1 < 8; $1++ {
+	nx, ny := j+dx[$1], i+dy[$1]
+	if nx < 0 || nx >= w || ny < 0 || ny >= h || s[ny][nx] == '#' {
+		continue
+	}
+}
+endsnippet
+
 snippet maxi "max value of int(int64)"
 ans := math.MaxInt64
 ${0:${VISUAL}}
