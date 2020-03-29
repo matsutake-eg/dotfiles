@@ -22,6 +22,7 @@ for ${1:k} := 0; $1 < 4; $1++ {
 		continue
 	}
 }
+${0:${VISUAL}}
 endsnippet
 
 snippet dxy8 "move x and y in 8 way of 2 dimensional"
@@ -34,16 +35,11 @@ for ${1:k} := 0; $1 < 8; $1++ {
 		continue
 	}
 }
-endsnippet
-
-snippet fs1 "make variable(int) and use fmt.Scan(...)"
-var ${1:n} int
-fmt.Scan(&$1)
 ${0:${VISUAL}}
 endsnippet
 
-snippet fs1s "make variable(string) and use fmt.Scan(...)"
-var ${1:s} string
+snippet fs1 "make variable(int) and use fmt.Scan(...)"
+var ${1:n} ${2:int}
 fmt.Scan(&$1)
 ${0:${VISUAL}}
 endsnippet
@@ -103,7 +99,6 @@ func init() {
 	sc.Split(bufio.ScanWords)
 }
 
-${0:${VISUAL}}
 endsnippet
 
 snippet si1 "... := scanInt()"
@@ -143,7 +138,7 @@ func init() {
 	sc.Split(bufio.ScanWords)
 	sc.Buffer(make([]byte, 100001), 100001*100)
 }
-${0:${VISUAL}}
+
 endsnippet
 
 snippet ss1 "... := scanString()"
@@ -158,6 +153,16 @@ endsnippet
 
 snippet ss3 "... := scanString(), scanString(), scanString()"
 ${1:a}, ${2:b}, ${3:c} := scanString(), scanString(), scanString()
+${0:${VISUAL}}
+endsnippet
+
+snippet ss4 "... := scanString(), scanString(), scanString(), scanString()"
+${1:a}, ${2:b}, ${3:c}, ${4:d} := scanString(), scanString(), scanString(), scanString()
+${0:${VISUAL}}
+endsnippet
+
+snippet ss5 "... := scanString(), scanString(), scanString(), scanString(), scanString()"
+${1:a}, ${2:b}, ${3:c}, ${4:d}, ${5:e} := scanString(), scanString(), scanString(), scanString(), scanString()
 ${0:${VISUAL}}
 endsnippet
 
@@ -178,7 +183,7 @@ func init() {
 	sc.Split(bufio.ScanWords)
 	sc.Buffer(make([]byte, 100001), 100001*100)
 }
-${0:${VISUAL}}
+
 endsnippet
 
 snippet ms "make slice"
@@ -342,7 +347,6 @@ func abs(x int) int {
 	return x
 }
 
-abs(${1:n})
 endsnippet
 
 snippet max "get maximum value of two integers"
@@ -353,7 +357,6 @@ func max(x, y int) int {
 	return y
 }
 
-max(${1:a}, ${2:b})
 endsnippet
 
 snippet maxs "get maximum value of multiple integers"
@@ -367,7 +370,6 @@ func maxs(x ...int) int {
 	return mv
 }
 
-maxs(${1:a}, ${2:b}, ${3:c})
 endsnippet
 
 snippet min "get minimum value of two integers"
@@ -378,7 +380,6 @@ func min(x, y int) int {
 	return y
 }
 
-min(${1:a}, ${2:b})
 endsnippet
 
 snippet mins "get minimum value of multiple integers"
@@ -392,7 +393,6 @@ func mins(x ...int) int {
 	return mv
 }
 
-mins(${1:a}, ${2:b}, ${3:c})
 endsnippet
 
 snippet gcd "get GCD(Greatest Common Divisor)"
@@ -403,7 +403,6 @@ func gcd(x, y int) int {
 	return x
 }
 
-gcd(${1:a}, ${2:b})
 endsnippet
 
 snippet lcm "get LCM(Least Common Multiple)"
@@ -418,7 +417,6 @@ func lcm(x, y int) int {
 	return x / gcd(x, y) * y
 }
 
-lcm(${1:a}, ${2:b})
 endsnippet
 
 snippet prm "get answer which is Prime Number or not"
@@ -435,7 +433,6 @@ func isPrime(x int) bool {
 	return true
 }
 
-isPrime(${1:n})
 endsnippet
 
 snippet prf "get answer of Prime Factorization"
@@ -454,7 +451,6 @@ func prmFac(x int) map[int]bool {
 	return pfm
 }
 
-m := prmFac(${1:n})
 endsnippet
 
 snippet per "get permutations array"
@@ -529,7 +525,6 @@ func pow(x, y int) int {
 	}
 }
 
-pow(${1:2}, ${2:n})
 endsnippet
 
 snippet cmb "get combination value by using inverse element"
@@ -559,7 +554,6 @@ func cmb(x, y int) int {
 	return nu * pow(de, mod-2) % mod
 }
 
-cmb(${1:n}, ${2:k})
 endsnippet
 
 snippet cmbs "get combination value by using inverse element and slice"
@@ -626,7 +620,6 @@ func fac(x int) int {
 	return fv
 }
 
-fac(${1:n})
 endsnippet
 
 snippet fib "get fibonacci value"
@@ -638,7 +631,6 @@ func fib(x int) int {
 	return a
 }
 
-fib(${1:n})
 endsnippet
 
 snippet gr "Data structure for graph"
