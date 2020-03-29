@@ -36,31 +36,6 @@ for ${1:k} := 0; $1 < 8; $1++ {
 }
 endsnippet
 
-snippet maxi "max value of int(int64)"
-${1:ans} := math.MaxInt64
-${0:${VISUAL}}
-endsnippet
-
-snippet mini "min value of int(int64)"
-${1:ans} := math.MinInt64
-${0:${VISUAL}}
-endsnippet
-
-snippet maxf "max value of float(float64)"
-ans := math.MaxFloat64
-${0:${VISUAL}}
-endsnippet
-
-snippet minf "min value of float(float64)"
-ans := math.SmallestNonzeroFloat64
-${0:${VISUAL}}
-endsnippet
-
-snippet fs "fmt.Scan(...)"
-fmt.Scan(&${1:n})
-${0:${VISUAL}}
-endsnippet
-
 snippet fs1 "make variable(int) and use fmt.Scan(...)"
 var ${1:n} int
 fmt.Scan(&$1)
@@ -74,25 +49,25 @@ ${0:${VISUAL}}
 endsnippet
 
 snippet fs2 "make two variables and use fmt.Scan(...)"
-var ${1:a}, ${2:b} int
+var ${1:a}, ${2:b} ${3:int}
 fmt.Scan(&$1, &$2)
 ${0:${VISUAL}}
 endsnippet
 
 snippet fs3 "make three variables and use fmt.Scan(...)"
-var ${1:a}, ${2:b}, ${3:c} int
+var ${1:a}, ${2:b}, ${3:c} ${4:int}
 fmt.Scan(&$1, &$2, &$3)
 ${0:${VISUAL}}
 endsnippet
 
 snippet fs4 "make four variables and use fmt.Scan(...)"
-var ${1:a}, ${2:b}, ${3:c}, ${4:d} int
+var ${1:a}, ${2:b}, ${3:c}, ${4:d} ${5:int}
 fmt.Scan(&$1, &$2, &$3, &$4)
 ${0:${VISUAL}}
 endsnippet
 
 snippet fs5 "make five variables and use fmt.Scan(...)"
-var ${1:a}, ${2:b}, ${3:c}, ${4:d}, ${5:e} int
+var ${1:a}, ${2:b}, ${3:c}, ${4:d}, ${5:e} ${6:int}
 fmt.Scan(&$1, &$2, &$3, &$4, &$5)
 ${0:${VISUAL}}
 endsnippet
@@ -128,11 +103,7 @@ func init() {
 	sc.Split(bufio.ScanWords)
 }
 
-${1:n} := scanInt()
-${2:xs} := make([]int, $1)
-for i := range $2 {
-	$2[i] = scanInt()
-}
+${0:${VISUAL}}
 endsnippet
 
 snippet si1 "... := scanInt()"
@@ -141,12 +112,22 @@ ${0:${VISUAL}}
 endsnippet
 
 snippet si2 "... := scanInt(), scanInt()"
-${1:x}, ${2:y} := scanInt(), scanInt()
+${1:a}, ${2:b} := scanInt(), scanInt()
 ${0:${VISUAL}}
 endsnippet
 
 snippet si3 "... := scanInt(), scanInt(), scanInt()"
-${1:x}, ${2:y}, ${3:z} := scanInt(), scanInt(), scanInt()
+${1:a}, ${2:b}, ${3:c} := scanInt(), scanInt(), scanInt()
+${0:${VISUAL}}
+endsnippet
+
+snippet si4 "... := scanInt(), scanInt(), scanInt(), scanInt()"
+${1:a}, ${2:b}, ${3:c}, ${4:d} := scanInt(), scanInt(), scanInt(), scanInt()
+${0:${VISUAL}}
+endsnippet
+
+snippet si5 "... := scanInt(), scanInt(), scanInt(), scanInt(), scanInt()"
+${1:a}, ${2:b}, ${3:c}, ${4:d}, ${5:e} := scanInt(), scanInt(), scanInt(), scanInt(), scanInt()
 ${0:${VISUAL}}
 endsnippet
 
@@ -162,22 +143,21 @@ func init() {
 	sc.Split(bufio.ScanWords)
 	sc.Buffer(make([]byte, 100001), 100001*100)
 }
-
-${1:s} := scanString()
+${0:${VISUAL}}
 endsnippet
 
 snippet ss1 "... := scanString()"
-${1:n} := scanString()
+${1:s} := scanString()
 ${0:${VISUAL}}
 endsnippet
 
 snippet ss2 "... := scanString(), scanString()"
-${1:x}, ${2:y} := scanString(), scanString()
+${1:a}, ${2:b} := scanString(), scanString()
 ${0:${VISUAL}}
 endsnippet
 
 snippet ss3 "... := scanString(), scanString(), scanString()"
-${1:x}, ${2:y}, ${3:z} := scanString(), scanString(), scanString()
+${1:a}, ${2:b}, ${3:c} := scanString(), scanString(), scanString()
 ${0:${VISUAL}}
 endsnippet
 
@@ -198,21 +178,14 @@ func init() {
 	sc.Split(bufio.ScanWords)
 	sc.Buffer(make([]byte, 100001), 100001*100)
 }
-
-${1:n} := scanInt()
-${2:xs} := make([]int, $1)
-for i := range $2 {
-	$2[i] = scanInt()
-}
-endsnippet
-
-snippet type "type T struct { ... }"
-type ${1:data} struct { ${0} }
 ${0:${VISUAL}}
 endsnippet
 
 snippet ms "make slice"
 ${1:xs} := make([]${3:int}, ${2:n})
+for i := range $1 {
+	$x[i] = scanInt()
+}
 ${0:${VISUAL}}
 endsnippet
 
@@ -225,16 +198,6 @@ for ${4:i} := range $1 {
 	}
 }
 ${0:${VISUAL}}
-endsnippet
-
-snippet iio "return true if index out of slice range"
-func isIndexOutOfRange(xs []int, i int) bool {
-	return i < 0 || i >= len(xs)
-}
-
-if isIndexOutOfRange(${1:xs}, ${2:ni}) {
-	continue
-}
 endsnippet
 
 snippet mm "make map"
@@ -252,73 +215,6 @@ for i := 0; i < ${3:m}; i++ {
 	$1[$4][$5] = true
 }
 ${0:${VISUAL}}
-endsnippet
-
-snippet if "if ... { ... }"
-if ${1:condition} {
-	${0:${VISUAL}}
-}
-endsnippet
-
-snippet ef " else if ... { ... }"
-else if ${1:condition} {
-	${0:${VISUAL}}
-}
-endsnippet
-
-snippet else "else ... { ... }"
-else {
-	${0:${VISUAL}}
-}
-endsnippet
-
-snippet ok  "if _, ok := xm[x]; ok { ... }"
-if _, ok := ${1:xm}[${2:x}]; ok {
-	${0:${VISUAL}}
-}
-endsnippet
-
-snippet switch "switch x { ... }"
-switch ${1:var} {
-case ${2:value1}:
-	${0}
-}
-endsnippet
-
-snippet for "for ... { ... }"
-for ${1} {
-	${0:${VISUAL}}
-}
-endsnippet
-
-snippet fori "for 0..n-1 { ... }"
-for ${1:i} := 0; $1 < ${2:n}; $1++ {
-	${0:${VISUAL}}
-}
-endsnippet
-
-snippet forir "for n..0 { ... }"
-for ${1:i} := ${2:n}; $1 >= 0; $1-- {
-	${0:${VISUAL}}
-}
-endsnippet
-
-snippet forr "for i, v := range items { ... }"
-for ${2:i}, ${3:v} := range ${1:xs} {
-	${0:${VISUAL}}
-}
-endsnippet
-
-snippet forri "for i := range items { ... }"
-for ${2:i} := range ${1:xs} {
-	${0:${VISUAL}}
-}
-endsnippet
-
-snippet forrv "for _, v := range items { ... }"
-for _, ${2:v} := range ${1:xs} {
-	${0:${VISUAL}}
-}
 endsnippet
 
 snippet forb "for loop and bit full search"
@@ -928,14 +824,6 @@ union(4, 5)
 for i := 1; i <= $1; i++ {
 	f := find(i)
 }
-endsnippet
-
-snippet fn "fmt.Println(...)"
-fmt.Println(${1:ans})
-endsnippet
-
-snippet ff "fmt.Printf(...)"
-fmt.Printf("%v\n", ${1:ans})
 endsnippet
 
 snippet wr "write standard output by writer"
