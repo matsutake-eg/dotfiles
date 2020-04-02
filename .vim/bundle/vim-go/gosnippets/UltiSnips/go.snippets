@@ -189,7 +189,7 @@ endsnippet
 snippet ms "make slice"
 ${1:xs} := make([]${3:int}, ${2:n})
 for i := range $1 {
-	$x[i] = scanInt()
+	$1[i] = scanInt()
 }
 ${0:${VISUAL}}
 endsnippet
