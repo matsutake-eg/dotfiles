@@ -680,7 +680,7 @@ for i := 0; i < $2; i++ {
 endsnippet
 
 snippet dfs "Depth First Search in graph"
-var seen map[int]bool
+var seen []bool
 
 func dfs(v int) {
 	seen[v] = true
@@ -692,7 +692,7 @@ func dfs(v int) {
 	}
 }
 
-seen = make(map[int]bool, n)
+seen := make([]bool, n+1)
 dfs(1)
 endsnippet
 
@@ -715,7 +715,7 @@ fmt.Println(depth)
 endsnippet
 
 snippet bfs "Breadth First Search in graph"
-seen := make(map[int]bool, n)
+seen := make([]bool, n+1)
 ls := list.New()
 ls.PushBack(${1:1})
 seen[$1] = true
