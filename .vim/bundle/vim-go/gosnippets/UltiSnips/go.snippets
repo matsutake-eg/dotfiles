@@ -237,33 +237,15 @@ sort.Slice(${1:xs}, func(i, j int) bool { return $1[i].${2:val} < $1[j].$2 })
 ${0:${VISUAL}}
 endsnippet
 
-snippet sortr "sort reversely for Ints"
-sort.Sort(sort.Reverse(sort.IntSlice(${1:xs})))
+snippet sorts "sort string by character"
+${1:xs} := []rune(${2:s})
+sort.Slice(${1:xs}, func(i, j int) bool { return $1[i] < $1[j] })
 ${0:${VISUAL}}
 endsnippet
 
-snippet sorts "sort string by character"
-type sortString []rune
-
-func (s sortString) Len() int           { return len(s) }
-func (s sortString) Swap(i, j int)      { s[i], s[j] = s[j], s[i] }
-func (s sortString) Less(i, j int) bool { return s[i] < s[j] }
-
-ss := sortString(${1:s})
-sort.Sort(ss)
-fmt.Println(string(ss)))
-endsnippet
-
-snippet sortsr "sort string by character reversely"
-type sortStringR []rune
-
-func (s sortStringR) Len() int           { return len(s) }
-func (s sortStringR) Swap(i, j int)      { s[i], s[j] = s[j], s[i] }
-func (s sortStringR) Less(i, j int) bool { return s[i] > s[j] }
-
-rs := sortStringR(${1:s})
-sort.Sort(rs)
-fmt.Println(string(rs)))
+snippet sortr "sort reversely for Ints"
+sort.Sort(sort.Reverse(sort.IntSlice(${1:xs})))
+${0:${VISUAL}}
 endsnippet
 
 snippet sortit "sort by interface"
