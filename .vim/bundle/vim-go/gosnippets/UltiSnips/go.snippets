@@ -260,6 +260,11 @@ ${6:xs}:= $4(make([]$1, ${7:n}))
 sort.Sort($6)
 endsnippet
 
+snippet seai "sort.SearchInts(...)"
+${1:idx} := sort.SearchInts(${2:xs}, ${3:x})
+${0:${VISUAL}}
+endsnippet
+
 snippet ls "use container/list of integers"
 ls := list.New()
 for i := 0; i < ${1:n}; i++ {
