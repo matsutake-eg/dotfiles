@@ -244,7 +244,7 @@ endsnippet
 
 snippet sorts "sort string by character"
 ${1:xs} := []rune(${2:s})
-sort.Slice(${1:xs}, func(i, j int) bool { return $1[i] < $1[j] })
+sort.Slice($1, func(i, j int) bool { return $1[i] < $1[j] })
 ${0:${VISUAL}}
 endsnippet
 
