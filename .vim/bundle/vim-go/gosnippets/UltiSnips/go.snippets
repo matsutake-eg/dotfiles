@@ -845,7 +845,7 @@ for i := 1; i <= $1; i++ {
 endsnippet
 
 snippet wr "write standard output by writer"
-var wr = bufio.NewWriter(os.Stdout)
+wr := bufio.NewWriter(os.Stdout)
 
 wr.WriteString(strconv.Itoa(${1:n}) + "\n")
 wr.WriteString(strconv.Itoa($1))
