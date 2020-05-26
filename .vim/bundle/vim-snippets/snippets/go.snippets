@@ -65,7 +65,7 @@ snippet fori "for 0..n-1 { ... }"
 		${0:${VISUAL}}
 	}
 snippet forir "for n..0 { ... }"
-	for ${1:i} := ${2:n}; $1 >= 0; $1-- {
+	for ${1:i} := ${2:n - 1}; $1 >= 0; $1-- {
 		${0:${VISUAL}}
 	}
 snippet forr "for i, v := range items { ... }"
