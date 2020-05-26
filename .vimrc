@@ -64,9 +64,9 @@ nnoremap <F12> :ALEGoToDefinition<CR>
 if has("autocmd")
   autocmd FileType go nnoremap <F1> :GoInfo<CR>
   autocmd FileType go nnoremap <F2> :GoRename<CR>
-  autocmd FileType go nnoremap <F4> :GoRun<CR>
-  autocmd FileType go nnoremap <F11> :GoReferrers<CR>
-  autocmd FileType go nnoremap <F12> :GoDef<CR>
+  autocmd FileType go nnoremap <F11> :GoRun<CR>
+	autocmd FileType go nnoremap <F12> :GoReferrers<CR>
+	autocmd FileType go nnoremap <F10> :GoDef<CR>
 endif
 inoremap jj <Esc>
 inoremap {<Enter> {}<Left><CR><ESC><S-o>
