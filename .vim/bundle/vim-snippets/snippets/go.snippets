@@ -100,3 +100,10 @@ snippet fn "fmt.Println(...)"
 	fmt.Println(${1:x})
 snippet ff "fmt.Printf(...)"
 	fmt.Printf("%v\n", ${1:x})
+snippet timeymd "get time from yyyy/mm/dd"
+	x := strings.Split(s, "/")
+	y, _ := strconv.Atoi(x[0])
+	m, _ := strconv.Atoi(x[1])
+	d, _ := strconv.Atoi(x[2])
+	t := time.Date(y, time.Month(m), d, 0, 0, 0, 0, time.UTC)
+	fmt.Println(t)
