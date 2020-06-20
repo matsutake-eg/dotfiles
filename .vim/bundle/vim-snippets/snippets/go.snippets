@@ -94,7 +94,15 @@ snippet sw "switch"
 		${0:${VISUAL}}
 	}
 snippet ap "append"
-	append(${1:slice}, ${0:value})
+	${1:slice} = append($1, ${2:value})
+	${0:${VISUAL}}
+snippet itoa "strconv.Itoa(...)"
+	strconv.Itoa(${1:n})
+snippet atoi "..., _ := strconv.Atoi(...)"
+	${1:x}, _ := strconv.Atoi(${2:s})
+	${0:${VISUAL}}
+snippet split "... := strings.Split(..., ...)"
+	${1:xs} := strings.Split(${2:s}, "${3: }")
 	${0:${VISUAL}}
 snippet fn "fmt.Println(...)"
 	fmt.Println(${1:x})

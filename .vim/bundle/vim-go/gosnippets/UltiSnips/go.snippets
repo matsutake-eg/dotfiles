@@ -140,10 +140,10 @@ func scanString() string {
 }
 
 func init() {
-	sc.Split(bufio.ScanWords)
+	sc.Split(bufio.Scan${1:Words})
 	sc.Buffer(make([]byte, 100001), 100001*100)
 }
-
+${0:${VISUAL}}
 endsnippet
 
 snippet ss1 "... := scanString()"
@@ -185,10 +185,10 @@ func scanString() string {
 }
 
 func init() {
-	sc.Split(bufio.ScanWords)
+	sc.Split(bufio.Scan${1:Words})
 	sc.Buffer(make([]byte, 100001), 100001*100)
 }
-
+${0:${VISUAL}}
 endsnippet
 
 snippet ms "make slice"
@@ -211,7 +211,7 @@ ${0:${VISUAL}}
 endsnippet
 
 snippet mm "make map"
-${1:xm} := make(map[${2:int}]${3:int})
+${1:xm} := make(map[${2:int}]${3:bool})
 ${0:${VISUAL}}
 endsnippet
 
@@ -277,17 +277,17 @@ ${6:xs}:= $4(make([]$1, ${7:n}))
 sort.Sort($6)
 endsnippet
 
-snippet sea "sort.Search(...)"
+snippet search "sort.Search(...)"
 ${1:idx} := sort.Search(len(${2:xs}), func(i int) bool { return $2[i] >= ${3:x} })
 ${0:${VISUAL}}
 endsnippet
 
-snippet seai "sort.SearchInts(...)"
+snippet searchi "sort.SearchInts(...)"
 ${1:idx} := sort.SearchInts(${2:xs}, ${3:x})
 ${0:${VISUAL}}
 endsnippet
 
-snippet ls "use container/list of integers"
+snippet list "use container/list of integers"
 ls := list.New()
 for i := 0; i < ${1:n}; i++ {
 	ls.PushBack(i)
