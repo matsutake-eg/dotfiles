@@ -101,6 +101,9 @@ snippet itoa "strconv.Itoa(...)"
 snippet atoi "..., _ := strconv.Atoi(...)"
 	${1:x}, _ := strconv.Atoi(${2:s})
 	${0:${VISUAL}}
+snippet atof "..., _ := strconv.ParseFloat(...)"
+	${1:x}, _ := strconv.ParseFloat(${2:s}, 64)
+	${0:${VISUAL}}
 snippet split "... := strings.Split(..., ...)"
 	${1:xs} := strings.Split(${2:s}, "${3: }")
 	${0:${VISUAL}}
