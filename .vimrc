@@ -57,7 +57,7 @@ nnoremap <C-l> <C-w>l
 nnoremap <Right> :ALEHover<CR>
 nnoremap <Up> :ALEGoToDefinition<CR>
 nnoremap <Down> :ALEFindReferences<CR>
-nnoremap <F10> :TagbarToggle<CR>
+nnoremap <F10> :bufdo e<CR>
 nnoremap <F11> :ALERename<CR>
 nnoremap <F12> :ALEGoToDefinitionInSplit<CR>
 nnoremap <F5> :ALEResetBuffer<CR>
@@ -92,8 +92,6 @@ Plugin 'VundleVim/Vundle.vim'
 " The NERDTree is a file system explorer for the Vim editor. Using this plugin, users can visually browse complex directory hierarchies, quickly open files for reading or editing, and perform basic file system operations.
 Plugin 'scrooloose/nerdtree'
 let NERDTreeShowHidden = 1
-" Tagbar is a Vim plugin that provides an easy way to browse the tags of the current file and get an overview of its structure.
-Plugin 'majutsushi/tagbar'
 " A light and configurable statusline/tabline plugin for Vim
 Plugin 'itchyny/lightline.vim'
 " Full path fuzzy file, buffer, mru, tag, ... finder for Vim.
