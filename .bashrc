@@ -22,6 +22,6 @@ export PS1='\[\e[36m\]\u\[\e[0m\]\[\e[37m\]@\h\[\e[0m\] \[\e[32m\]\w\[\e[0m\]\[\
 
 alias ls='ls -FG'
 alias ll='ls -ahlFG'
-alias v='vim'
+alias v='nvim'
 alias g='git'
 alias ggrep='grep -r --exclude-dir={node_modules,.webpack}'
