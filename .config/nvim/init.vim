@@ -23,7 +23,6 @@ set matchtime=1
 
 nnoremap Y y$
 nnoremap YY :%y<CR>
-nnoremap DD :%d<CR>
 nnoremap + <C-a>
 nnoremap - <C-x>
 nnoremap <C-h> <C-w>h
