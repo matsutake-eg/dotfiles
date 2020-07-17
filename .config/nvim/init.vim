@@ -34,15 +34,15 @@ nnoremap <Esc><Esc> :noh<CR>
 nnoremap <Right> :ALEHover<CR>
 nnoremap <Up> :ALEGoToDefinition<CR>
 nnoremap <Down> :ALEFindReferences<CR>
-nnoremap <F10> :bufdo e<CR>
 nnoremap <F11> :ALERename<CR>
-nnoremap <F12> :ALEGoToDefinitionInSplit<CR>
-nnoremap <F5> :ALEResetBuffer<CR>
+nnoremap <F12> :ALEGoToDefinition -split<CR>
 if has("autocmd")
+  autocmd FileType go nnoremap <Left> :T go run %<CR><C-w>ja
   autocmd FileType go nnoremap <Right> :GoInfo<CR>
 	autocmd FileType go nnoremap <Up> :GoDef<CR>
 	autocmd FileType go nnoremap <Down> :GoReferrers<CR>
   autocmd FileType go nnoremap <F11> :GoRename<CR>
+	autocmd FileType go nmap <F12> <Plug>(go-def-split)
 endif
 
 inoremap jj <Esc>
@@ -50,6 +50,9 @@ inoremap {<Enter> {}<Left><CR><ESC><S-o>
 inoremap [<Enter> []<Left><CR><ESC><S-o>
 inoremap (<Enter> ()<Left><CR><ESC><S-o>
 
+set sh=bash
+tnoremap <silent> jj <C-\><C-n><C-w>k
+tnoremap <silent> <ESC> <C-\><C-n>
 
 "dein Scripts-----------------------------
 if &compatible
@@ -80,6 +83,7 @@ if dein#load_state('/Users/matsutake/.cache/dein')
   call dein#add('w0rp/ale')
   call dein#add('townk/vim-autoclose')
   call dein#add('nathanaelkane/vim-indent-guides')
+  call dein#add('kassio/neoterm')
 
   call dein#end()
   call dein#save_state()
@@ -160,6 +164,10 @@ let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_auto_colors = 0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd guibg=black ctermbg=235
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=lightgray ctermbg=236
+let g:neoterm_default_mod='belowright'
+let g:neoterm_size=15
+let g:neoterm_autoscroll=1
+let g:neoterm_use_relative_path=1
 
 filetype plugin indent on
 syntax enable
