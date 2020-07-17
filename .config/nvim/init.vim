@@ -70,6 +70,7 @@ if dein#load_state('/Users/matsutake/.cache/dein')
 	  call dein#add('roxma/vim-hug-neovim-rpc')
 	endif
   call dein#add('itchyny/lightline.vim')
+  call dein#add('ncm2/float-preview.nvim')
   call dein#add('kien/ctrlp.vim')
   call dein#add('tpope/vim-fugitive')
   call dein#add('leafgarland/typescript-vim')
@@ -90,6 +91,7 @@ let g:deoplete#enable_at_startup = 1
 call deoplete#custom#option('omni_patterns', {
 \ 'go': '[^. *\t]\.\w*',
 \})
+set completeopt-=preview
 let g:ctrlp_working_path_mode = 'a'
 let g:ctrlp_custom_ignore = {
 \   'dir':  '\v[\/](node_modules|build|dist|\.(git|hg|svn))$',
