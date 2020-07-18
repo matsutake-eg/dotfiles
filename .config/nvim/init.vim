@@ -66,6 +66,8 @@ if dein#load_state('/Users/matsutake/.cache/dein')
   call dein#add('/Users/matsutake/.cache/dein/repos/github.com/Shougo/dein.vim')
 
   call dein#add('preservim/nerdtree')
+  call dein#add('SirVer/ultisnips')
+  call dein#add('honza/vim-snippets')
 	call dein#add('Shougo/deoplete.nvim')
 	if !has('nvim')
 	  call dein#add('roxma/nvim-yarp')
@@ -90,6 +92,11 @@ if dein#load_state('/Users/matsutake/.cache/dein')
 endif
 
 let NERDTreeShowHidden = 1
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsListSnippets="<s-tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsEditSplit="vertical"
 let g:deoplete#enable_at_startup = 1
 call deoplete#custom#option('omni_patterns', {
 \ 'go': '[^. *\t]\.\w*',
