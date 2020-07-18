@@ -92,6 +92,7 @@ if dein#load_state('/Users/matsutake/.cache/dein')
 endif
 
 let NERDTreeShowHidden = 1
+let g:UltiSnipsSnippetDirectories = ['~/.vim/UltiSnips', 'UltiSnips']
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsListSnippets="<s-tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
