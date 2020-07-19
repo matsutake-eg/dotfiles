@@ -1,0 +1,152 @@
+priority 0
+
+###########################################################################
+#                            TEXTMATE SNIPPETS                            #
+###########################################################################
+
+#! header
+
+snippet in1 "get one input value as int" b
+${1:n} = int(input())
+${0:${VISUAL}}
+endsnippet
+
+snippet in2 "get two input values as int" b
+${1:a}, ${2:b} = map(int, input().split())
+${0:${VISUAL}}
+endsnippet
+
+snippet in3 "get three input values as int" b
+${1:a}, ${2:b}, ${3:c} = map(int, input().split())
+${0:${VISUAL}}
+endsnippet
+
+snippet in4 "get four input values as int" b
+${1:a}, ${2:b}, ${3:c}, ${4:d} = map(int, input().split())
+${0:${VISUAL}}
+endsnippet
+
+snippet in5 "get five input values as int" b
+${1:a}, ${2:b}, ${3:c}, ${4:d}, ${5:e} = map(int, input().split())
+${0:${VISUAL}}
+endsnippet
+
+snippet inl "get input values as list of int" b
+${1:xs} = list(map(int, input().split()))
+${0:${VISUAL}}
+endsnippet
+
+snippet in1s "get one input value as string" b
+${1:n} = input()
+${0:${VISUAL}}
+endsnippet
+
+snippet in2s "get two input values as string" b
+${1:a}, ${2:b} = input().split()
+${0:${VISUAL}}
+endsnippet
+
+snippet in3s "get three input values as string" b
+${1:a}, ${2:b}, ${3:c} = input().split()
+${0:${VISUAL}}
+endsnippet
+
+snippet in4s "get four input values as string" b
+${1:a}, ${2:b}, ${3:c}, ${4:d} = input().split()
+${0:${VISUAL}}
+endsnippet
+
+snippet in5s "get five input values as string" b
+${1:a}, ${2:b}, ${3:c}, ${4:d}, ${5:e} = input().split()
+${0:${VISUAL}}
+endsnippet
+
+snippet inls "get input values as list of string" b
+${1:xs} = input().split()
+${0:${VISUAL}}
+endsnippet
+
+snippet rl "read line by sys.stdin.readline()" b
+import sys
+
+s = sys.stdin.readline()
+${0:${VISUAL}}
+endsnippet
+
+snippet in1f "get one input value as float" b
+${1:n} = float(input())
+${0:${VISUAL}}
+endsnippet
+
+snippet in2f "get two input values as float" b
+${1:a}, ${2:b} = map(float, input().split())
+${0:${VISUAL}}
+endsnippet
+
+snippet in3f "get three input values as float" b
+${1:a}, ${2:b}, ${3:c} = map(float, input().split())
+${0:${VISUAL}}
+endsnippet
+
+snippet in4f "get four input values as float" b
+${1:a}, ${2:b}, ${3:c}, ${4:d} = map(float, input().split())
+${0:${VISUAL}}
+endsnippet
+
+snippet in5f "get five input values as float" b
+${1:a}, ${2:b}, ${3:c}, ${4:d}, ${5:e} = map(float, input().split())
+${0:${VISUAL}}
+endsnippet
+
+snippet inlf "get input values as list of float" b
+${1:xs} = list(map(float, input().split()))
+${0:${VISUAL}}
+endsnippet
+
+snippet for "for ... in range(...):" b
+for ${1:i} in range(${2:n}):
+    ${0:${VISUAL}}
+endsnippet
+
+snippet forv "for ... in ...:" b
+for ${1:v} in ${2:xs}:
+    ${0:${VISUAL}}
+endsnippet
+
+snippet fore "for ... in enumerate(...):" b
+for ${1:i}, ${2:v} in enumerate(${3:xs}):
+    ${0:${VISUAL}}
+endsnippet
+
+snippet wh "while" b
+while ${1:n >= 1}:
+    ${0:${VISUAL}}
+endsnippet
+
+snippet ml "make list" b
+${1:xs} = [0] * ${2:n}
+${0:${VISUAL}}
+endsnippet
+
+snippet ans "variable for answer" b
+${1:ans} = 0
+print($1)
+endsnippet
+
+snippet pt "print()" b
+print(${1:x})
+endsnippet
+
+snippet pts "printlist with space" b
+print(*${1:xs})
+endsnippet
+
+snippet ptl "print list with new line" b
+print(*${1:xs}, sep="\n")
+endsnippet
+
+snippet ex "sys.exit()" b
+sys.exit()
+endsnippet
+
+# vim:ft=snippets:

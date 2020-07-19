@@ -43,6 +43,7 @@ if has("autocmd")
 	autocmd FileType go nnoremap <Down> :GoReferrers<CR>
   autocmd FileType go nnoremap <F11> :GoRename<CR>
 	autocmd FileType go nmap <F12> <Plug>(go-def-split)
+  autocmd FileType python nnoremap <Left> :T pypy3 %<CR><C-w>ja
 endif
 
 inoremap jj <Esc>
@@ -73,6 +74,7 @@ if dein#load_state('/Users/matsutake/.cache/dein')
 	  call dein#add('roxma/nvim-yarp')
 	  call dein#add('roxma/vim-hug-neovim-rpc')
 	endif
+	call dein#add('deoplete-plugins/deoplete-jedi')
   call dein#add('itchyny/lightline.vim')
   call dein#add('ncm2/float-preview.nvim')
   call dein#add('kien/ctrlp.vim')
@@ -116,10 +118,12 @@ let g:go_highlight_function_calls = 1
 let g:go_highlight_diagnostic_errors = 0
 let g:go_highlight_diagnostic_warnings = 0
 let g:go_metalinter_autosave = 1
+let g:python3_host_prog = '/usr/local/bin/python3'
 let g:ale_linters = {
 \   'javascript': ['eslint', 'tsserver'],
 \   'typescript': ['eslint', 'tsserver'],
 \   'vue': ['eslint', 'vls'],
+\   'python': ['flake8'],
 \}
 let g:ale_rename_tsserver_find_in_comments = 1
 let g:ale_rename_tsserver_find_in_strings = 1
@@ -137,6 +141,7 @@ let g:ale_fixers = {
 \   'scss': ['prettier'],
 \   'json': ['prettier'],
 \   'yaml': ['prettier'],
+\   'python': ['autopep8', 'black', 'isort'],
 \}
 let g:ale_fix_on_save = 1
 let g:ale_sign_column_always = 1
