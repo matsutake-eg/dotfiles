@@ -6,6 +6,28 @@ priority 0
 
 #! header
 
+snippet im "import ..." b
+import ${1:sys}
+${0:${VISUAL}}
+endsnippet
+
+snippet fi "from ... import ..." b
+from ${1:math} import ${2:pi}
+${0:${VISUAL}}
+endsnippet
+
+snippet fl "float"
+float
+endsnippet
+
+snippet rt "return" b
+return
+endsnippet
+
+snippet ex "exit()" b
+exit()
+endsnippet
+
 snippet in1 "get one input value as int" b
 ${1:n} = int(input())
 ${0:${VISUAL}}
@@ -31,9 +53,16 @@ ${1:a}, ${2:b}, ${3:c}, ${4:d}, ${5:e} = map(int, input().split())
 ${0:${VISUAL}}
 endsnippet
 
-snippet inl "get input values as list of int" b
+snippet ins "get input values as list of int" b
 ${1:xs} = list(map(int, input().split()))
 ${0:${VISUAL}}
+endsnippet
+
+snippet inl "get input values as list of int for for multi lines" b
+${1:xs} = [0] * ${2:n}
+for i in range($2):
+    $1[i] = int(input())
+    ${0:${VISUAL}}
 endsnippet
 
 snippet in1s "get one input value as string" b
@@ -61,15 +90,22 @@ ${1:a}, ${2:b}, ${3:c}, ${4:d}, ${5:e} = input().split()
 ${0:${VISUAL}}
 endsnippet
 
-snippet inls "get input values as list of string" b
+snippet inss "get input values as list of string" b
 ${1:xs} = input().split()
 ${0:${VISUAL}}
 endsnippet
 
-snippet rl "read line by sys.stdin.readline()" b
-import sys
+snippet inls "get input values as list of string for for multi lines" b
+${1:xs} = [""] * ${2:n}
+for i in range($2):
+    $1[i] = input()
+    ${0:${VISUAL}}
+endsnippet
 
-s = sys.stdin.readline()
+snippet rl "read line by sys.stdin.readline()" b
+from sys import stdin
+
+s = stdin.readline()[:-1]
 ${0:${VISUAL}}
 endsnippet
 
@@ -98,18 +134,40 @@ ${1:a}, ${2:b}, ${3:c}, ${4:d}, ${5:e} = map(float, input().split())
 ${0:${VISUAL}}
 endsnippet
 
-snippet inlf "get input values as list of float" b
+snippet insf "get input values as list of float" b
 ${1:xs} = list(map(float, input().split()))
 ${0:${VISUAL}}
 endsnippet
 
-snippet for "for ... in range(...):" b
+snippet inlf "get input values as list of float for for multi lines" b
+${1:xs} = [0] * ${2:n}
+for i in range($2):
+    $1[i] = float(input())
+    ${0:${VISUAL}}
+endsnippet
+
+snippet ifi "if ... in [...]:" b
+if ${1:x} in [${2:a, b}]:
+    ${0:${VISUAL}}
+endsnippet
+
+snippet elifi "elif ... in [...]:" b
+elif ${1:x} in [${2:a, b}]:
+    ${0:${VISUAL}}
+endsnippet
+
+snippet for "for ... in ...:" b
+for ${1:v} in ${2:xs}:
+    ${0:${VISUAL}}
+endsnippet
+
+snippet forr "for ... in range(...):" b
 for ${1:i} in range(${2:n}):
     ${0:${VISUAL}}
 endsnippet
 
-snippet forv "for ... in ...:" b
-for ${1:v} in ${2:xs}:
+snippet forrr "for ... in range(..., -1, -1):" b
+for ${1:i} in range(${2:n - 1}, -1, -1):
     ${0:${VISUAL}}
 endsnippet
 
@@ -123,8 +181,21 @@ while ${1:n >= 1}:
     ${0:${VISUAL}}
 endsnippet
 
+snippet cn "continue" b
+continue
+endsnippet
+
+snippet br "break" b
+break
+endsnippet
+
 snippet ml "make list" b
 ${1:xs} = [0] * ${2:n}
+${0:${VISUAL}}
+endsnippet
+
+snippet jo "s = '...'.join([...])" b
+${1:s} = "".join([$1, ${2:x}])
 ${0:${VISUAL}}
 endsnippet
 
@@ -133,20 +204,149 @@ ${1:ans} = 0
 print($1)
 endsnippet
 
-snippet pt "print()" b
+snippet sortr "sort reversely" b
+${1:xs}.sort(reverse=True)
+${0:${VISUAL}}
+endsnippet
+
+snippet dq "use deque in collections" b
+from collections import deque
+
+${1:q} = deque()
+$1.append(1)
+$1.appendleft(2)
+print(*q)
+${0:${VISUAL}}
+endsnippet
+
+snippet hqmi "use heapq in collections(pop by min)" b
+from heapq import heappop, heappush
+
+${1:q} = []
+
+for i in range(n):
+    heappush($1, i)
+
+for _ in range(len($1)):
+    print(heappop($1))
+${0:${VISUAL}}
+endsnippet
+
+snippet hqmx "use heapq in collections(pop by max)" b
+from heapq import heappop, heappush
+
+${1:q} = []
+
+for i in range(n):
+    heappush($1, -i)
+
+for _ in range(len($1)):
+    print(-heappop($1))
+${0:${VISUAL}}
+endsnippet
+
+snippet cou "use Counter in collections" b
+from collections import Counter
+
+${1:xc} = Counter(${2:xs})
+mx = $1.most_common(2)
+print(mx[0][0], mx[0][1], mx[1][0], mx[1][1])
+${0:${VISUAL}}
+endsnippet
+
+snippet acc "get cumulative sum by using accumulate in itertools" b
+from itertools import accumulate
+
+${2:sm} = list(accumulate(${1:xs}))
+print($2)
+print(*accumulate($1))
+${0:${VISUAL}}
+endsnippet
+
+snippet sqrt "math.sqrt(...)" b
+from math import sqrt
+
+sqrt(${1:x})
+${0:${VISUAL}}
+endsnippet
+
+snippet floor "math.floor(...)" b
+from math import floor
+
+floor(${1:x})
+${0:${VISUAL}}
+endsnippet
+
+snippet ceil "math.ceil(...)" b
+from math import ceil
+
+ceil(${1:x})
+${0:${VISUAL}}
+endsnippet
+
+snippet rou "round generally" b
+def roundG(x):
+    spt = str(x).split(".")
+    if len(spt) == 1:
+        return int(x)
+    elif int(spt[1]) >= 5:
+        return int(spt[0]) + 1
+    return int(spt[0])
+
+
+roundG(2.5)
+${0:${VISUAL}}
+endsnippet
+
+snippet sin "math.sin(...)" b
+from math import pi, sin
+
+sin(pi / 2)
+${0:${VISUAL}}
+endsnippet
+
+snippet cos "math.cos(...)" b
+from math import cos, pi
+
+cos(pi)
+${0:${VISUAL}}
+endsnippet
+
+snippet sin "math.pi" b
+from math import pi
+
+pi
+${0:${VISUAL}}
+endsnippet
+
+snippet gcd "get GCD(Greatest Common Divisor)" b
+from math import gcd
+
+gcd(${1:a}, ${2:b})
+${0:${VISUAL}}
+endsnippet
+
+snippet lcm "get LCM(Least Common Multiple)" b
+from math import gcd
+
+
+def lcm(x, y):
+    return x // gcd(x, y) * y
+
+lcm(${1:a}, ${2:b})
+${0:${VISUAL}}
+endsnippet
+
+snippet pr "print()" b
 print(${1:x})
 endsnippet
 
-snippet pts "printlist with space" b
+snippet prs "printlist with space" b
 print(*${1:xs})
 endsnippet
 
-snippet ptl "print list with new line" b
+snippet prl "print list with new line" b
 print(*${1:xs}, sep="\n")
-endsnippet
-
-snippet ex "sys.exit()" b
-sys.exit()
 endsnippet
 
 # vim:ft=snippets:
