@@ -65,6 +65,20 @@ for i in range($2):
     ${0:${VISUAL}}
 endsnippet
 
+snippet inml "get input values as multiple list of int for for multi lines" b
+${1:xs} = [0] * ${2:n}
+for i in range($2):
+    $1[i] = list(map(int, input().split()))
+    ${0:${VISUAL}}
+endsnippet
+
+snippet ind "get input values as dict of int for for multi lines" b
+${1:xd} = {}
+for i in range(${2:n}):
+    ${3:a} = int(input())
+    $1[$3] = $1.get($3, 0) + 1
+endsnippet
+
 snippet in1s "get one input value as string" b
 ${1:n} = input()
 ${0:${VISUAL}}
@@ -100,6 +114,20 @@ ${1:xs} = [""] * ${2:n}
 for i in range($2):
     $1[i] = input()
     ${0:${VISUAL}}
+endsnippet
+
+snippet inmls "get input values as multiple list of string for for multi lines" b
+${1:xs} = [""] * ${2:n}
+for i in range($2):
+    $1[i] = input().split()
+    ${0:${VISUAL}}
+endsnippet
+
+snippet inds "get input values as dict of string for for multi lines" b
+${1:xd} = {}
+for i in range(${2:n}):
+    ${3:a} = input()
+    $1[$3] = $1.get($3, 0) + 1
 endsnippet
 
 snippet rl "read line by sys.stdin.readline()" b
@@ -146,6 +174,13 @@ for i in range($2):
     ${0:${VISUAL}}
 endsnippet
 
+snippet inmlf "get input values as multiple list of float for for multi lines" b
+${1:xs} = [0] * ${2:n}
+for i in range($2):
+    $1[i] = list(map(float, input().split()))
+    ${0:${VISUAL}}
+endsnippet
+
 snippet ifi "if ... in [...]:" b
 if ${1:x} in [${2:a, b}]:
     ${0:${VISUAL}}
@@ -176,6 +211,17 @@ for ${1:i}, ${2:v} in enumerate(${3:xs}):
     ${0:${VISUAL}}
 endsnippet
 
+snippet forb "for loop and bit full search" b
+for ${2:i} in range(2 ** ${1:n}):
+    t = []
+    for ${3:j} in range($1):
+        if ($2 >> $3) & 1:
+            t.append(xs[$3])
+
+    print(t)
+    ${0:${VISUAL}}
+endsnippet
+
 snippet wh "while" b
 while ${1:n >= 1}:
     ${0:${VISUAL}}
@@ -194,6 +240,23 @@ ${1:xs} = [0] * ${2:n}
 ${0:${VISUAL}}
 endsnippet
 
+snippet md "make dict" b
+${1:xd} = {}
+${0:${VISUAL}}
+endsnippet
+
+snippet ms "make set" b
+${1:xs} = set()
+${0:${VISUAL}}
+endsnippet
+
+snippet dc "deepcopy" b
+from copy import deepcopy
+
+${1:ys} = deepcopy(${2:xs})
+${0:${VISUAL}}
+endsnippet
+
 snippet jo "s = '...'.join([...])" b
 ${1:s} = "".join([$1, ${2:x}])
 ${0:${VISUAL}}
@@ -204,8 +267,57 @@ ${1:ans} = 0
 print($1)
 endsnippet
 
+snippet mod "a prime number used many times in programing contest" b
+mod = 10 ** 9 + 7
+${0:${VISUAL}}
+endsnippet
+
+snippet nc "next character" b
+${1:x} = chr(ord($1) + 1)
+${0:${VISUAL}}
+endsnippet
+
+snippet az "string which is a to z" b
+az = "abcdefghijklmnopqrstuvwxyz"
+${0:${VISUAL}}
+endsnippet
+
+snippet AZ "string which is A to Z" b
+az = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+${0:${VISUAL}}
+endsnippet
+
+snippet rvs "reverse string" b
+${1:s} = $1[::-1]
+${0:${VISUAL}}
+endsnippet
+
+snippet dxy "move x and y in 4 way of 2 dimensional" b
+dx = [0, 1, 0, -1]
+dy = [1, 0, -1, 0]
+${0:${VISUAL}}
+endsnippet
+
+snippet dxy8 "move x and y in 8 way of 2 dimensional" b
+dx = [0, 1, 1, 1, 0, -1, -1, -1]
+dy = [1, 1, 0, -1, -1, -1, 0, 1]
+${0:${VISUAL}}
+endsnippet
+
 snippet sortr "sort reversely" b
 ${1:xs}.sort(reverse=True)
+${0:${VISUAL}}
+endsnippet
+
+snippet sorts "sort string by character" b
+"".join(sorted(${1:s}))
+${0:${VISUAL}}
+endsnippet
+
+snippet bis "binary search" b
+from bisect import bisect_left
+
+${1:p} = bisect_left(${2:xs}, ${3:a})
 ${0:${VISUAL}}
 endsnippet
 
@@ -248,9 +360,10 @@ endsnippet
 snippet cou "use Counter in collections" b
 from collections import Counter
 
-${1:xc} = Counter(${2:xs})
-mx = $1.most_common(2)
-print(mx[0][0], mx[0][1], mx[1][0], mx[1][1])
+${1:xc} = Counter(map(int, input().split()))
+$1[2] += 1
+mc = $1.most_common(2)
+print(mc[0][0], mc[0][1], mc[1][0], mc[1][1])
 ${0:${VISUAL}}
 endsnippet
 
@@ -337,15 +450,71 @@ lcm(${1:a}, ${2:b})
 ${0:${VISUAL}}
 endsnippet
 
-snippet pr "print()" b
+snippet ism "iterative square method" b
+pow(${1:n}, ${2:m}, ${3:p})
+${0:${VISUAL}}
+endsnippet
+
+snippet inv "inverse" b
+pow(${1:n}, ${2:p} - 2, $2)
+${0:${VISUAL}}
+endsnippet
+
+snippet prm "get answer which is Prime Number or not" b
+def isPrime(x):
+    if x < 2:
+        return False
+    elif x == 2:
+        return True
+
+    for i in range(2, x):
+        if i * i > x:
+            return True
+        elif x % i == 0:
+            return False
+
+
+isPrime(${1:x})
+${0:${VISUAL}}
+endsnippet
+
+snippet prf "get answer of Prime Factorization" b
+def primeFac(x):
+    pfs = {1}
+    for i in range(2, x):
+        if i * i > x:
+            break
+        while x % i == 0:
+            pfs.add(i)
+            x //= i
+    pfs.add(x)
+    return pfs
+
+
+primeFac(${1:x})
+${0:${VISUAL}}
+endsnippet
+
+snippet da "date calculation" b
+from datetime import date, timedelta
+
+y, m, d = map(int, input().split("/"))
+d = date(y, m, d)
+d.weekday()
+d += timedelta(days=1)
+print(d.strftime("%Y/%m/%d %H:%M:%S"))
+${0:${VISUAL}}
+endsnippet
+
+snippet pt "print()" b
 print(${1:x})
 endsnippet
 
-snippet prs "printlist with space" b
+snippet pts "printlist with space" b
 print(*${1:xs})
 endsnippet
 
-snippet prl "print list with new line" b
+snippet ptl "print list with new line" b
 print(*${1:xs}, sep="\n")
 endsnippet
 
