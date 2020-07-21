@@ -398,7 +398,7 @@ ${0:${VISUAL}}
 endsnippet
 
 snippet rou "round generally" b
-def roundG(x):
+def round_generally(x):
     spt = str(x).split(".")
     if len(spt) == 1:
         return int(x)
@@ -406,8 +406,6 @@ def roundG(x):
         return int(spt[0]) + 1
     return int(spt[0])
 
-
-roundG(2.5)
 ${0:${VISUAL}}
 endsnippet
 
@@ -446,7 +444,6 @@ from math import gcd
 def lcm(x, y):
     return x // gcd(x, y) * y
 
-lcm(${1:a}, ${2:b})
 ${0:${VISUAL}}
 endsnippet
 
@@ -461,7 +458,7 @@ ${0:${VISUAL}}
 endsnippet
 
 snippet prm "get answer which is Prime Number or not" b
-def isPrime(x):
+def is_prime(x):
     if x < 2:
         return False
     elif x == 2:
@@ -473,13 +470,11 @@ def isPrime(x):
         elif x % i == 0:
             return False
 
-
-isPrime(${1:x})
 ${0:${VISUAL}}
 endsnippet
 
 snippet prf "get answer of Prime Factorization" b
-def primeFac(x):
+def prime_fac(x):
     pfs = {1}
     for i in range(2, x):
         if i * i > x:
@@ -490,8 +485,81 @@ def primeFac(x):
     pfs.add(x)
     return pfs
 
+${0:${VISUAL}}
+endsnippet
 
-primeFac(${1:x})
+snippet fac "get factorial value" b
+from math import factorial
+
+factorial(${1:x})
+${0:${VISUAL}}
+endsnippet
+
+snippet facm "get factorial value with mod" b
+def factorial_mod(x, mod=10 ** 9 + 7):
+    fv = 1
+    for i in range(2, x + 1):
+        fv *= i
+        fv %= mod
+    return fv
+
+${0:${VISUAL}}
+endsnippet
+
+snippet per "get permutation value" b
+def permutation(n, k):
+    pv = 1
+    for i in range(n, n - k, -1):
+        pv *= i
+    return pv
+
+${0:${VISUAL}}
+endsnippet
+
+snippet perm "get permutation value with mod" b
+def permutation_mod(n, k, mod=10 ** 9 + 7):
+    pv = 1
+    for i in range(n, n - k, -1):
+        pv *= i
+        pv %= mod
+    return pv
+
+${0:${VISUAL}}
+endsnippet
+
+snippet cmb "get combination value" b
+def combination(n, k):
+    cv = 1
+    for i in range(n, n - k, -1):
+        cv *= i
+    for i in range(2, k + 1):
+        cv //= i
+    return cv
+
+${0:${VISUAL}}
+endsnippet
+
+snippet cmbm "get combination value with mod" b
+def combination_mod(n, k, mod=10 ** 9 + 7):
+    if k > n:
+        return 1
+
+    nu, de = 1, 1
+    for i in range(k):
+        nu = nu * (n - i) % mod
+        de = de * (i + 1) % mod
+    return nu * pow(de, mod - 2, mod) % mod
+
+${0:${VISUAL}}
+endsnippet
+
+snippet fib "get fibonacci value" b
+def fibonacci(x):
+    a, b = 0, 1
+    for _ in range(x):
+        a, b = b, a + b
+    return a
+
 ${0:${VISUAL}}
 endsnippet
 
