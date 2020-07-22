@@ -133,6 +133,13 @@ endsnippet
 snippet rl "read line by sys.stdin.readline()" b
 from sys import stdin
 
+input = stdin.readline
+${0:${VISUAL}}
+endsnippet
+
+snippet rls "read line as string by sys.stdin.readline()" b
+from sys import stdin
+
 s = stdin.readline()[:-1]
 ${0:${VISUAL}}
 endsnippet
@@ -237,6 +244,11 @@ endsnippet
 
 snippet ml "make list" b
 ${1:xs} = [0] * ${2:n}
+${0:${VISUAL}}
+endsnippet
+
+snippet mml "make multi list" b
+${1:xs} = [[0] * ${2:n} for _ in range($2)]
 ${0:${VISUAL}}
 endsnippet
 
@@ -527,6 +539,13 @@ def permutation_mod(n, k, mod=10 ** 9 + 7):
 ${0:${VISUAL}}
 endsnippet
 
+snippet perl "get permutation list" b
+from itertools import permutations
+
+list(permutations(${1:xs}))
+${0:${VISUAL}}
+endsnippet
+
 snippet cmb "get combination value" b
 def combination(n, k):
     cv = 1
@@ -553,6 +572,13 @@ def combination_mod(n, k, mod=10 ** 9 + 7):
 ${0:${VISUAL}}
 endsnippet
 
+snippet cmbl "get combination list" b
+from itertools import combinations
+
+list(combinations(${1:xs}, ${2:k}))
+${0:${VISUAL}}
+endsnippet
+
 snippet fib "get fibonacci value" b
 def fibonacci(x):
     a, b = 0, 1
@@ -560,6 +586,119 @@ def fibonacci(x):
         a, b = b, a + b
     return a
 
+${0:${VISUAL}}
+endsnippet
+
+snippet gr "graph" b
+${1:n}, ${2:m} = map(int, input().split())
+eg = [[] for _ in range($1 + 1)]
+
+for _ in range($2):
+    a, b = map(int, input().split())
+    eg[a].append(b)
+    eg[b].append(a)
+
+${0:${VISUAL}}
+endsnippet
+
+snippet dfs "depth first search in graph" b
+from collections import deque
+
+q = deque()
+q.append(${1:x})
+seen = {$1}
+while len(q) > 0:
+    v = q.pop()
+    for t in eg[v]:
+        if t in seen:
+            continue
+        q.append(t)
+        seen.add(t)
+
+${0:${VISUAL}}
+endsnippet
+
+snippet bfs "breadth first search in graph" b
+from collections import deque
+
+q = deque()
+q.append(${1:x})
+seen = {$1}
+while len(q) > 0:
+    v = q.popleft()
+    for t in eg[v]:
+        if t in seen:
+            continue
+        q.append(t)
+        seen.add(t)
+
+${0:${VISUAL}}
+endsnippet
+
+snippet uft "union find tree" b
+from collections import deque
+
+
+def init_tree(x, par):
+    for i in range(x + 1):
+        par[i] = i
+
+
+def find(x, par):
+    q = deque()
+    q.append(x)
+    while len(q) > 0:
+        v = q.pop()
+        if v == par[v]:
+            return v
+        q.append(par[v])
+
+
+def union(x, y, par, rank):
+    px, py = find(x, par), find(y, par)
+    if px == py:
+        return
+    if rank[px] < rank[py]:
+        par[px] = py
+        return
+    elif rank[px] == rank[py]:
+        rank[px] += 1
+    par[py] = px
+
+
+${1:n}, ${2:m} = map(int, input().split())
+par = [0] * ($1 + 1)
+rank = [0] * ($1 + 1)
+init_tree($1, par)
+for _ in range($2):
+    a, b = map(int, input().split())
+    union(a, b, par, rank)
+
+for i in range(1, $1 + 1):
+    find(i, par)
+${0:${VISUAL}}
+endsnippet
+
+snippet wf "warshall floyd algorithm" b
+${1:n}, ${2:m} = map(int, input().split())
+${3:ds} = [[10 ** 9] * $1 for _ in range($1)]
+for i in range($1):
+    $3[i][i] = 0
+
+for _ in range($2):
+    a, b, t = map(int, input().split())
+    ds[a - 1][b - 1] = t
+    ds[b - 1][a - 1] = t
+
+for k in range($1):
+    for i in range($1):
+        for j in range($1):
+            $3[i][j] = min($3[i][j], $3[i][k] + $3[k][j])
+
+ans = 10 ** 9
+for i in range($1):
+    ans = min(ans, max($1[i]))
+print(ans)
 ${0:${VISUAL}}
 endsnippet
 
