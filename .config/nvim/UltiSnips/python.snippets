@@ -262,6 +262,28 @@ ${1:xs} = set()
 ${0:${VISUAL}}
 endsnippet
 
+snippet lam "lambda expression" b
+lambda x: x * 2
+${0:${VISUAL}}
+endsnippet
+
+snippet map "map function" b
+${1:ys} = list(map(lambda x: x * 2, ${2:xs}))
+${0:${VISUAL}}
+endsnippet
+
+snippet red "reduce function" b
+from functeols import reduce
+
+${1:x} = reduce(lambda ac, x: ac + x, ${2:xs})
+${0:${VISUAL}}
+endsnippet
+
+snippet fil "filter function" b
+${1:ys} = list(filter(lambda x: x >= 0, ${2:xs}))
+${0:${VISUAL}}
+endsnippet
+
 snippet dc "deepcopy" b
 from copy import deepcopy
 
