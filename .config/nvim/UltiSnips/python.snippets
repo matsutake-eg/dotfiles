@@ -383,9 +383,7 @@ endsnippet
 snippet acc "get cumulative sum by using accumulate in itertools" b
 from itertools import accumulate
 
-${2:sm} = list(accumulate(${1:xs}))
-print($2)
-print(*accumulate($1))
+${1:sa} = [0] + list(accumulate(${2:a}))
 ${0:${VISUAL}}
 endsnippet
 
