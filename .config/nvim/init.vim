@@ -180,7 +180,7 @@ let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_auto_colors = 0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd guibg=black ctermbg=235
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=lightgray ctermbg=236
-let g:neoterm_default_mod = 'belowright'
+let g:neoterm_default_mod = 'botright'
 let g:neoterm_size = 15
 let g:neoterm_autoscroll = 1
 let g:neoterm_use_relative_path = 1
