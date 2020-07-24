@@ -235,12 +235,10 @@ endsnippet
 
 snippet forb "for loop and bit full search" b
 for ${2:i} in range(2 ** ${1:n}):
-    t = []
+    xs = set()
     for ${3:j} in range($1):
         if ($2 >> $3) & 1:
-            t.append(xs[$3])
-
-    print(t)
+            xs.add($3)
     ${0:${VISUAL}}
 endsnippet
 
@@ -277,9 +275,8 @@ ${1:xs} = set()
 ${0:${VISUAL}}
 endsnippet
 
-snippet lam "lambda expression" b
+snippet lam "lambda expression"
 lambda v: v * 2
-${0:${VISUAL}}
 endsnippet
 
 snippet map "map function" b
