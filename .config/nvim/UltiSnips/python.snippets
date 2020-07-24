@@ -614,6 +614,13 @@ list(combinations(${1:xs}, ${2:k}))
 ${0:${VISUAL}}
 endsnippet
 
+snippet cmblw "get combination list with_replacement" b
+from itertools import combinations_with_replacement
+
+list(combinations_with_replacement(${1:xs}, ${2:k}))
+${0:${VISUAL}}
+endsnippet
+
 snippet fib "get fibonacci value" b
 def fibonacci(x):
     a, b = 0, 1
