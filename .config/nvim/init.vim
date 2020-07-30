@@ -39,10 +39,10 @@ nnoremap <F12> :ALEGoToDefinition -split<CR>
 if has("autocmd")
   autocmd FileType go nnoremap <Left> :T go run %<CR><C-w>ja
   autocmd FileType go nnoremap <Right> :GoInfo<CR>
-	autocmd FileType go nnoremap <Up> :GoDef<CR>
-	autocmd FileType go nnoremap <Down> :GoReferrers<CR>
+  autocmd FileType go nnoremap <Up> :GoDef<CR>
+  autocmd FileType go nnoremap <Down> :GoReferrers<CR>
   autocmd FileType go nnoremap <F11> :GoRename<CR>
-	autocmd FileType go nmap <F12> <Plug>(go-def-split)
+  autocmd FileType go nmap <F12> <Plug>(go-def-split)
   autocmd FileType python nnoremap <Left> :T pypy3 %<CR><C-w>ja
 endif
 
