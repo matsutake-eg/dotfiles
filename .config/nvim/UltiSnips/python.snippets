@@ -412,8 +412,11 @@ from collections import Counter
 
 ${1:xc} = Counter(map(int, input().split()))
 $1[2] += 1
-mc = $1.most_common(2)
-print(mc[0][0], mc[0][1], mc[1][0], mc[1][1])
+mx = $1.most_common(1)[0][1]
+${2:xs} = []
+for k, v in $1.items():
+    if v == mx:
+        $2.append(k)
 ${0:${VISUAL}}
 endsnippet
 
