@@ -354,6 +354,11 @@ dy = [1, 1, 0, -1, -1, -1, 0, 1]
 ${0:${VISUAL}}
 endsnippet
 
+snippet sort "sort with function" b
+${1:xs}.sort(key=lambda v: (v[0], v[1]))
+${0:${VISUAL}}
+endsnippet
+
 snippet sortr "sort reversely" b
 ${1:xs}.sort(reverse=True)
 ${0:${VISUAL}}
