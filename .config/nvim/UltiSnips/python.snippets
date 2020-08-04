@@ -376,6 +376,21 @@ ${1:p} = bisect_left(${2:xs}, ${3:a})
 ${0:${VISUAL}}
 endsnippet
 
+snippet bism "binary search manually" b
+xs = [1, 2, 5, 7, 10]
+x = 7
+
+l, r = 0, len(xs) - 1
+while l < r:
+    m = (l + r) // 2
+    if xs[m] < x:
+        l = m + 1
+    else:
+        r = m
+print(l)
+${0:${VISUAL}}
+endsnippet
+
 snippet dq "use deque in collections" b
 from collections import deque
 
