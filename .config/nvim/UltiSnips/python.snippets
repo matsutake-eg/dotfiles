@@ -28,182 +28,67 @@ snippet ex "exit()" b
 exit()
 endsnippet
 
-snippet in1 "get one input value as int" b
-${1:n} = int(input())
-${0:${VISUAL}}
-endsnippet
-
 snippet cond "conditional operator"
 ${1:"Yes"} if ${2:x > 0} else ${3:"No"}
 endsnippet
 
-snippet in2 "get two input values as int" b
-${1:a}, ${2:b} = map(int, input().split())
+snippet in "get one input value as int" b
+${1:n} = int(input())
 ${0:${VISUAL}}
 endsnippet
 
-snippet in3 "get three input values as int" b
-${1:a}, ${2:b}, ${3:c} = map(int, input().split())
+snippet inm "get multi input values as int" b
+${1:a, b} = map(int, input().split())
 ${0:${VISUAL}}
 endsnippet
 
-snippet in4 "get four input values as int" b
-${1:a}, ${2:b}, ${3:c}, ${4:d} = map(int, input().split())
-${0:${VISUAL}}
-endsnippet
-
-snippet in5 "get five input values as int" b
-${1:a}, ${2:b}, ${3:c}, ${4:d}, ${5:e} = map(int, input().split())
-${0:${VISUAL}}
-endsnippet
-
-snippet ins "get input values as list of int" b
+snippet inl "get input values as list of int" b
 ${1:xs} = list(map(int, input().split()))
 ${0:${VISUAL}}
 endsnippet
 
-snippet insl "get input values as list of int for for multi lines with list comprehension" b
+snippet inlc "get input values as list of int for for multi lines with list comprehension" b
 ${1:xs} = [int(input()) for _ in range(${2:n})]
 ${0:${VISUAL}}
 endsnippet
 
-snippet inl "get input values as list of int for for multi lines" b
-${1:xs} = [0] * ${2:n}
-for i in range($2):
-    $1[i] = int(input())
-    ${0:${VISUAL}}
-endsnippet
-
-snippet inml "get input values as multiple list of int for for multi lines" b
-${1:xs} = [0] * ${2:n}
-for i in range($2):
-    $1[i] = list(map(int, input().split()))
-    ${0:${VISUAL}}
-endsnippet
-
-snippet ind "get input values as dict of int for for multi lines" b
-${1:xd} = {}
-for i in range(${2:n}):
-    ${3:a} = int(input())
-    $1[$3] = $1.get($3, 0) + 1
-endsnippet
-
-snippet in1f "get one input value as float" b
-${1:n} = float(input())
+snippet inf "get one input value as float" b
+${1:x} = float(input())
 ${0:${VISUAL}}
 endsnippet
 
-snippet in2f "get two input values as float" b
-${1:a}, ${2:b} = map(float, input().split())
+snippet inmf "get multi input values as float" b
+${1:a, b} = map(float, input().split())
 ${0:${VISUAL}}
 endsnippet
 
-snippet in3f "get three input values as float" b
-${1:a}, ${2:b}, ${3:c} = map(float, input().split())
-${0:${VISUAL}}
-endsnippet
-
-snippet in4f "get four input values as float" b
-${1:a}, ${2:b}, ${3:c}, ${4:d} = map(float, input().split())
-${0:${VISUAL}}
-endsnippet
-
-snippet in5f "get five input values as float" b
-${1:a}, ${2:b}, ${3:c}, ${4:d}, ${5:e} = map(float, input().split())
-${0:${VISUAL}}
-endsnippet
-
-snippet insf "get input values as list of float" b
+snippet inlf "get input values as list of float" b
 ${1:xs} = list(map(float, input().split()))
 ${0:${VISUAL}}
 endsnippet
 
-snippet inlf "get input values as list of float for for multi lines" b
-${1:xs} = [0] * ${2:n}
-for i in range($2):
-    $1[i] = float(input())
-    ${0:${VISUAL}}
-endsnippet
-
-snippet inslf "get input values as list of float for for multi lines with list comprehension" b
+snippet inlcf "get input values as list of float for for multi lines with list comprehension" b
 ${1:xs} = [float(input()) for _ in range(${2:n})]
 ${0:${VISUAL}}
 endsnippet
 
-snippet inmlf "get input values as multiple list of float for for multi lines" b
-${1:xs} = [0] * ${2:n}
-for i in range($2):
-    $1[i] = list(map(float, input().split()))
-    ${0:${VISUAL}}
-endsnippet
-
-snippet in1s "get one input value as string" b
-${1:n} = input()
+snippet ins "get one input value as string" b
+${1:s} = input()
 ${0:${VISUAL}}
 endsnippet
 
-snippet in2s "get two input values as string" b
-${1:a}, ${2:b} = input().split()
+snippet inms "get multi input values as string" b
+${1:a, b} = input().split()
 ${0:${VISUAL}}
 endsnippet
 
-snippet in3s "get three input values as string" b
-${1:a}, ${2:b}, ${3:c} = input().split()
-${0:${VISUAL}}
-endsnippet
-
-snippet in4s "get four input values as string" b
-${1:a}, ${2:b}, ${3:c}, ${4:d} = input().split()
-${0:${VISUAL}}
-endsnippet
-
-snippet in5s "get five input values as string" b
-${1:a}, ${2:b}, ${3:c}, ${4:d}, ${5:e} = input().split()
-${0:${VISUAL}}
-endsnippet
-
-snippet inss "get input values as list of string" b
+snippet inls "get input values as list of string" b
 ${1:xs} = input().split()
 ${0:${VISUAL}}
 endsnippet
 
-snippet insls "get input values as list of string for for multi lines with list comprehension" b
+snippet inlcs "get input values as list of string for for multi lines with list comprehension" b
 ${1:xs} = [input() for _ in range(${2:n})]
-${0:${VISUAL}}
-endsnippet
-
-snippet inls "get input values as list of string for for multi lines" b
-${1:xs} = [""] * ${2:n}
-for i in range($2):
-    $1[i] = input()
-    ${0:${VISUAL}}
-endsnippet
-
-snippet inmls "get input values as multiple list of string for for multi lines" b
-${1:xs} = [""] * ${2:n}
-for i in range($2):
-    $1[i] = input().split()
-    ${0:${VISUAL}}
-endsnippet
-
-snippet inds "get input values as dict of string for for multi lines" b
-${1:xd} = {}
-for i in range(${2:n}):
-    ${3:a} = input()
-    $1[$3] = $1.get($3, 0) + 1
-endsnippet
-
-snippet rl "read line by sys.stdin.readline()" b
-from sys import stdin
-
-input = stdin.readline
-${0:${VISUAL}}
-endsnippet
-
-snippet rls "read line as string by sys.stdin.readline()" b
-from sys import stdin
-
-s = stdin.readline()[:-1]
 ${0:${VISUAL}}
 endsnippet
 
@@ -782,11 +667,11 @@ snippet pt "print()" b
 print(${1:x})
 endsnippet
 
-snippet pts "printlist with space" b
+snippet ptl "print list with space" b
 print(*${1:xs})
 endsnippet
 
-snippet ptl "print list with new line" b
+snippet ptln "print list with new line" b
 print(*${1:xs}, sep="\n")
 endsnippet
 
