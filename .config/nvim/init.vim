@@ -124,12 +124,11 @@ let g:ale_linters = {
 \   'typescript': ['eslint', 'tsserver'],
 \   'vue': ['eslint', 'vls'],
 \   'python': ['flake8'],
+\   'rust': ['rustc', 'rls'],
 \}
-let g:ale_rename_tsserver_find_in_comments = 1
-let g:ale_rename_tsserver_find_in_strings = 1
+let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 1
 let g:ale_lint_on_insert_leave = 0
-let g:ale_lint_on_text_changed = 0
 let g:ale_lint_on_save = 1
 let g:ale_fixers = {
 \   'javascript': ['prettier'],
@@ -142,16 +141,21 @@ let g:ale_fixers = {
 \   'json': ['prettier'],
 \   'yaml': ['prettier'],
 \   'python': ['autopep8', 'black', 'isort'],
+\   'rust': ['rustfmt'],
 \}
+let g:ale_rename_tsserver_find_in_comments = 1
+let g:ale_rename_tsserver_find_in_strings = 1
 let g:ale_fix_on_save = 1
 let g:ale_sign_column_always = 1
+highlight clear ALEErrorSign
+highlight clear ALEWarningSign
 let g:ale_sign_error = '>>'
 let g:ale_sign_warning = '--'
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-let g:ale_open_list = 1
-let g:ale_list_window_size = 3
+let g:ale_open_list = 'on_save'
+let g:ale_list_window_size = 5
 function! LinterStatus() abort
     let l:counts = ale#statusline#Count(bufnr(''))
 
