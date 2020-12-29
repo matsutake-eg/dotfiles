@@ -44,6 +44,8 @@ if has("autocmd")
   autocmd FileType go nnoremap <F11> :GoRename<CR>
   autocmd FileType go nmap <F12> <Plug>(go-def-split)
   autocmd FileType python nnoremap <Left> :T pypy3 %<CR><C-w>ja
+  autocmd FileType rust nnoremap <Left>s :T cargo atcoder submit %:t:r<CR>
+  autocmd FileType rust nnoremap <Left>t :T cargo atcoder test %:t:r<CR>
 endif
 
 inoremap jj <Esc>
@@ -107,7 +109,7 @@ call deoplete#custom#option('omni_patterns', {
 set completeopt-=preview
 let g:ctrlp_working_path_mode = 'a'
 let g:ctrlp_custom_ignore = {
-\   'dir':  '\v[\/](node_modules|build|dist|\.(git|hg|svn))$',
+\   'dir':  '\v[\/](node_modules|build|dist|target|\.(git|hg|svn))$',
 \   'file': '\v\.(exe|so|dll|swp|zip|gif|jpg|png)$',
 \   'link': 'some_bad_symbolic_links',
 \}

@@ -1,0 +1,630 @@
+priority 0
+
+###########################################################################
+#                            TEXTMATE SNIPPETS                            #
+###########################################################################
+
+#! header
+
+snippet rt "return" b
+return${1:};
+${0:${VISUAL}}
+endsnippet
+
+snippet br "break" b
+break;
+endsnippet
+
+snippet cn "continue" b
+continue;
+endsnippet
+
+snippet md "a prime number used many times in programing contest" b
+const MOD: i64 = 1_000_000_007;
+${0:${VISUAL}}
+endsnippet
+
+snippet ans "variable for answer" b
+let mut ans = 0;
+${0:${VISUAL}}
+println!("{}", ans);
+endsnippet
+
+snippet p "println!"
+println!("${1:{}}", ${2:n});
+endsnippet
+
+snippet cond "conditional operator"
+if ${1:n < 0} { ${2:0} } else { ${3:1} }
+endsnippet
+ 
+snippet for "for ... in ..." b
+for ${1:v} in ${2:a} {
+    ${0:${VISUAL}}
+}
+endsnippet
+
+snippet forr "reverse for ... in ..." b
+for ${1:v} in ${2:a}.iter().rev() {
+    ${0:${VISUAL}}
+}
+endsnippet
+
+snippet fore "for ... in ....iter().enumerate()" b
+for (${1:i}, ${2:v}) in ${3:a}.iter().enumerate() {
+    ${0:${VISUAL}}
+}
+endsnippet
+
+snippet forer "for ... in ....iter().rev().enumerate()" b
+for (${1:i}, ${2:v}) in ${3:a}.iter().rev().enumerate() {
+    ${0:${VISUAL}}
+}
+endsnippet
+
+snippet wh "while" b
+let mut ${1:n} = $1;
+while ${2:n > 0} {
+    ${0:${VISUAL}}
+}
+endsnippet
+
+
+# snippet forb "for loop and bit full search" b
+# for ${2:i} in range(2 ** ${1:n}):
+#     xs = set()
+#     for ${3:j} in range($1):
+#         if ($2 >> $3) & 1:
+#             xs.add($3)
+#     ${0:${VISUAL}}
+# endsnippet
+# 
+# snippet ml "make list" b
+# ${1:xs} = [0] * ${2:n}
+# ${0:${VISUAL}}
+# endsnippet
+# 
+# snippet mml "make multi list" b
+# ${1:xs} = [[0] * ${2:n} for _ in range(${3:m})]
+# ${0:${VISUAL}}
+# endsnippet
+# 
+# snippet lc "list comprehension"
+# ${1:ys} =  [v * 2 for v in ${2:xs}]
+# ${0:${VISUAL}}
+# endsnippet
+# 
+# snippet lam "lambda expression"
+# lambda v: v * 2
+# endsnippet
+# 
+# snippet map "map function" b
+# ${1:ys} = list(map(lambda v: v * 2, ${2:xs}))
+# ${0:${VISUAL}}
+# endsnippet
+# 
+# snippet red "reduce function" b
+# from functools import reduce
+# 
+# ${1:x} = reduce(lambda ac, v: ac * v, ${2:xs}, ${3:1})
+# ${0:${VISUAL}}
+# endsnippet
+# 
+# snippet fil "filter function" b
+# ${1:ys} = list(filter(lambda v: v >= 0, ${2:xs}))
+# ${0:${VISUAL}}
+# endsnippet
+# 
+# snippet dc "deepcopy" b
+# from copy import deepcopy
+# 
+# ${1:ys} = deepcopy(${2:xs})
+# ${0:${VISUAL}}
+# endsnippet
+# 
+# snippet jo "s = '...'.join([...])" b
+# ${1:s} = "".join([$1, ${2:x}])
+# ${0:${VISUAL}}
+# endsnippet
+# 
+# snippet nc "next character" b
+# ${1:x} = chr(ord($1) + 1)
+# ${0:${VISUAL}}
+# endsnippet
+# 
+# snippet az "string which is a to z" b
+# az = "abcdefghijklmnopqrstuvwxyz"
+# ${0:${VISUAL}}
+# endsnippet
+# 
+# snippet AZ "string which is A to Z" b
+# az = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+# ${0:${VISUAL}}
+# endsnippet
+# 
+# snippet rvs "reverse string"
+# ${1:s}[::-1]
+# endsnippet
+# 
+# snippet dxy "move x and y in 4 way of 2 dimensional" b
+# dx = [0, 1, 0, -1]
+# dy = [1, 0, -1, 0]
+# ${0:${VISUAL}}
+# endsnippet
+# 
+# snippet dxy8 "move x and y in 8 way of 2 dimensional" b
+# dx = [0, 1, 1, 1, 0, -1, -1, -1]
+# dy = [1, 1, 0, -1, -1, -1, 0, 1]
+# ${0:${VISUAL}}
+# endsnippet
+# 
+# snippet sort "sort with function" b
+# ${1:xs}.sort(key=lambda v: (v[0], v[1]))
+# ${0:${VISUAL}}
+# endsnippet
+# 
+# snippet sortr "sort reversely" b
+# ${1:xs}.sort(reverse=True)
+# ${0:${VISUAL}}
+# endsnippet
+# 
+# snippet sorts "sort string by character" b
+# "".join(sorted(${1:s}))
+# ${0:${VISUAL}}
+# endsnippet
+# 
+# snippet bis "binary search" b
+# from bisect import bisect_left
+# 
+# ${1:p} = bisect_left(${2:xs}, ${3:a})
+# ${0:${VISUAL}}
+# endsnippet
+# 
+# snippet bism "binary search manually" b
+# xs = [1, 2, 5, 7, 10]
+# x = 7
+# 
+# l, r = 0, len(xs) - 1
+# while l < r:
+#     m = (l + r) // 2
+#     if xs[m] < x:
+#         l = m + 1
+#     else:
+#         r = m
+# print(l)
+# ${0:${VISUAL}}
+# endsnippet
+# 
+# snippet dq "use deque in collections" b
+# from collections import deque
+# 
+# ${1:q} = deque()
+# $1.append(1)
+# $1.appendleft(2)
+# print(*q)
+# ${0:${VISUAL}}
+# endsnippet
+# 
+# snippet hqmi "use heapq in collections(pop by min)" b
+# from heapq import heappop, heappush
+# 
+# ${1:q} = []
+# 
+# for i in range(n):
+#     heappush($1, i)
+# 
+# for _ in range(len($1)):
+#     print(heappop($1))
+# ${0:${VISUAL}}
+# endsnippet
+# 
+# snippet hqmx "use heapq in collections(pop by max)" b
+# from heapq import heappop, heappush
+# 
+# ${1:q} = []
+# 
+# for i in range(n):
+#     heappush($1, -i)
+# 
+# for _ in range(len($1)):
+#     print(-heappop($1))
+# ${0:${VISUAL}}
+# endsnippet
+# 
+# snippet cou "use Counter in collections" b
+# from collections import Counter
+# 
+# ${1:xc} = Counter(map(int, input().split()))
+# $1[2] += 1
+# mx = $1.most_common(1)[0][1]
+# ${2:xs} = []
+# for k, v in $1.items():
+#     if v == mx:
+#         $2.append(k)
+# ${0:${VISUAL}}
+# endsnippet
+# 
+# snippet acc "get cumulative sum by using accumulate in itertools" b
+# from itertools import accumulate
+# 
+# ${1:sa} = [0] + list(accumulate(${2:a}))
+# ${0:${VISUAL}}
+# endsnippet
+# 
+# snippet sqrt "math.sqrt(...)" b
+# from math import sqrt
+# 
+# sqrt(${1:x})
+# ${0:${VISUAL}}
+# endsnippet
+# 
+# snippet floor "math.floor(...)" b
+# from math import floor
+# 
+# floor(${1:x})
+# ${0:${VISUAL}}
+# endsnippet
+# 
+# snippet ceil "math.ceil(...)" b
+# from math import ceil
+# 
+# ceil(${1:x})
+# ${0:${VISUAL}}
+# endsnippet
+# 
+# snippet round "round generally" b
+# def round_generally(x):
+#     spt = str(x).split(".")
+#     if len(spt) == 1:
+#         return int(x)
+#     elif int(spt[1]) >= 5:
+#         return int(spt[0]) + 1
+#     return int(spt[0])
+# 
+# ${0:${VISUAL}}
+# endsnippet
+# 
+# snippet sin "math.sin(...)" b
+# from math import pi, sin
+# 
+# sin(pi / 2)
+# ${0:${VISUAL}}
+# endsnippet
+# 
+# snippet cos "math.cos(...)" b
+# from math import cos, pi
+# 
+# cos(pi)
+# ${0:${VISUAL}}
+# endsnippet
+# 
+# snippet pi "math.pi" b
+# from math import pi
+# 
+# pi
+# ${0:${VISUAL}}
+# endsnippet
+# 
+# snippet gcd "get GCD(Greatest Common Divisor)" b
+# from math import gcd
+# 
+# gcd(${1:a}, ${2:b})
+# ${0:${VISUAL}}
+# endsnippet
+# 
+# snippet lcm "get LCM(Least Common Multiple)" b
+# from math import gcd
+# 
+# 
+# def lcm(x, y):
+#     return x // gcd(x, y) * y
+# 
+# ${0:${VISUAL}}
+# endsnippet
+# 
+# snippet ism "iterative square method" b
+# pow(${1:n}, ${2:m}, ${3:p})
+# ${0:${VISUAL}}
+# endsnippet
+# 
+# snippet inv "inverse" b
+# pow(${1:n}, ${2:p} - 2, $2)
+# ${0:${VISUAL}}
+# endsnippet
+# 
+# snippet prm "get answer which is Prime Number or not" b
+# def is_prime(x):
+#     if x < 2:
+#         return False
+#     elif x == 2:
+#         return True
+# 
+#     for i in range(2, x):
+#         if i * i > x:
+#             return True
+#         elif x % i == 0:
+#             return False
+# 
+# ${0:${VISUAL}}
+# endsnippet
+# 
+# snippet prf "get answer of Prime Factorization" b
+# def prime_fac(x):
+#     pfs = {1}
+#     for i in range(2, x):
+#         if i * i > x:
+#             break
+#         while x % i == 0:
+#             pfs.add(i)
+#             x //= i
+#     pfs.add(x)
+#     return pfs
+# 
+# ${0:${VISUAL}}
+# endsnippet
+# 
+# snippet fac "get factorial value" b
+# from math import factorial
+# 
+# factorial(${1:x})
+# ${0:${VISUAL}}
+# endsnippet
+# 
+# snippet facm "get factorial value with mod" b
+# def factorial_mod(x, mod=10 ** 9 + 7):
+#     fv = 1
+#     for i in range(2, x + 1):
+#         fv *= i
+#         fv %= mod
+#     return fv
+# 
+# ${0:${VISUAL}}
+# endsnippet
+# 
+# snippet per "get permutation value" b
+# def permutation(n, k):
+#     pv = 1
+#     for i in range(n, n - k, -1):
+#         pv *= i
+#     return pv
+# 
+# ${0:${VISUAL}}
+# endsnippet
+# 
+# snippet perm "get permutation value with mod" b
+# def permutation_mod(n, k, mod=10 ** 9 + 7):
+#     pv = 1
+#     for i in range(n, n - k, -1):
+#         pv *= i
+#         pv %= mod
+#     return pv
+# 
+# ${0:${VISUAL}}
+# endsnippet
+# 
+# snippet perl "get permutation list" b
+# from itertools import permutations
+# 
+# list(permutations(${1:xs}))
+# ${0:${VISUAL}}
+# endsnippet
+# 
+# snippet cmb "get combination value" b
+# def combination(n, k):
+#     cv = 1
+#     for i in range(n, n - k, -1):
+#         cv *= i
+#     for i in range(2, k + 1):
+#         cv //= i
+#     return cv
+# 
+# ${0:${VISUAL}}
+# endsnippet
+# 
+# snippet cmbm "get combination value with mod" b
+# def combination_mod(n, k, mod=10 ** 9 + 7):
+#     if k > n:
+#         return 1
+# 
+#     nu, de = 1, 1
+#     for i in range(k):
+#         nu = nu * (n - i) % mod
+#         de = de * (i + 1) % mod
+#     return nu * pow(de, mod - 2, mod) % mod
+# 
+# ${0:${VISUAL}}
+# endsnippet
+# 
+# snippet cmbl "get combination list" b
+# from itertools import combinations
+# 
+# list(combinations(${1:xs}, ${2:k}))
+# ${0:${VISUAL}}
+# endsnippet
+# 
+# snippet cmblw "get combination list with_replacement" b
+# from itertools import combinations_with_replacement
+# 
+# list(combinations_with_replacement(${1:xs}, ${2:k}))
+# ${0:${VISUAL}}
+# endsnippet
+# 
+# snippet fib "get fibonacci value" b
+# def fibonacci(x):
+#     a, b = 0, 1
+#     for _ in range(x):
+#         a, b = b, a + b
+#     return a
+# 
+# ${0:${VISUAL}}
+# endsnippet
+# 
+# snippet gr "graph" b
+# ${1:n}, ${2:m} = map(int, input().split())
+# eg = [[] for _ in range($1 + 1)]
+# for _ in range($2):
+#     a, b = map(int, input().split())
+#     eg[a].append(b)
+#     eg[b].append(a)
+# 
+# ${0:${VISUAL}}
+# endsnippet
+# 
+# snippet dfs "depth first search in graph" b
+# from collections import deque
+# 
+# q = deque()
+# q.append(${1:x})
+# seen = {$1}
+# while len(q) > 0:
+#     v = q.pop()
+#     for t in eg[v]:
+#         if t in seen:
+#             continue
+#         q.append(t)
+#         seen.add(t)
+# 
+# ${0:${VISUAL}}
+# endsnippet
+# 
+# snippet bfs "breadth first search in graph" b
+# from collections import deque
+# 
+# q = deque()
+# q.append(${1:x})
+# seen = {$1}
+# while len(q) > 0:
+#     v = q.popleft()
+#     for t in eg[v]:
+#         if t in seen:
+#             continue
+#         q.append(t)
+#         seen.add(t)
+# 
+# ${0:${VISUAL}}
+# endsnippet
+# 
+# snippet wf "warshall floyd algorithm" b
+# ${1:n}, ${2:m} = map(int, input().split())
+# ${3:ds} = [[10 ** 9] * $1 for _ in range($1)]
+# for i in range($1):
+#     $3[i][i] = 0
+# 
+# for _ in range($2):
+#     a, b, t = map(int, input().split())
+#     ds[a - 1][b - 1] = t
+#     ds[b - 1][a - 1] = t
+# 
+# for k in range($1):
+#     for i in range($1):
+#         for j in range($1):
+#             $3[i][j] = min($3[i][j], $3[i][k] + $3[k][j])
+# 
+# ans = 10 ** 9
+# for i in range($1):
+#     ans = min(ans, max($1[i]))
+# print(ans)
+# ${0:${VISUAL}}
+# endsnippet
+# 
+# snippet uft "union find tree" b
+# class UnionFind:
+#     def __init__(self, n):
+#         self.n = n
+#         self.parents = [-1] * n
+# 
+#     def find(self, x):
+#         if self.parents[x] < 0:
+#             return x
+#         else:
+#             self.parents[x] = self.find(self.parents[x])
+#             return self.parents[x]
+# 
+#     def union(self, x, y):
+#         x = self.find(x)
+#         y = self.find(y)
+# 
+#         if x == y:
+#             return
+# 
+#         if self.parents[x] > self.parents[y]:
+#             x, y = y, x
+# 
+#         self.parents[x] += self.parents[y]
+#         self.parents[y] = x
+# 
+#     def size(self, x):
+#         return -self.parents[self.find(x)]
+# 
+#     def same(self, x, y):
+#         return self.find(x) == self.find(y)
+# 
+#     def members(self, x):
+#         root = self.find(x)
+#         return [i for i in range(self.n) if self.find(i) == root]
+# 
+#     def roots(self):
+#         return [i for i, x in enumerate(self.parents) if x < 0]
+# 
+#     def group_count(self):
+#         return len(self.roots())
+# 
+#     def all_group_members(self):
+#         return {r: self.members(r) for r in self.roots()}
+# 
+#     def __str__(self):
+#         return "\n".join("{}: {}".format(r, self.members(r)) for r in self.roots())
+# 
+# 
+# ${1:n}, ${2:m} = map(int, input().split())
+# uf = UnionFind($1)
+# for _ in range($2):
+#     a, b = map(int, input().split())
+#     uf.union(a - 1, b - 1)
+# 
+# ans = 0
+# for i in range($1):
+#     ans = max(ans, uf.size(i))
+# print(ans)
+# ${0:${VISUAL}}
+# endsnippet
+# 
+# snippet fen "fenwick tree(Binary Indexed Tree)" b
+# ${1:n}, ${2:m} = map(int, input().split())
+# bit = [0] * ($1 + 1)
+# 
+# 
+# def fenwick_add(x, w):
+#     while x <= $1:
+#         bit[x] += w
+#         x += x & -x
+# 
+# 
+# def fenwick_sum(x):
+#     sm = 0
+#     while x > 0:
+#         sm += bit[x]
+#         x -= x & -x
+#     return sm
+# 
+# 
+# for _ in range($2):
+#     a, b = map(int, input().split())
+#     fenwick_add(a, b)
+# 
+# for i in range(1, $1 + 1):
+#     print(fenwick_sum(i))
+# ${0:${VISUAL}}
+# endsnippet
+# snippet da "date calculation" b
+# from datetime import date, timedelta
+# 
+# y, m, d = map(int, input().split("/"))
+# d = date(y, m, d)
+# d.weekday()
+# d += timedelta(days=1)
+# print(d.strftime("%Y/%m/%d %H:%M:%S"))
+# ${0:${VISUAL}}
+# endsnippet
+
+# vim:ft=snippets:
