@@ -46,6 +46,7 @@ if has("autocmd")
   autocmd FileType python nnoremap <Left> :T pypy3 %<CR><C-w>ja
   autocmd FileType rust nnoremap <Left>s :T cargo atcoder submit %:t:r<CR>
   autocmd FileType rust nnoremap <Left>t :T cargo atcoder test %:t:r<CR>
+  autocmd FileType rust nnoremap <Left>f :T cargo run --bin %:t:r<CR><C-w>ja
 endif
 
 inoremap jj <Esc>
