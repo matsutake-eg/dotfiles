@@ -25,7 +25,7 @@ ${0:${VISUAL}}
 println!("{}", ans);
 endsnippet
 
-snippet p "println!"
+snippet pt "println!"
 println!("${1:{}}", ${2:n});
 endsnippet
 
@@ -73,11 +73,11 @@ use itertools_num::ItertoolsNum as _;${0:${VISUAL}}
 let cumsum = ${1:a}.iter().cumsum().collect::<Vec<${2:usize}>>();
 endsnippet
 
-snippet hash "HashMap::new()" b
+snippet hm "HashMap::new()" b
 let mut xh = HashMap::new();
 endsnippet
 
-snippet hcnt "count in HashMap" b
+snippet hmc "count in HashMap" b
 *${1:xh}.entry(k).or_insert(0) += 1;
 endsnippet
 
@@ -104,7 +104,6 @@ for i in 0..n {
 ${0:${VISUAL}}
 endsnippet
 
-
 snippet gcd "get GCD(Greatest Common Divisor)" b
 use num_integer::gcd;
 gcd(a, b)
@@ -117,6 +116,65 @@ lcm(a, b)
 ${0:${VISUAL}}
 endsnippet
 
+snippet prm "get answer which is Prime Number or not" b
+fn is_prime(x: usize) -> bool {
+    if x < 2 {
+        return false;
+    }
+    for i in 2..x {
+        if i * i > x {
+            return true;
+        } else if x % i == 0 {
+            return false;
+        }
+    }
+    true
+}
+${0:${VISUAL}}
+endsnippet
+
+snippet prf "get answer of Prime Factorization" b
+fn prime_fac(mut x: usize) -> HashSet<usize> {
+    let mut pfs = HashSet::new();
+    for i in 2..x {
+        if i * i > x {
+            break;
+        }
+        while x % i == 0 {
+            pfs.insert(i);
+            x /= i;
+        }
+    }
+    pfs.insert(x);
+    pfs.insert(1);
+    pfs
+}
+${0:${VISUAL}}
+endsnippet
+
+snippet fold "An iterator method that applies a function, producing a single, final value."
+${1:a}.iter().fold($1[0], |acc, &x| gcd(acc, x))${0:${VISUAL}}
+endsnippet
+
+snippet reduce "Same as 'fold', An iterator method that applies a function, producing a single, final value."
+${1:a}.iter().fold($1[0], |acc, &x| gcd(acc, x))${0:${VISUAL}}
+endsnippet
+
+snippet sum "get sum value by fold"
+${1:a}.iter().fold(0, |acc, x| acc + x)${0:${VISUAL}}
+endsnippet
+
+
+# snippet map "map function" b
+# ${1:ys} = list(map(lambda v: v * 2, ${2:xs}))
+# ${0:${VISUAL}}
+# endsnippet
+# 
+# snippet fil "filter function" b
+# ${1:ys} = list(filter(lambda v: v >= 0, ${2:xs}))
+# ${0:${VISUAL}}
+# endsnippet
+# 
 # snippet forb "for loop and bit full search" b
 # for ${2:i} in range(2 ** ${1:n}):
 #     xs = set()
@@ -133,39 +191,6 @@ endsnippet
 # 
 # snippet mml "make multi list" b
 # ${1:xs} = [[0] * ${2:n} for _ in range(${3:m})]
-# ${0:${VISUAL}}
-# endsnippet
-# 
-# snippet lc "list comprehension"
-# ${1:ys} =  [v * 2 for v in ${2:xs}]
-# ${0:${VISUAL}}
-# endsnippet
-# 
-# snippet lam "lambda expression"
-# lambda v: v * 2
-# endsnippet
-# 
-# snippet map "map function" b
-# ${1:ys} = list(map(lambda v: v * 2, ${2:xs}))
-# ${0:${VISUAL}}
-# endsnippet
-# 
-# snippet red "reduce function" b
-# from functools import reduce
-# 
-# ${1:x} = reduce(lambda ac, v: ac * v, ${2:xs}, ${3:1})
-# ${0:${VISUAL}}
-# endsnippet
-# 
-# snippet fil "filter function" b
-# ${1:ys} = list(filter(lambda v: v >= 0, ${2:xs}))
-# ${0:${VISUAL}}
-# endsnippet
-# 
-# snippet dc "deepcopy" b
-# from copy import deepcopy
-# 
-# ${1:ys} = deepcopy(${2:xs})
 # ${0:${VISUAL}}
 # endsnippet
 # 
@@ -291,13 +316,6 @@ endsnippet
 # ${0:${VISUAL}}
 # endsnippet
 # 
-# snippet acc "get cumulative sum by using accumulate in itertools" b
-# from itertools import accumulate
-# 
-# ${1:sa} = [0] + list(accumulate(${2:a}))
-# ${0:${VISUAL}}
-# endsnippet
-# 
 # snippet sqrt "math.sqrt(...)" b
 # from math import sqrt
 # 
@@ -359,37 +377,6 @@ endsnippet
 # 
 # snippet inv "inverse" b
 # pow(${1:n}, ${2:p} - 2, $2)
-# ${0:${VISUAL}}
-# endsnippet
-# 
-# snippet prm "get answer which is Prime Number or not" b
-# def is_prime(x):
-#     if x < 2:
-#         return False
-#     elif x == 2:
-#         return True
-# 
-#     for i in range(2, x):
-#         if i * i > x:
-#             return True
-#         elif x % i == 0:
-#             return False
-# 
-# ${0:${VISUAL}}
-# endsnippet
-# 
-# snippet prf "get answer of Prime Factorization" b
-# def prime_fac(x):
-#     pfs = {1}
-#     for i in range(2, x):
-#         if i * i > x:
-#             break
-#         while x % i == 0:
-#             pfs.add(i)
-#             x //= i
-#     pfs.add(x)
-#     return pfs
-# 
 # ${0:${VISUAL}}
 # endsnippet
 # 
