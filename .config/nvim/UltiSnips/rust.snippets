@@ -25,6 +25,15 @@ ${0:${VISUAL}}
 println!("{}", ans);
 endsnippet
 
+snippet mod "a prime number used many times in programing contest"
+const MOD: usize = 1_000_000_007;
+${0:${VISUAL}}
+endsnippet
+
+snippet pi "use pi" b
+use std::f64::consts::PI;
+endsnippet
+
 snippet pt "println!"
 println!("${1:{}}", ${2:n});
 endsnippet
@@ -64,21 +73,32 @@ while ${2:n > 0} {
 }
 endsnippet
 
-snippet pi "use pi" b
-use std::f64::consts::PI;
+snippet pars "parse String to number"
+${1:s}.parse::<${2:usize}>().unwrap())${0:${VISUAL}}
 endsnippet
 
-snippet cum "get cumulative sum" b
-use itertools_num::ItertoolsNum as _;${0:${VISUAL}}
-let cumsum = ${1:a}.iter().cumsum().collect::<Vec<${2:usize}>>();
+snippet ston "same as 'pars', parse String to number"
+${1:s}.parse::<${2:usize}>().unwrap())${0:${VISUAL}}
 endsnippet
 
-snippet hm "HashMap::new()" b
-let mut xh = HashMap::new();
+snippet con "concat String"
+[${1:s}, ${2:t}].concat()${0:${VISUAL}}
 endsnippet
 
-snippet hmc "count in HashMap" b
-*${1:xh}.entry(k).or_insert(0) += 1;
+snippet join "Same as 'concat', concat String"
+[${1:s}, ${2:t}].concat()${0:${VISUAL}}
+endsnippet
+
+snippet revs "reverse string"
+${1:s}.iter().rev().collect::<String>()${0:${VISUAL}}
+endsnippet
+
+snippet vmax "get max value from Vector"
+${1:a}.iter().max().unwrap()
+endsnippet
+
+snippet vmin "get min value from Vector"
+${1:a}.iter().min().unwrap()
 endsnippet
 
 snippet hmax "get max value from HashMap"
@@ -89,18 +109,77 @@ snippet hmin "get min value from HashMap"
 ${1:xh}.values().min().unwrap()
 endsnippet
 
-snippet uft "union find tree" b
-use petgraph::unionfind::UnionFind;
+snippet hmc "count in HashMap" b
+*${1:xh}.entry(k).or_insert(0) += 1;
+endsnippet
 
-let mut uft = UnionFind::new(n);
-for (a, b) in ab {
-    uft.union(a, b);
-}
+snippet fold "An iterator method that applies a function, producing a single, final value."
+${1:a}.iter().fold($1[0], |acc, &x| gcd(acc, x))${0:${VISUAL}}
+endsnippet
 
-let mut size = HashMap::new();
-for i in 0..n {
-    *size.entry(uft.find(i)).or_insert(0) += 1;
+snippet reduce "Same as 'fold', An iterator method that applies a function, producing a single, final value."
+${1:a}.iter().fold($1[0], |acc, &x| gcd(acc, x))${0:${VISUAL}}
+endsnippet
+
+snippet map "map function"
+let ${1:b}: Vec<${2:usize}> = ${3:a}.iter().map(|x| x * 2).collect();
+${0:${VISUAL}}
+endsnippet
+
+snippet fil "filter function"
+let ${1:b}: Vec<${2:usize}> = ${3:a}.iter().cloned().filter(|&x| x % 2 == 0).collect();
+${0:${VISUAL}}
+endsnippet
+
+snippet sum "get sum value by fold"
+${1:a}.iter().fold(0, |acc, x| acc + x)${0:${VISUAL}}
+endsnippet
+
+snippet csum "get cumulative sum" b
+use itertools_num::ItertoolsNum as _;${0:${VISUAL}}
+let csum = ${1:a}.iter().cumsum().collect::<Vec<${2:usize}>>();
+endsnippet
+
+snippet pow "get value to the power of exp"
+${1:a}.pow(${2:b} as u32)${0:${VISUAL}}
+endsnippet
+
+snippet sort "sort Vector" b
+let mut ${1:a} = $1;
+$1.sort();
+${0:${VISUAL}}
+endsnippet
+
+snippet sortr "sort Vector reversely" b
+let mut ${1:a} = $1;
+$1.sort_by(|a, b| b.cmp(a));
+${0:${VISUAL}}
+endsnippet
+
+snippet sortf "sort Vector with function" b
+let mut ${1:ab} = $1;
+$1.sort_by(|a, b| (&a.1).cmp(&b.1));
+${0:${VISUAL}}
+endsnippet
+
+snippet bis "binary search" b
+let idx = ${1:a}.binary_search(&${2:x}).unwrap_or_else(|x| x);
+${0:${VISUAL}}
+endsnippet
+
+snippet bism "binary search manually" b
+let a = vec![1, 2, 5, 7, 10];
+let x = 7;
+let (mut l, mut r) = (0, a.len() - 1);
+while l < r {
+    let m = (l + r) / 2;
+    if a[m] < x {
+        l = m + 1;
+    } else {
+        r = m;
+    }
 }
+println!("{}", l);
 ${0:${VISUAL}}
 endsnippet
 
@@ -152,121 +231,34 @@ fn prime_fac(mut x: usize) -> HashSet<usize> {
 ${0:${VISUAL}}
 endsnippet
 
-snippet fold "An iterator method that applies a function, producing a single, final value."
-${1:a}.iter().fold($1[0], |acc, &x| gcd(acc, x))${0:${VISUAL}}
+snippet forb "for loop and bit full search" b
+for ${2:i} in 0..2usize.pow(${1:n} as u32) {
+    let mut hs = HashSet::new();
+    for ${3:j} in 0..$1 {
+        if $2 >> $3 & 1 == 1 {
+            hs.insert($3);
+        }
+    }
+    println!("{} {:?}", $2, hs);
+}
+${0:${VISUAL}}
 endsnippet
 
-snippet reduce "Same as 'fold', An iterator method that applies a function, producing a single, final value."
-${1:a}.iter().fold($1[0], |acc, &x| gcd(acc, x))${0:${VISUAL}}
+snippet uft "union find tree" b
+use petgraph::unionfind::UnionFind;
+
+let mut uft = UnionFind::new(n);
+for (a, b) in ab {
+    uft.union(a, b);
+}
+
+let mut size = HashMap::new();
+for i in 0..n {
+    *size.entry(uft.find(i)).or_insert(0) += 1;
+}
+${0:${VISUAL}}
 endsnippet
 
-snippet sum "get sum value by fold"
-${1:a}.iter().fold(0, |acc, x| acc + x)${0:${VISUAL}}
-endsnippet
-
-
-# snippet map "map function" b
-# ${1:ys} = list(map(lambda v: v * 2, ${2:xs}))
-# ${0:${VISUAL}}
-# endsnippet
-# 
-# snippet fil "filter function" b
-# ${1:ys} = list(filter(lambda v: v >= 0, ${2:xs}))
-# ${0:${VISUAL}}
-# endsnippet
-# 
-# snippet forb "for loop and bit full search" b
-# for ${2:i} in range(2 ** ${1:n}):
-#     xs = set()
-#     for ${3:j} in range($1):
-#         if ($2 >> $3) & 1:
-#             xs.add($3)
-#     ${0:${VISUAL}}
-# endsnippet
-# 
-# snippet ml "make list" b
-# ${1:xs} = [0] * ${2:n}
-# ${0:${VISUAL}}
-# endsnippet
-# 
-# snippet mml "make multi list" b
-# ${1:xs} = [[0] * ${2:n} for _ in range(${3:m})]
-# ${0:${VISUAL}}
-# endsnippet
-# 
-# snippet jo "s = '...'.join([...])" b
-# ${1:s} = "".join([$1, ${2:x}])
-# ${0:${VISUAL}}
-# endsnippet
-# 
-# snippet nc "next character" b
-# ${1:x} = chr(ord($1) + 1)
-# ${0:${VISUAL}}
-# endsnippet
-# 
-# snippet az "string which is a to z" b
-# az = "abcdefghijklmnopqrstuvwxyz"
-# ${0:${VISUAL}}
-# endsnippet
-# 
-# snippet AZ "string which is A to Z" b
-# az = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-# ${0:${VISUAL}}
-# endsnippet
-# 
-# snippet rvs "reverse string"
-# ${1:s}[::-1]
-# endsnippet
-# 
-# snippet dxy "move x and y in 4 way of 2 dimensional" b
-# dx = [0, 1, 0, -1]
-# dy = [1, 0, -1, 0]
-# ${0:${VISUAL}}
-# endsnippet
-# 
-# snippet dxy8 "move x and y in 8 way of 2 dimensional" b
-# dx = [0, 1, 1, 1, 0, -1, -1, -1]
-# dy = [1, 1, 0, -1, -1, -1, 0, 1]
-# ${0:${VISUAL}}
-# endsnippet
-# 
-# snippet sort "sort with function" b
-# ${1:xs}.sort(key=lambda v: (v[0], v[1]))
-# ${0:${VISUAL}}
-# endsnippet
-# 
-# snippet sortr "sort reversely" b
-# ${1:xs}.sort(reverse=True)
-# ${0:${VISUAL}}
-# endsnippet
-# 
-# snippet sorts "sort string by character" b
-# "".join(sorted(${1:s}))
-# ${0:${VISUAL}}
-# endsnippet
-# 
-# snippet bis "binary search" b
-# from bisect import bisect_left
-# 
-# ${1:p} = bisect_left(${2:xs}, ${3:a})
-# ${0:${VISUAL}}
-# endsnippet
-# 
-# snippet bism "binary search manually" b
-# xs = [1, 2, 5, 7, 10]
-# x = 7
-# 
-# l, r = 0, len(xs) - 1
-# while l < r:
-#     m = (l + r) // 2
-#     if xs[m] < x:
-#         l = m + 1
-#     else:
-#         r = m
-# print(l)
-# ${0:${VISUAL}}
-# endsnippet
-# 
 # snippet dq "use deque in collections" b
 # from collections import deque
 # 
@@ -277,6 +269,30 @@ endsnippet
 # ${0:${VISUAL}}
 # endsnippet
 # 
+# snippet pq "get priority queue"
+# type ${1:data} struct{ ${2:x}, ${3:y} int }
+# type prQue []*$1
+# 
+# func (p prQue) Len() int            { return len(p) }
+# func (p prQue) Less(i, j int) bool  { return p[i].$2 > p[j].$2 }
+# func (p prQue) Swap(i, j int)       { p[i], p[j] = p[j], p[i] }
+# func (p *prQue) Push(x interface{}) { *p = append(*p, x.(*$1)) }
+# func (p *prQue) Pop() interface{} {
+# 	old := *p
+# 	n := len(old)
+# 	x := old[n-1]
+# 	*p = old[0 : n-1]
+# 	return x
+# }
+# 
+# pq := make(prQue, 0, ${4:n})
+# heap.Push(&pq, &$1{2, 1})
+# heap.Push(&pq, &$1{3, 2})
+# heap.Push(&pq, &$1{1, 3})
+# for len(pq) > 0 {
+# 	v := heap.Pop(&pq).(*$1)
+# }
+# endsnippet
 # snippet hqmi "use heapq in collections(pop by min)" b
 # from heapq import heappop, heappush
 # 
@@ -424,6 +440,21 @@ endsnippet
 # 
 # list(permutations(${1:xs}))
 # ${0:${VISUAL}}
+# endsnippet
+# 
+# snippet pow "get x**y the base-x exponential of y by mod"
+# const mod = 1000000007
+# 
+# func pow(x, y int) int {
+# 	if y == 0 {
+# 		return 1
+# 	} else if y%2 == 0 {
+# 		x2 := pow(x, y/2)
+# 		return x2 * x2 % mod
+# 	} else {
+# 		return x * pow(x, y-1) % mod
+# 	}
+# }
 # endsnippet
 # 
 # snippet cmb "get combination value" b
