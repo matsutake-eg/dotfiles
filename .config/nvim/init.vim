@@ -29,24 +29,26 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
-nnoremap <Esc><Esc> :noh<CR>
+nnoremap <Esc> :noh<CR>
 
 nnoremap <Right> :ALEHover<CR>
 nnoremap <Up> :ALEGoToDefinition<CR>
 nnoremap <Down> :ALEFindReferences<CR>
 nnoremap <F11> :ALERename<CR>
 nnoremap <F12> :ALEGoToDefinition -split<CR>
+nnoremap <Space>o :lopen<CR>
+nnoremap <Space>c :lclose<CR>
 if has("autocmd")
-  autocmd FileType go nnoremap <Left> :T go run %<CR><C-w>ja
+  autocmd FileType go nnoremap <Space>f :T go run %<CR><C-w>ja
   autocmd FileType go nnoremap <Right> :GoInfo<CR>
   autocmd FileType go nnoremap <Up> :GoDef<CR>
   autocmd FileType go nnoremap <Down> :GoReferrers<CR>
   autocmd FileType go nnoremap <F11> :GoRename<CR>
   autocmd FileType go nmap <F12> <Plug>(go-def-split)
-  autocmd FileType python nnoremap <Left> :T pypy3 %<CR><C-w>ja
-  autocmd FileType rust nnoremap <Left>s :T cargo atcoder submit %:t:r<CR>
-  autocmd FileType rust nnoremap <Left>t :T cargo atcoder test %:t:r<CR>
-  autocmd FileType rust nnoremap <Left>f :T cargo run --bin %:t:r<CR><C-w>ja
+  autocmd FileType python nnoremap <Space>f :T pypy3 %<CR><C-w>ja
+  autocmd FileType rust nnoremap <Space>s :T cargo atcoder submit %:t:r<CR>
+  autocmd FileType rust nnoremap <Space>t :T cargo atcoder test %:t:r<CR>
+  autocmd FileType rust nnoremap <Space>f :T cargo run --bin %:t:r<CR><C-w>ja
 endif
 
 inoremap jj <Esc>
@@ -129,7 +131,7 @@ let g:ale_linters = {
 \   'python': ['flake8'],
 \   'rust': ['rustc', 'rls'],
 \}
-let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_text_changed = 0
 let g:ale_lint_on_enter = 1
 let g:ale_lint_on_insert_leave = 0
 let g:ale_lint_on_save = 1
@@ -157,8 +159,7 @@ let g:ale_sign_warning = '--'
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-let g:ale_open_list = 1
-let g:ale_list_window_size = 5
+let g:ale_open_list = 0
 function! LinterStatus() abort
     let l:counts = ale#statusline#Count(bufnr(''))
 
