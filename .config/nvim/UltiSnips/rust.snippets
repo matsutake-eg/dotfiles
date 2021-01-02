@@ -25,15 +25,6 @@ ${0:${VISUAL}}
 println!("{}", ans);
 endsnippet
 
-snippet mod "a prime number used many times in programing contest"
-const MOD: usize = 1_000_000_007;
-${0:${VISUAL}}
-endsnippet
-
-snippet pi "use pi" b
-use std::f64::consts::PI;
-endsnippet
-
 snippet pt "println!"
 println!("${1:{}}", ${2:n});
 endsnippet
@@ -101,15 +92,23 @@ snippet vmin "get min value from Vector"
 ${1:a}.iter().min().unwrap()
 endsnippet
 
-snippet hmax "get max value from HashMap"
+snippet hmax "get max element from HashMap"
+${1:xh}.iter().max_by_key(|x| x.1).unwrap().0
+endsnippet
+
+snippet hmaxv "get max value from HashMap"
 ${1:xh}.values().max().unwrap()
 endsnippet
 
-snippet hmin "get min value from HashMap"
+snippet hmin "get min element from HashMap"
+${1:xh}.iter().min_by_key(|x| x.1).unwrap().0
+endsnippet
+
+snippet hminv "get min value from HashMap"
 ${1:xh}.values().min().unwrap()
 endsnippet
 
-snippet hmc "count in HashMap" b
+snippet hcou "count in HashMap" b
 *${1:xh}.entry(k).or_insert(0) += 1;
 endsnippet
 
@@ -136,8 +135,14 @@ ${1:a}.iter().fold(0, |acc, x| acc + x)${0:${VISUAL}}
 endsnippet
 
 snippet csum "get cumulative sum" b
-use itertools_num::ItertoolsNum as _;${0:${VISUAL}}
 let csum = ${1:a}.iter().cumsum().collect::<Vec<${2:usize}>>();
+endsnippet
+
+snippet csumz "get cumulative sum with inserting zero" b
+let csum = std::iter::once(&0)
+    .chain(&${1:a})
+    .cumsum()
+    .collect::<Vec<${2:usize}>>();
 endsnippet
 
 snippet pow "get value to the power of exp"
@@ -184,18 +189,17 @@ ${0:${VISUAL}}
 endsnippet
 
 snippet gcd "get GCD(Greatest Common Divisor)" b
-use num_integer::gcd;
 gcd(a, b)
 ${0:${VISUAL}}
 endsnippet
 
 snippet lcm "get LCM(Least Common Multiple)" b
-use num_integer::lcm;
 lcm(a, b)
 ${0:${VISUAL}}
 endsnippet
 
 snippet prm "get answer which is Prime Number or not" b
+${0:${VISUAL}}
 fn is_prime(x: usize) -> bool {
     if x < 2 {
         return false;
@@ -209,10 +213,10 @@ fn is_prime(x: usize) -> bool {
     }
     true
 }
-${0:${VISUAL}}
 endsnippet
 
 snippet prf "get answer of Prime Factorization" b
+${0:${VISUAL}}
 fn prime_fac(mut x: usize) -> HashSet<usize> {
     let mut pfs = HashSet::new();
     for i in 2..x {
@@ -228,7 +232,6 @@ fn prime_fac(mut x: usize) -> HashSet<usize> {
     pfs.insert(1);
     pfs
 }
-${0:${VISUAL}}
 endsnippet
 
 snippet forb "for loop and bit full search" b
@@ -244,10 +247,211 @@ for ${2:i} in 0..2usize.pow(${1:n} as u32) {
 ${0:${VISUAL}}
 endsnippet
 
-snippet uft "union find tree" b
-use petgraph::unionfind::UnionFind;
+snippet dq "use deque in collections" b
+let mut dq = VecDeque::new();
+dq.push_back(1);
+dq.push_back(2);
+dq.push_back(3);
+while let Some(v) = dq.pop_front() {
+    println!("{}", v);
+}
+${0:${VISUAL}}
+endsnippet
 
-let mut uft = UnionFind::new(n);
+snippet st "use deque for stack in collections" b
+let mut st = VecDeque::new();
+st.push_back(1);
+st.push_back(2);
+st.push_back(3);
+while let Some(v) = st.pop_back() {
+    println!("{}", v);
+}
+${0:${VISUAL}}
+endsnippet
+
+snippet pqmax "use priority queue(implemented with a binary heap) in collections(pop by max)" b
+let mut pq = BinaryHeap::new();
+pq.push(1);
+pq.push(3);
+pq.push(2);
+while let Some(v) = pq.pop() {
+    println!("{}", v);
+}
+${0:${VISUAL}}
+endsnippet
+
+snippet pqmin "use priority queue(implemented with a binary heap) in collections(pop by min)" b
+let mut pq = BinaryHeap::new();
+pq.push(Reverse(1));
+pq.push(Reverse(3));
+pq.push(Reverse(2));
+while let Some(v) = pq.pop() {
+    println!("{}", v.0);
+}
+${0:${VISUAL}}
+endsnippet
+
+snippet sin "sin(...)" b
+(PI / 2f64).sin()
+${0:${VISUAL}}
+endsnippet
+
+snippet cos "math.cos(...)" b
+(PI / 2f64).cos()
+${0:${VISUAL}}
+endsnippet
+
+snippet fac "get factorial value" b
+(2..=${1:n}).fold(1, |acc, x| acc * x)${0:${VISUAL}}
+endsnippet
+
+snippet facm "get factorial value with mod" b
+(2..=${1:n}).fold(1, |acc, x| acc * x % MOD)${0:${VISUAL}}
+endsnippet
+
+snippet fib "get fibonacci value" b
+${0:${VISUAL}}
+fn fib(x: usize) -> usize {
+    let (mut a, mut b) = (0, 1);
+    for _ in 0..x {
+        let t = a + b;
+        b = a;
+        a = t;
+    }
+    a
+}
+endsnippet
+
+snippet powm "get x**y the base-x exponential of y by mod"
+${0:${VISUAL}}
+fn powm(x: usize, y: usize) -> usize {
+    if y == 0 {
+        return 1;
+    } else if y % 2 == 0 {
+        let x = powm(x, y / 2);
+        return x * x % MOD;
+    }
+    x * powm(x, y - 1) % MOD
+}
+endsnippet
+
+snippet inv "inverse" b
+powm(${1:n}, ${2:p} - 2, $2)
+${0:${VISUAL}}
+
+fn powm(x: usize, y: usize, z: usize) -> usize {
+    if y == 0 {
+        return 1;
+    } else if y % 2 == 0 {
+        let x = powm(x, y / 2, z);
+        return x * x % z;
+    }
+    x * powm(x, y - 1, z) % z
+}
+endsnippet
+
+snippet per "get permutation" b
+let p = (0..${1:n}).permutations(${2:k}).collect::<Vec<Vec<${3:usize}>>>();
+println!("{}", p.len());
+${0:${VISUAL}}
+endsnippet
+
+snippet perm "get permutation value with mod" b
+${0:${VISUAL}}
+fn permutations_mod(n: usize, k: usize) -> usize {
+    let mut x = 1;
+    for i in (n - k + 1)..=n {
+        x = x * i % MOD;
+    }
+    x
+}
+endsnippet
+
+snippet cmb "get combination" b
+let c = (0..${1:n}).combinations(${2:k}).collect::<Vec<Vec<${3:usize}>>>();
+println!("{}", c.len());
+${0:${VISUAL}}
+endsnippet
+
+snippet cmbr "get combination with replacement" b
+let c = (0..${1:n})
+    .combinations_with_replacement(${2:k})
+    .collect::<Vec<Vec<${3:usize}>>>();
+println!("{}", c.len());
+${0:${VISUAL}}
+endsnippet
+
+snippet cmbm "get combination value with mod" b
+${0:${VISUAL}}
+fn combinations_mod(n: usize, k: usize) -> usize {
+    if k > n {
+        return 1;
+    }
+
+    let (mut nu, mut de) = (1, 1);
+    for i in 0..k {
+        nu = nu * (n - i) % MOD;
+        de = de * (i + 1) % MOD;
+    }
+    nu * powm(de, MOD - 2) % MOD
+}
+
+fn powm(x: usize, y: usize) -> usize {
+    if y == 0 {
+        return 1;
+    } else if y % 2 == 0 {
+        let x = powm(x, y / 2);
+        return x * x % MOD;
+    }
+    x * powm(x, y - 1) % MOD
+}
+endsnippet
+
+snippet gr "Data structure for graph"
+let mut g = vec![vec![]; n];
+for (a, b) in ab {
+    g[a].push(b);
+    g[b].push(a);
+}
+${0:${VISUAL}}
+endsnippet
+
+snippet dfs "Depth First Search in graph"
+let mut st = VecDeque::new();
+st.push_back(0);
+let mut seen = HashSet::new();
+seen.insert(0);
+while let Some(v) = st.pop_back() {
+    for nx in g[v].iter() {
+        if seen.contains(nx) {
+            continue;
+        }
+        st.push_back(*nx);
+        seen.insert(*nx);
+    }
+}
+${0:${VISUAL}}
+endsnippet
+
+snippet bfs "Breadth First Search in graph"
+let mut dq = VecDeque::new();
+dq.push_back(0);
+let mut seen = HashSet::new();
+seen.insert(0);
+while let Some(v) = dq.pop_front() {
+    for nx in g[v].iter() {
+        if seen.contains(nx) {
+            continue;
+        }
+        dq.push_back(*nx);
+        seen.insert(*nx);
+    }
+}
+${0:${VISUAL}}
+endsnippet
+
+snippet uft "union find tree" b
+let mut uft = unionfind::UnionFind::new(n);
 for (a, b) in ab {
     uft.union(a, b);
 }
@@ -259,358 +463,114 @@ for i in 0..n {
 ${0:${VISUAL}}
 endsnippet
 
-# snippet dq "use deque in collections" b
-# from collections import deque
-# 
-# ${1:q} = deque()
-# $1.append(1)
-# $1.appendleft(2)
-# print(*q)
-# ${0:${VISUAL}}
-# endsnippet
-# 
-# snippet pq "get priority queue"
-# type ${1:data} struct{ ${2:x}, ${3:y} int }
-# type prQue []*$1
-# 
-# func (p prQue) Len() int            { return len(p) }
-# func (p prQue) Less(i, j int) bool  { return p[i].$2 > p[j].$2 }
-# func (p prQue) Swap(i, j int)       { p[i], p[j] = p[j], p[i] }
-# func (p *prQue) Push(x interface{}) { *p = append(*p, x.(*$1)) }
-# func (p *prQue) Pop() interface{} {
-# 	old := *p
-# 	n := len(old)
-# 	x := old[n-1]
-# 	*p = old[0 : n-1]
-# 	return x
-# }
-# 
-# pq := make(prQue, 0, ${4:n})
-# heap.Push(&pq, &$1{2, 1})
-# heap.Push(&pq, &$1{3, 2})
-# heap.Push(&pq, &$1{1, 3})
-# for len(pq) > 0 {
-# 	v := heap.Pop(&pq).(*$1)
-# }
-# endsnippet
-# snippet hqmi "use heapq in collections(pop by min)" b
-# from heapq import heappop, heappush
-# 
-# ${1:q} = []
-# 
-# for i in range(n):
-#     heappush($1, i)
-# 
-# for _ in range(len($1)):
-#     print(heappop($1))
-# ${0:${VISUAL}}
-# endsnippet
-# 
-# snippet hqmx "use heapq in collections(pop by max)" b
-# from heapq import heappop, heappush
-# 
-# ${1:q} = []
-# 
-# for i in range(n):
-#     heappush($1, -i)
-# 
-# for _ in range(len($1)):
-#     print(-heappop($1))
-# ${0:${VISUAL}}
-# endsnippet
-# 
-# snippet cou "use Counter in collections" b
-# from collections import Counter
-# 
-# ${1:xc} = Counter(map(int, input().split()))
-# $1[2] += 1
-# mx = $1.most_common(1)[0][1]
-# ${2:xs} = []
-# for k, v in $1.items():
-#     if v == mx:
-#         $2.append(k)
-# ${0:${VISUAL}}
-# endsnippet
-# 
-# snippet sqrt "math.sqrt(...)" b
-# from math import sqrt
-# 
-# sqrt(${1:x})
-# ${0:${VISUAL}}
-# endsnippet
-# 
-# snippet floor "math.floor(...)" b
-# from math import floor
-# 
-# floor(${1:x})
-# ${0:${VISUAL}}
-# endsnippet
-# 
-# snippet ceil "math.ceil(...)" b
-# from math import ceil
-# 
-# ceil(${1:x})
-# ${0:${VISUAL}}
-# endsnippet
-# 
-# snippet round "round generally" b
-# def round_generally(x):
-#     spt = str(x).split(".")
-#     if len(spt) == 1:
-#         return int(x)
-#     elif int(spt[1]) >= 5:
-#         return int(spt[0]) + 1
-#     return int(spt[0])
-# 
-# ${0:${VISUAL}}
-# endsnippet
-# 
-# snippet sin "math.sin(...)" b
-# from math import pi, sin
-# 
-# sin(pi / 2)
-# ${0:${VISUAL}}
-# endsnippet
-# 
-# snippet cos "math.cos(...)" b
-# from math import cos, pi
-# 
-# cos(pi)
-# ${0:${VISUAL}}
-# endsnippet
-# 
-# snippet pi "math.pi" b
-# from math import pi
-# 
-# pi
-# ${0:${VISUAL}}
-# endsnippet
-# 
-# snippet ism "iterative square method" b
-# pow(${1:n}, ${2:m}, ${3:p})
-# ${0:${VISUAL}}
-# endsnippet
-# 
-# snippet inv "inverse" b
-# pow(${1:n}, ${2:p} - 2, $2)
-# ${0:${VISUAL}}
-# endsnippet
-# 
-# snippet fac "get factorial value" b
-# from math import factorial
-# 
-# factorial(${1:x})
-# ${0:${VISUAL}}
-# endsnippet
-# 
-# snippet facm "get factorial value with mod" b
-# def factorial_mod(x, mod=10 ** 9 + 7):
-#     fv = 1
-#     for i in range(2, x + 1):
-#         fv *= i
-#         fv %= mod
-#     return fv
-# 
-# ${0:${VISUAL}}
-# endsnippet
-# 
-# snippet per "get permutation value" b
-# def permutation(n, k):
-#     pv = 1
-#     for i in range(n, n - k, -1):
-#         pv *= i
-#     return pv
-# 
-# ${0:${VISUAL}}
-# endsnippet
-# 
-# snippet perm "get permutation value with mod" b
-# def permutation_mod(n, k, mod=10 ** 9 + 7):
-#     pv = 1
-#     for i in range(n, n - k, -1):
-#         pv *= i
-#         pv %= mod
-#     return pv
-# 
-# ${0:${VISUAL}}
-# endsnippet
-# 
-# snippet perl "get permutation list" b
-# from itertools import permutations
-# 
-# list(permutations(${1:xs}))
-# ${0:${VISUAL}}
-# endsnippet
-# 
-# snippet pow "get x**y the base-x exponential of y by mod"
-# const mod = 1000000007
-# 
-# func pow(x, y int) int {
-# 	if y == 0 {
-# 		return 1
-# 	} else if y%2 == 0 {
-# 		x2 := pow(x, y/2)
-# 		return x2 * x2 % mod
-# 	} else {
-# 		return x * pow(x, y-1) % mod
-# 	}
-# }
-# endsnippet
-# 
-# snippet cmb "get combination value" b
-# def combination(n, k):
-#     cv = 1
-#     for i in range(n, n - k, -1):
-#         cv *= i
-#     for i in range(2, k + 1):
-#         cv //= i
-#     return cv
-# 
-# ${0:${VISUAL}}
-# endsnippet
-# 
-# snippet cmbm "get combination value with mod" b
-# def combination_mod(n, k, mod=10 ** 9 + 7):
-#     if k > n:
-#         return 1
-# 
-#     nu, de = 1, 1
-#     for i in range(k):
-#         nu = nu * (n - i) % mod
-#         de = de * (i + 1) % mod
-#     return nu * pow(de, mod - 2, mod) % mod
-# 
-# ${0:${VISUAL}}
-# endsnippet
-# 
-# snippet cmbl "get combination list" b
-# from itertools import combinations
-# 
-# list(combinations(${1:xs}, ${2:k}))
-# ${0:${VISUAL}}
-# endsnippet
-# 
-# snippet cmblw "get combination list with_replacement" b
-# from itertools import combinations_with_replacement
-# 
-# list(combinations_with_replacement(${1:xs}, ${2:k}))
-# ${0:${VISUAL}}
-# endsnippet
-# 
-# snippet fib "get fibonacci value" b
-# def fibonacci(x):
-#     a, b = 0, 1
-#     for _ in range(x):
-#         a, b = b, a + b
-#     return a
-# 
-# ${0:${VISUAL}}
-# endsnippet
-# 
-# snippet gr "graph" b
-# ${1:n}, ${2:m} = map(int, input().split())
-# eg = [[] for _ in range($1 + 1)]
-# for _ in range($2):
-#     a, b = map(int, input().split())
-#     eg[a].append(b)
-#     eg[b].append(a)
-# 
-# ${0:${VISUAL}}
-# endsnippet
-# 
-# snippet dfs "depth first search in graph" b
-# from collections import deque
-# 
-# q = deque()
-# q.append(${1:x})
-# seen = {$1}
-# while len(q) > 0:
-#     v = q.pop()
-#     for t in eg[v]:
-#         if t in seen:
-#             continue
-#         q.append(t)
-#         seen.add(t)
-# 
-# ${0:${VISUAL}}
-# endsnippet
-# 
-# snippet bfs "breadth first search in graph" b
-# from collections import deque
-# 
-# q = deque()
-# q.append(${1:x})
-# seen = {$1}
-# while len(q) > 0:
-#     v = q.popleft()
-#     for t in eg[v]:
-#         if t in seen:
-#             continue
-#         q.append(t)
-#         seen.add(t)
-# 
-# ${0:${VISUAL}}
-# endsnippet
-# 
-# snippet wf "warshall floyd algorithm" b
-# ${1:n}, ${2:m} = map(int, input().split())
-# ${3:ds} = [[10 ** 9] * $1 for _ in range($1)]
-# for i in range($1):
-#     $3[i][i] = 0
-# 
-# for _ in range($2):
-#     a, b, t = map(int, input().split())
-#     ds[a - 1][b - 1] = t
-#     ds[b - 1][a - 1] = t
-# 
-# for k in range($1):
-#     for i in range($1):
-#         for j in range($1):
-#             $3[i][j] = min($3[i][j], $3[i][k] + $3[k][j])
-# 
-# ans = 10 ** 9
-# for i in range($1):
-#     ans = min(ans, max($1[i]))
-# print(ans)
-# ${0:${VISUAL}}
-# endsnippet
-# 
-# snippet fen "fenwick tree(Binary Indexed Tree)" b
-# ${1:n}, ${2:m} = map(int, input().split())
-# bit = [0] * ($1 + 1)
-# 
-# 
-# def fenwick_add(x, w):
-#     while x <= $1:
-#         bit[x] += w
-#         x += x & -x
-# 
-# 
-# def fenwick_sum(x):
-#     sm = 0
-#     while x > 0:
-#         sm += bit[x]
-#         x -= x & -x
-#     return sm
-# 
-# 
-# for _ in range($2):
-#     a, b = map(int, input().split())
-#     fenwick_add(a, b)
-# 
-# for i in range(1, $1 + 1):
-#     print(fenwick_sum(i))
-# ${0:${VISUAL}}
-# endsnippet
-# snippet da "date calculation" b
-# from datetime import date, timedelta
-# 
-# y, m, d = map(int, input().split("/"))
-# d = date(y, m, d)
-# d.weekday()
-# d += timedelta(days=1)
-# print(d.strftime("%Y/%m/%d %H:%M:%S"))
-# ${0:${VISUAL}}
-# endsnippet
+snippet war "Warshall Floyd Algorithm"
+let mut ds = vec![vec![1_000_000_000; ${1:n}]; $1];
+for i in 0..$1 {
+    ds[i][i] = 0;
+}
+for (a, b, w) in ab {
+    ds[a][b] = w;
+    ds[b][a] = w;
+}
+for k in 0..${2:m} {
+    for i in 0..$2 {
+        for j in 0..$2 {
+            ds[i][j] = min(ds[i][j], ds[i][k] + ds[k][j]);
+        }
+    }
+}
+
+let mut ans = 1_000_000_000;
+for i in 0..$1 {
+    ans = min(ans, *ds[i].iter().max().unwrap());
+}
+${0:${VISUAL}}
+endsnippet
+
+snippet fen "fenwick tree(Binary Indexed Tree)" b
+${0:${VISUAL}}
+#[allow(unused)]
+mod fenwick_tree {
+    /// `FenwickTree` is a data structure that can efficiently update elements
+    /// and calculate prefix sums in a table of numbers.
+    /// [https://en.wikipedia.org/wiki/Fenwick_tree](https://en.wikipedia.org/wiki/Fenwick_tree)
+    pub struct FenwickTree<T> {
+        n: usize,
+        data: Vec<T>,
+        init: T,
+    }
+
+    impl<T: Copy + std::ops::AddAssign + std::ops::Sub<Output = T>> FenwickTree<T> {
+        /// Constructs a new `FenwickTree`. The size of `FenwickTree` should be specified by `size`.
+        pub fn new(size: usize, init: T) -> FenwickTree<T> {
+            FenwickTree {
+                n: size + 1,
+                data: vec![init; size + 1],
+                init,
+            }
+        }
+
+        pub fn add(&mut self, k: usize, value: T) {
+            let mut x = k;
+            while x < self.n {
+                self.data[x] += value;
+                x |= x + 1;
+            }
+        }
+
+        /// Returns a sum of range `[l, r)`
+        pub fn sum(&self, l: usize, r: usize) -> T {
+            self.sum_one(r) - self.sum_one(l)
+        }
+
+        /// Returns a sum of range `[0, k)`
+        pub fn sum_one(&self, k: usize) -> T {
+            assert!(k < self.n, "k={} n={}", k, self.n);
+
+            let mut result = self.init;
+            let mut x = k as i32 - 1;
+            while x >= 0 {
+                result += self.data[x as usize];
+                x = (x & (x + 1)) - 1;
+            }
+
+            result
+        }
+    }
+}
+
+pub struct IO<R, W: std::io::Write>(R, std::io::BufWriter<W>);
+
+impl<R: std::io::Read, W: std::io::Write> IO<R, W> {
+    pub fn new(r: R, w: W) -> Self {
+        Self(r, std::io::BufWriter::new(w))
+    }
+    pub fn write<S: ToString>(&mut self, s: S) {
+        use std::io::Write;
+        self.1.write_all(s.to_string().as_bytes()).unwrap();
+    }
+    pub fn read<T: std::str::FromStr>(&mut self) -> T {
+        use std::io::Read;
+        let buf = self
+            .0
+            .by_ref()
+            .bytes()
+            .map(|b| b.unwrap())
+            .skip_while(|&b| b == b' ' || b == b'\n' || b == b'\r' || b == b'\t')
+            .take_while(|&b| b != b' ' && b != b'\n' && b != b'\r' && b != b'\t')
+            .collect::<Vec<_>>();
+        unsafe { std::str::from_utf8_unchecked(&buf) }
+            .parse()
+            .ok()
+            .expect("Parse error.")
+    }
+    pub fn vec<T: std::str::FromStr>(&mut self, n: usize) -> Vec<T> {
+        (0..n).map(|_| self.read()).collect()
+    }
+    pub fn chars(&mut self) -> Vec<char> {
+        self.read::<String>().chars().collect()
+    }
+}
+endsnippet
 
 # vim:ft=snippets:
