@@ -93,23 +93,23 @@ ${1:a}.iter().min().unwrap()
 endsnippet
 
 snippet hmax "get max element from HashMap"
-${1:xh}.iter().max_by_key(|x| x.1).unwrap().0
+${1:hm}.iter().max_by_key(|x| x.1).unwrap().0
 endsnippet
 
 snippet hmaxv "get max value from HashMap"
-${1:xh}.values().max().unwrap()
+${1:hm}.values().max().unwrap()
 endsnippet
 
 snippet hmin "get min element from HashMap"
-${1:xh}.iter().min_by_key(|x| x.1).unwrap().0
+${1:hm}.iter().min_by_key(|x| x.1).unwrap().0
 endsnippet
 
 snippet hminv "get min value from HashMap"
-${1:xh}.values().min().unwrap()
+${1:hm}.values().min().unwrap()
 endsnippet
 
 snippet hcou "count in HashMap" b
-*${1:xh}.entry(k).or_insert(0) += 1;
+*${1:hm}.entry(k).or_insert(0) += 1;
 endsnippet
 
 snippet fold "An iterator method that applies a function, producing a single, final value."
@@ -130,7 +130,11 @@ let ${1:b}: Vec<${2:usize}> = ${3:a}.iter().cloned().filter(|&x| x % 2 == 0).col
 ${0:${VISUAL}}
 endsnippet
 
-snippet sum "get sum value by fold"
+snippet sum "get sum value"
+${1:a}.iter().sum::<${2:usize}>()${0:${VISUAL}}
+endsnippet
+
+snippet sumf "get sum value by fold"
 ${1:a}.iter().fold(0, |acc, x| acc + x)${0:${VISUAL}}
 endsnippet
 
