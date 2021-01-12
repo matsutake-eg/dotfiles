@@ -47,6 +47,7 @@ if has("autocmd")
   autocmd FileType go nmap <F12> <Plug>(go-def-split)
   autocmd FileType python nnoremap <Space>f :T pypy3 %<CR><C-w>ja
   autocmd FileType rust nnoremap <Space>s :T cargo atcoder submit %:t:r<CR>
+  autocmd FileType rust nnoremap <Space>S :T cargo atcoder submit --skip-test %:t:r<CR>
   autocmd FileType rust nnoremap <Space>t :T cargo atcoder test %:t:r<CR>
   autocmd FileType rust nnoremap <Space>f :T cargo run --bin %:t:r<CR><C-w>ja
 endif
