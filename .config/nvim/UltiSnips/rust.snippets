@@ -495,9 +495,6 @@ snippet fen "fenwick tree(Binary Indexed Tree)" b
 ${0:${VISUAL}}
 #[allow(unused)]
 mod fenwick_tree {
-    /// `FenwickTree` is a data structure that can efficiently update elements
-    /// and calculate prefix sums in a table of numbers.
-    /// [https://en.wikipedia.org/wiki/Fenwick_tree](https://en.wikipedia.org/wiki/Fenwick_tree)
     pub struct FenwickTree<T> {
         n: usize,
         data: Vec<T>,
@@ -505,7 +502,6 @@ mod fenwick_tree {
     }
 
     impl<T: Copy + std::ops::AddAssign + std::ops::Sub<Output = T>> FenwickTree<T> {
-        /// Constructs a new `FenwickTree`. The size of `FenwickTree` should be specified by `size`.
         pub fn new(size: usize, init: T) -> FenwickTree<T> {
             FenwickTree {
                 n: size + 1,
@@ -522,12 +518,10 @@ mod fenwick_tree {
             }
         }
 
-        /// Returns a sum of range `[l, r)`
         pub fn sum(&self, l: usize, r: usize) -> T {
             self.sum_one(r) - self.sum_one(l)
         }
 
-        /// Returns a sum of range `[0, k)`
         pub fn sum_one(&self, k: usize) -> T {
             assert!(k < self.n, "k={} n={}", k, self.n);
 
@@ -542,37 +536,73 @@ mod fenwick_tree {
         }
     }
 }
+endsnippet
 
-pub struct IO<R, W: std::io::Write>(R, std::io::BufWriter<W>);
+snippet seg "Segment Tree" b
+    let mut st = SegTree::new(n, |x, y| x ^ y, 0);
+    for i in 0..n {
+        st.update(i, a[i]);
+    }
+    for (t, x, y) in txy {
+        if t == 1 {
+            st.update(x, (st.query(x, x + 1)) ^ y);
+        } else {
+            println!("{}", st.query(x, y));
+        }
+    }
 
-impl<R: std::io::Read, W: std::io::Write> IO<R, W> {
-    pub fn new(r: R, w: W) -> Self {
-        Self(r, std::io::BufWriter::new(w))
+${0:${VISUAL}}
+#[allow(unused)]
+struct SegTree<I, BiOp> {
+    n: usize,
+    dat: Vec<I>,
+    op: BiOp,
+    e: I,
+}
+
+impl<I, BiOp> SegTree<I, BiOp>
+where
+    BiOp: Fn(I, I) -> I,
+    I: Copy,
+{
+    pub fn new(n_: usize, op: BiOp, e: I) -> Self {
+        let mut n = 1;
+        while n < n_ {
+            n *= 2;
+        }
+        SegTree {
+            n: n,
+            dat: vec![e; 2 * n - 1],
+            op: op,
+            e: e,
+        }
     }
-    pub fn write<S: ToString>(&mut self, s: S) {
-        use std::io::Write;
-        self.1.write_all(s.to_string().as_bytes()).unwrap();
+
+    pub fn update(&mut self, idx: usize, v: I) {
+        let mut k = idx + self.n - 1;
+        self.dat[k] = v;
+        while k > 0 {
+            k = (k - 1) / 2;
+            self.dat[k] = (self.op)(self.dat[2 * k + 1], self.dat[2 * k + 2]);
+        }
     }
-    pub fn read<T: std::str::FromStr>(&mut self) -> T {
-        use std::io::Read;
-        let buf = self
-            .0
-            .by_ref()
-            .bytes()
-            .map(|b| b.unwrap())
-            .skip_while(|&b| b == b' ' || b == b'\n' || b == b'\r' || b == b'\t')
-            .take_while(|&b| b != b' ' && b != b'\n' && b != b'\r' && b != b'\t')
-            .collect::<Vec<_>>();
-        unsafe { std::str::from_utf8_unchecked(&buf) }
-            .parse()
-            .ok()
-            .expect("Parse error.")
-    }
-    pub fn vec<T: std::str::FromStr>(&mut self, n: usize) -> Vec<T> {
-        (0..n).map(|_| self.read()).collect()
-    }
-    pub fn chars(&mut self) -> Vec<char> {
-        self.read::<String>().chars().collect()
+
+    pub fn query(&self, mut a: usize, mut b: usize) -> I {
+        let mut left = self.e;
+        let mut right = self.e;
+        a += self.n - 1;
+        b += self.n - 1;
+        while a < b {
+            if (a & 1) == 0 {
+                left = (self.op)(left, self.dat[a]);
+            }
+            if (b & 1) == 0 {
+                right = (self.op)(self.dat[b - 1], right);
+            }
+            a = a / 2;
+            b = (b - 1) / 2;
+        }
+        (self.op)(left, right)
     }
 }
 endsnippet
