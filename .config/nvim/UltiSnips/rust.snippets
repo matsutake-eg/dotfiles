@@ -149,10 +149,6 @@ let csum = std::iter::once(&0)
     .collect::<Vec<${2:usize}>>();
 endsnippet
 
-snippet pow "get value to the power of exp"
-${1:a}.pow(${2:b} as u32)${0:${VISUAL}}
-endsnippet
-
 snippet sort "sort Vector" b
 let mut ${1:a} = $1;
 $1.sort();
@@ -238,6 +234,289 @@ fn prime_fac(mut x: usize) -> HashSet<usize> {
 }
 endsnippet
 
+snippet mod "use ModInt" b
+let n = mod_int(n);
+println!("{}", n.value());
+${0:${VISUAL}}
+use std::ops::{
+    Add, AddAssign, BitAnd, Div, DivAssign, Mul, MulAssign, RemAssign, ShrAssign, Sub, SubAssign,
+};
+
+fn mod_int(v: ${1:usize}) -> ModInt<$1> {
+    ModInt::new(v, ${2:1_000_000_007})
+}
+pub struct ModInt<T> {
+    v: T,
+    m: T,
+}
+
+impl<T> ModInt<T>
+where
+    T: Copy,
+{
+    pub fn value(&self) -> T {
+        self.v
+    }
+    pub fn modulo(&self) -> T {
+        self.m
+    }
+}
+
+impl<T> ModInt<T> {
+    fn new_unchecked(v: T, modulo: T) -> Self {
+        Self { v, m: modulo }
+    }
+}
+
+impl<T> ModInt<T>
+where
+    T: Copy + RemAssign + PartialOrd,
+{
+    pub fn new(mut v: T, modulo: T) -> Self {
+        if v >= modulo {
+            v %= modulo;
+        }
+        Self::new_unchecked(v, modulo)
+    }
+}
+
+impl<T> ModInt<T>
+where
+    T: Copy
+        + Sub<Output = T>
+        + ShrAssign
+        + BitAnd<Output = T>
+        + PartialEq
+        + PartialOrd
+        + Div<Output = T>
+        + RemAssign,
+    ModInt<T>: MulAssign,
+{
+    pub fn pow(self, e: T) -> Self {
+        let zero = self.modulo() - self.modulo();
+        let one = self.modulo() / self.modulo();
+        let mut e = e;
+        let mut result = Self::new_unchecked(one, self.modulo());
+        let mut cur = self;
+        while e > zero {
+            if e & one == one {
+                result *= cur;
+            }
+            e >>= one;
+            cur *= cur;
+        }
+        result
+    }
+}
+
+impl<T> Copy for ModInt<T> where T: Copy {}
+impl<T> Clone for ModInt<T>
+where
+    T: Copy,
+{
+    fn clone(&self) -> Self {
+        Self::new_unchecked(self.value(), self.modulo())
+    }
+}
+
+impl<T> Add<T> for ModInt<T>
+where
+    T: AddAssign + SubAssign + RemAssign + Copy + PartialOrd,
+{
+    type Output = Self;
+    fn add(self, mut rhs: T) -> Self::Output {
+        if rhs >= self.modulo() {
+            rhs %= self.modulo();
+        }
+        rhs += self.value();
+        if rhs >= self.modulo() {
+            rhs -= self.modulo();
+        }
+        Self::new_unchecked(rhs, self.modulo())
+    }
+}
+
+impl<T> Sub<T> for ModInt<T>
+where
+    T: AddAssign + SubAssign + RemAssign + Copy + PartialOrd,
+{
+    type Output = Self;
+    fn sub(self, mut rhs: T) -> Self::Output {
+        if rhs >= self.modulo() {
+            rhs %= self.modulo();
+        }
+
+        let mut result = self.value();
+        result += self.modulo();
+        result -= rhs;
+
+        if result >= self.modulo() {
+            result -= self.modulo();
+        }
+        Self::new_unchecked(result, self.modulo())
+    }
+}
+
+impl<T> Mul<T> for ModInt<T>
+where
+    T: MulAssign + RemAssign + Copy + PartialOrd,
+{
+    type Output = Self;
+    fn mul(self, mut rhs: T) -> Self::Output {
+        if rhs >= self.modulo() {
+            rhs %= self.modulo();
+        }
+        rhs *= self.value();
+        rhs %= self.modulo();
+        Self::new_unchecked(rhs, self.modulo())
+    }
+}
+
+impl<T> Add<ModInt<T>> for ModInt<T>
+where
+    T: Copy,
+    ModInt<T>: Add<T, Output = ModInt<T>>,
+{
+    type Output = Self;
+    fn add(self, rhs: ModInt<T>) -> Self::Output {
+        self + rhs.value()
+    }
+}
+impl<T> Sub<ModInt<T>> for ModInt<T>
+where
+    T: Copy,
+    ModInt<T>: Sub<T, Output = ModInt<T>>,
+{
+    type Output = Self;
+    fn sub(self, rhs: ModInt<T>) -> Self::Output {
+        self - rhs.value()
+    }
+}
+impl<T> Mul<ModInt<T>> for ModInt<T>
+where
+    T: Copy,
+    ModInt<T>: Mul<T, Output = ModInt<T>>,
+{
+    type Output = Self;
+    fn mul(self, rhs: ModInt<T>) -> Self::Output {
+        self * rhs.value()
+    }
+}
+impl<T> Div<ModInt<T>> for ModInt<T>
+where
+    T: Copy,
+    ModInt<T>: Div<T, Output = ModInt<T>>,
+{
+    type Output = Self;
+    fn div(self, rhs: ModInt<T>) -> Self::Output {
+        self / rhs.value()
+    }
+}
+
+impl<T> AddAssign<T> for ModInt<T>
+where
+    T: Copy,
+    ModInt<T>: Add<T, Output = ModInt<T>>,
+{
+    fn add_assign(&mut self, other: T) {
+        *self = *self + other;
+    }
+}
+impl<T> AddAssign<ModInt<T>> for ModInt<T>
+where
+    T: Copy,
+    ModInt<T>: Add<ModInt<T>, Output = ModInt<T>>,
+{
+    fn add_assign(&mut self, other: ModInt<T>) {
+        *self = *self + other;
+    }
+}
+
+impl<T> SubAssign<T> for ModInt<T>
+where
+    T: Copy,
+    ModInt<T>: Sub<T, Output = ModInt<T>>,
+{
+    fn sub_assign(&mut self, other: T) {
+        *self = *self - other;
+    }
+}
+
+impl<T> SubAssign<ModInt<T>> for ModInt<T>
+where
+    T: Copy,
+    ModInt<T>: Sub<ModInt<T>, Output = ModInt<T>>,
+{
+    fn sub_assign(&mut self, other: ModInt<T>) {
+        *self = *self - other;
+    }
+}
+
+impl<T> DivAssign<T> for ModInt<T>
+where
+    T: Copy,
+    ModInt<T>: Div<T, Output = ModInt<T>>,
+{
+    fn div_assign(&mut self, rhs: T) {
+        *self = *self / rhs
+    }
+}
+impl<T> DivAssign<ModInt<T>> for ModInt<T>
+where
+    T: Copy,
+    ModInt<T>: Div<ModInt<T>, Output = ModInt<T>>,
+{
+    fn div_assign(&mut self, rhs: ModInt<T>) {
+        *self = *self / rhs
+    }
+}
+
+impl<T> MulAssign<T> for ModInt<T>
+where
+    T: Copy,
+    ModInt<T>: Mul<T, Output = ModInt<T>>,
+{
+    fn mul_assign(&mut self, rhs: T) {
+        *self = *self * rhs;
+    }
+}
+
+impl<T> MulAssign<ModInt<T>> for ModInt<T>
+where
+    T: Copy,
+    ModInt<T>: Mul<ModInt<T>, Output = ModInt<T>>,
+{
+    fn mul_assign(&mut self, rhs: ModInt<T>) {
+        *self = *self * rhs;
+    }
+}
+
+impl<T> Div<T> for ModInt<T>
+where
+    T: Copy
+        + Add<Output = T>
+        + Sub<Output = T>
+        + Div<Output = T>
+        + BitAnd<Output = T>
+        + PartialEq
+        + PartialOrd
+        + ShrAssign
+        + RemAssign
+        + MulAssign,
+{
+    type Output = Self;
+    fn div(self, mut rhs: T) -> Self::Output {
+        if rhs >= self.modulo() {
+            rhs %= self.modulo();
+        }
+        let one = self.modulo() / self.modulo();
+        let two = one + one;
+        self * Self::new_unchecked(rhs, self.modulo()).pow(self.modulo() - two)
+    }
+}
+endsnippet
+
+
 snippet forb "for loop and bit full search" b
 for ${2:i} in 0..2usize.pow(${1:n} as u32) {
     let mut hs = HashSet::new();
@@ -309,10 +588,6 @@ snippet fac "get factorial value" b
 (2..=${1:n}).fold(1, |acc, x| acc * x)${0:${VISUAL}}
 endsnippet
 
-snippet facm "get factorial value with mod" b
-(2..=${1:n}).fold(1, |acc, x| acc * x % MOD)${0:${VISUAL}}
-endsnippet
-
 snippet fib "get fibonacci value" b
 ${0:${VISUAL}}
 fn fib(x: usize) -> usize {
@@ -326,49 +601,10 @@ fn fib(x: usize) -> usize {
 }
 endsnippet
 
-snippet powm "get x**y the base-x exponential of y by mod"
-${0:${VISUAL}}
-fn powm(x: usize, y: usize) -> usize {
-    if y == 0 {
-        return 1;
-    } else if y % 2 == 0 {
-        let x = powm(x, y / 2);
-        return x * x % MOD;
-    }
-    x * powm(x, y - 1) % MOD
-}
-endsnippet
-
-snippet inv "inverse" b
-powm(${1:n}, ${2:p} - 2, $2)
-${0:${VISUAL}}
-
-fn powm(x: usize, y: usize, z: usize) -> usize {
-    if y == 0 {
-        return 1;
-    } else if y % 2 == 0 {
-        let x = powm(x, y / 2, z);
-        return x * x % z;
-    }
-    x * powm(x, y - 1, z) % z
-}
-endsnippet
-
 snippet per "get permutation" b
 let p = (0..${1:n}).permutations(${2:k}).collect::<Vec<Vec<${3:usize}>>>();
 println!("{}", p.len());
 ${0:${VISUAL}}
-endsnippet
-
-snippet perm "get permutation value with mod" b
-${0:${VISUAL}}
-fn permutations_mod(n: usize, k: usize) -> usize {
-    let mut x = 1;
-    for i in (n - k + 1)..=n {
-        x = x * i % MOD;
-    }
-    x
-}
 endsnippet
 
 snippet cmb "get combination" b
@@ -383,32 +619,6 @@ let c = (0..${1:n})
     .collect::<Vec<Vec<${3:usize}>>>();
 println!("{}", c.len());
 ${0:${VISUAL}}
-endsnippet
-
-snippet cmbm "get combination value with mod" b
-${0:${VISUAL}}
-fn combinations_mod(n: usize, k: usize) -> usize {
-    if k > n {
-        return 1;
-    }
-
-    let (mut nu, mut de) = (1, 1);
-    for i in 0..k {
-        nu = nu * (n - i) % MOD;
-        de = de * (i + 1) % MOD;
-    }
-    nu * powm(de, MOD - 2) % MOD
-}
-
-fn powm(x: usize, y: usize) -> usize {
-    if y == 0 {
-        return 1;
-    } else if y % 2 == 0 {
-        let x = powm(x, y / 2);
-        return x * x % MOD;
-    }
-    x * powm(x, y - 1) % MOD
-}
 endsnippet
 
 snippet gr "Data structure for graph"
