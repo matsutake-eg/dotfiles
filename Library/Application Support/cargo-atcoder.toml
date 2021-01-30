@@ -82,7 +82,7 @@ fn main() {
         // t:Chars,
         // a:[usize;n],
         // ab: [(usize,usize);n],
-        // ab: [(Usize1, Usize1); m],
+        // ab: [(Usize1, Usize1);m],
         // a:[[usize;m];n],
     }
 }
