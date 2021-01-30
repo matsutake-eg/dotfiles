@@ -40,19 +40,19 @@ for ${1:v} in ${2:a} {
 endsnippet
 
 snippet forr "reverse for ... in ..." b
-for ${1:v} in ${2:a}.iter().rev() {
+for ${1:v} in ${2:a}.into_iter().rev() {
     ${0:${VISUAL}}
 }
 endsnippet
 
-snippet fore "for ... in ....iter().enumerate()" b
-for (${1:i}, ${2:v}) in ${3:a}.iter().enumerate() {
+snippet fore "for ... in ....into_iter().enumerate()" b
+for (${1:i}, ${2:v}) in ${3:a}.into_iter().enumerate() {
     ${0:${VISUAL}}
 }
 endsnippet
 
-snippet forer "for ... in ....iter().rev().enumerate()" b
-for (${1:i}, ${2:v}) in ${3:a}.iter().rev().enumerate() {
+snippet forer "for ... in ....into_iter().rev().enumerate()" b
+for (${1:i}, ${2:v}) in ${3:a}.into_iter().rev().enumerate() {
     ${0:${VISUAL}}
 }
 endsnippet
@@ -81,27 +81,35 @@ snippet join "Same as 'concat', concat String"
 endsnippet
 
 snippet revs "reverse string"
-${1:s}.iter().rev().collect::<String>()${0:${VISUAL}}
+${1:s}.into_iter().rev().collect::<String>()${0:${VISUAL}}
 endsnippet
 
 snippet imax "get max value from Iterator"
-${1:a}.iter().max().unwrap()
+${1:a}.into_iter().max().unwrap()
+endsnippet
+
+snippet imaxm "get max value from multiple Iterator"
+${1:a}.into_iter().map(|x| x.into_iter().max().unwrap()).max().unwrap()
 endsnippet
 
 snippet imin "get min value from Iterator"
-${1:a}.iter().min().unwrap()
+${1:a}.into_iter().min().unwrap()
+endsnippet
+
+snippet iminm "get min value from multiple Iterator"
+${1:a}.into_iter().map(|x| x.into_iter().min().unwrap()).min().unwrap()
 endsnippet
 
 snippet iind "get index from Iterator"
-${1:a}.iter().position(|&x| x == ${2:v}).unwrap()
+${1:a}.into_iter().position(|x| x == ${2:v}).unwrap()
 endsnippet
 
 snippet ipos "Same as iindex, get index from Iterator"
-${1:a}.iter().position(|&x| x == ${2:v}).unwrap()
+${1:a}.into_iter().position(|x| x == ${2:v}).unwrap()
 endsnippet
 
 snippet hmaxk "get max key from HashMap"
-${1:hm}.iter().max_by_key(|x| x.1).unwrap().0
+${1:hm}.into_iter().max_by_key(|x| x.1).unwrap().0
 endsnippet
 
 snippet hmaxv "get max value from HashMap"
@@ -109,7 +117,7 @@ ${1:hm}.values().max().unwrap()
 endsnippet
 
 snippet hmink "get min key from HashMap"
-${1:hm}.iter().min_by_key(|x| x.1).unwrap().0
+${1:hm}.into_iter().min_by_key(|x| x.1).unwrap().0
 endsnippet
 
 snippet hminv "get min value from HashMap"
@@ -129,25 +137,25 @@ ${1:a}.iter().fold($1[0], |acc, &x| gcd(acc, x))${0:${VISUAL}}
 endsnippet
 
 snippet map "map function"
-let ${1:b}: Vec<${2:usize}> = ${3:a}.iter().map(|x| x * 2).collect();
+let ${1:b}: Vec<${2:usize}> = ${3:a}.into_iter().map(|x| x * 2).collect();
 ${0:${VISUAL}}
 endsnippet
 
 snippet fil "filter function"
-let ${1:b}: Vec<${2:usize}> = ${3:a}.iter().cloned().filter(|&x| x % 2 == 0).collect();
+let ${1:b}: Vec<${2:usize}> = ${3:a}.into_iter().filter(|x| x % 2 == 0).collect();
 ${0:${VISUAL}}
 endsnippet
 
 snippet sum "get sum value"
-${1:a}.iter().sum::<${2:usize}>()${0:${VISUAL}}
+${1:a}.into_iter().sum::<${2:usize}>()${0:${VISUAL}}
 endsnippet
 
 snippet sumf "get sum value by fold"
-${1:a}.iter().fold(0, |acc, x| acc + x)${0:${VISUAL}}
+${1:a}.into_iter().fold(0, |acc, x| acc + x)${0:${VISUAL}}
 endsnippet
 
 snippet csum "get cumulative sum" b
-let csum = ${1:a}.iter().cumsum().collect::<Vec<${2:usize}>>();
+let csum = ${1:a}.into_iter().cumsum().collect::<Vec<${2:usize}>>();
 endsnippet
 
 snippet csumz "get cumulative sum with inserting zero" b
@@ -704,7 +712,7 @@ for k in 0..${2:m} {
 
 let mut ans = 1_000_000_000;
 for i in 0..$1 {
-    ans = min(ans, *ds[i].iter().max().unwrap());
+    ans = min(ans, *ds[i].into_iter().max().unwrap());
 }
 ${0:${VISUAL}}
 endsnippet
