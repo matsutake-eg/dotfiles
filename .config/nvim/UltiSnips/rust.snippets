@@ -84,15 +84,23 @@ snippet revs "reverse string"
 ${1:s}.iter().rev().collect::<String>()${0:${VISUAL}}
 endsnippet
 
-snippet vmax "get max value from Vector"
+snippet imax "get max value from Iterator"
 ${1:a}.iter().max().unwrap()
 endsnippet
 
-snippet vmin "get min value from Vector"
+snippet imin "get min value from Iterator"
 ${1:a}.iter().min().unwrap()
 endsnippet
 
-snippet hmax "get max element from HashMap"
+snippet iind "get index from Iterator"
+${1:a}.iter().position(|&x| x == ${2:v}).unwrap()
+endsnippet
+
+snippet ipos "Same as iindex, get index from Iterator"
+${1:a}.iter().position(|&x| x == ${2:v}).unwrap()
+endsnippet
+
+snippet hmaxk "get max key from HashMap"
 ${1:hm}.iter().max_by_key(|x| x.1).unwrap().0
 endsnippet
 
@@ -100,7 +108,7 @@ snippet hmaxv "get max value from HashMap"
 ${1:hm}.values().max().unwrap()
 endsnippet
 
-snippet hmin "get min element from HashMap"
+snippet hmink "get min key from HashMap"
 ${1:hm}.iter().min_by_key(|x| x.1).unwrap().0
 endsnippet
 
