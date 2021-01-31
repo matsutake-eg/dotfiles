@@ -72,6 +72,10 @@ snippet ston "same as 'pars', parse String to number"
 ${1:s}.parse::<${2:usize}>().unwrap())${0:${VISUAL}}
 endsnippet
 
+snippet ctos "parse Vec<char> to String"
+${1:s}.into_iter().collect::<String>()
+endsnippet
+
 snippet con "concat String"
 [${1:s}, ${2:t}].concat()${0:${VISUAL}}
 endsnippet
