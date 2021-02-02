@@ -191,6 +191,11 @@ let idx = ${1:a}.binary_search(&${2:x}).unwrap_or_else(|x| x);
 ${0:${VISUAL}}
 endsnippet
 
+snippet bisf "binary search by function" b
+let idx = ${1:a}.binary_search_by(|x| ((1 + x) * x / 2).cmp(&(n + 1))).unwrap_or_else(|x| x);
+${0:${VISUAL}}
+endsnippet
+
 snippet bism "binary search manually" b
 let a = vec![1, 2, 5, 7, 10];
 let x = 7;
