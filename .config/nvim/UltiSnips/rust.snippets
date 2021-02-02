@@ -197,18 +197,15 @@ ${0:${VISUAL}}
 endsnippet
 
 snippet bism "binary search manually" b
-let a = vec![1, 2, 5, 7, 10];
-let x = 7;
-let (mut l, mut r) = (0, a.len() - 1);
-while l < r {
+let (mut l, mut r) = (1, n + 1);
+while r - l > 1 {
     let m = (l + r) / 2;
-    if a[m] < x {
-        l = m + 1;
-    } else {
+    if (1 + m) * m / 2 > n + 1 {
         r = m;
+    } else {
+        l = m;
     }
 }
-println!("{}", l);
 ${0:${VISUAL}}
 endsnippet
 
