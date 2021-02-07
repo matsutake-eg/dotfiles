@@ -664,12 +664,12 @@ st.push_back(0);
 let mut seen = HashSet::new();
 seen.insert(0);
 while let Some(v) = st.pop_back() {
-    for nx in g[v].iter() {
-        if seen.contains(nx) {
+    for &nx in g[v].iter() {
+        if seen.contains(&nx) {
             continue;
         }
-        st.push_back(*nx);
-        seen.insert(*nx);
+        st.push_back(nx);
+        seen.insert(nx);
     }
 }
 ${0:${VISUAL}}
@@ -681,12 +681,12 @@ dq.push_back(0);
 let mut seen = HashSet::new();
 seen.insert(0);
 while let Some(v) = dq.pop_front() {
-    for nx in g[v].iter() {
-        if seen.contains(nx) {
+    for &nx in g[v].iter() {
+        if seen.contains(&nx) {
             continue;
         }
-        dq.push_back(*nx);
-        seen.insert(*nx);
+        dq.push_back(nx);
+        seen.insert(nx);
     }
 }
 ${0:${VISUAL}}
