@@ -92,6 +92,7 @@ if dein#load_state('/Users/matsutake/.cache/dein')
   call dein#add('editorconfig/editorconfig-vim')
   call dein#add('w0rp/ale')
   call dein#add('townk/vim-autoclose')
+  call dein#add('tpope/vim-commentary')
   call dein#add('nathanaelkane/vim-indent-guides')
   call dein#add('kassio/neoterm')
 
