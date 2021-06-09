@@ -8,6 +8,21 @@ export GOPATH=$HOME/dev/go
 export PATH=$GOPATH/bin:$PATH
 
 source $(brew --prefix nvm)/nvm.sh
+
+fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
+autoload -U compinit
+compinit -u
+autoload -U colors
+colors
+zstyle ':completion:*' list-colors "${LS_COLORS}"
+setopt complete_in_word
+zstyle ':completion:*:default' menu select=1
+zstyle ':completion::complete:*' use-cache true
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+setopt list_packed
+setopt correct
+SPROMPT="correct: $RED%R$DEFAULT -> $GREEN%r$DEFAULT ? [Yes/No/Abort/Edit] => "
+
 autoload -Uz vcs_info
 setopt prompt_subst
 zstyle ':vcs_info:*' enable git svn hg bzr
