@@ -35,7 +35,7 @@ zstyle ':vcs_info:*' enable git svn hg bzr
 zstyle ':vcs_info:git:*' check-for-changes true
 zstyle ':vcs_info:git:*' stagedstr "%F{magenta}+"
 zstyle ':vcs_info:git:*' unstagedstr "%F{magenta}!"
-zstyle ':vcs_info:*' formats "%F{red}(%b)%c%u%f "
+zstyle ':vcs_info:*' formats "%F{red}%b%u%c%f "
 zstyle ':vcs_info:*' actionformats '%b|%a '
 ### git: Show marker if there are untracked files in repository
 # Make sure you have added staged to your 'formats':  %c
