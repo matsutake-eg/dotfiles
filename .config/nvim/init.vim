@@ -1,5 +1,7 @@
 colorscheme monokai
 
+set sh=zsh
+
 set clipboard=unnamed
 set hidden
 
@@ -57,7 +59,6 @@ inoremap {<Enter> {}<Left><CR><ESC><S-o>
 inoremap [<Enter> []<Left><CR><ESC><S-o>
 inoremap (<Enter> ()<Left><CR><ESC><S-o>
 
-set sh=bash
 tnoremap <silent> jj <C-\><C-n><C-w>k
 tnoremap <silent> <ESC> <C-\><C-n>
 
