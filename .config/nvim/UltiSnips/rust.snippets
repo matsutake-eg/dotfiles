@@ -24,6 +24,24 @@ ${0:${VISUAL}}
 println!("{}", ans);
 endsnippet
 
+snippet inter "interactive input" b
+// remove #[fastout] and comment
+let ${1:n} = read_line::<${2:usize}>();
+fn get_line() -> String {
+    let mut s = String::new();
+    std::io::stdin().read_line(&mut s).ok();
+    s.trim().to_string()
+}
+
+fn read_line<T>() -> T
+where
+    T: std::str::FromStr,
+    <T as std::str::FromStr>::Err: std::fmt::Debug,
+{
+    get_line().parse().unwrap()
+}
+endsnippet
+
 snippet pt "println!"
 println!("{${1:}}", ${2:n});
 endsnippet
