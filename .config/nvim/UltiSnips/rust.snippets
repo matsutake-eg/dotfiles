@@ -24,7 +24,7 @@ ${0:${VISUAL}}
 println!("{}", ans);
 endsnippet
 
-snippet inter "interactive input" b
+snippet inte "interactive input" b
 // remove #[fastout] and comment
 let ${1:n} = read_line::<${2:usize}>();
 fn get_line() -> String {
@@ -46,6 +46,10 @@ snippet pt "println!"
 println!("{${1:}}", ${2:n});
 endsnippet
 
+snippet pts "println! with simple(no parameter)"
+println!("${1:Yes}");
+endsnippet
+
 snippet cond "conditional operator"
 if ${1:n < 0} { ${2:"Yes"} } else { ${3:"No"} }
 endsnippet
@@ -56,14 +60,14 @@ for ${1:v} in ${2:a} {
 }
 endsnippet
 
-snippet forr "reverse for ... in ..." b
-for ${1:v} in ${2:a}.into_iter().rev() {
+snippet fore "for ... in ....into_iter().enumerate()" b
+for (${1:i}, ${2:v}) in ${3:a}.into_iter().enumerate() {
     ${0:${VISUAL}}
 }
 endsnippet
 
-snippet fore "for ... in ....into_iter().enumerate()" b
-for (${1:i}, ${2:v}) in ${3:a}.into_iter().enumerate() {
+snippet forr "reverse for ... in ..." b
+for ${1:v} in ${2:a}.into_iter().rev() {
     ${0:${VISUAL}}
 }
 endsnippet
@@ -80,120 +84,167 @@ while ${1:n > 0} {
 }
 endsnippet
 
-snippet ctos "parse Vec<char> to String"
-${1:cs}.into_iter().collect::<String>()${0:${VISUAL}}
+snippet ve "vec!, Vec macro"
+let mut ${2:x} = vec![0; ${1:n}];
+${0:${VISUAL}}
+endsnippet
+
+snippet vn "Vec::new()"
+let mut ${1:x} = Vec::new();
+${0:${VISUAL}}
+endsnippet
+
+snippet hs "HashSet::new()"
+let mut ${1:x} = HashSet::new();
+${0:${VISUAL}}
+endsnippet
+
+snippet hm "HashMap::new()"
+let mut ${1:x} = HashMap::new();
+${0:${VISUAL}}
+endsnippet
+
+snippet vd " VecDeque::new()"
+let mut ${1:x} = VecDeque::new();
+${0:${VISUAL}}
+endsnippet
+
+snippet ntos "parse number to String"
+let ${2:s} = ${1:n}.to_string();
+${0:${VISUAL}}
 endsnippet
 
 snippet ston "parse String to number"
-${1:s}.parse::<${2:usize}>().unwrap()${0:${VISUAL}}
+let ${3:n} = ${1:s}.parse::<${2:usize}>().unwrap();
+${0:${VISUAL}}
 endsnippet
 
 snippet stoc "parse String to Vec<char>"
-${1:s}.chars().collect::<Vec<_>>()${0:${VISUAL}}
+let ${2:cs} = ${1:s}.chars().collect::<Vec<_>>();
+${0:${VISUAL}}
+endsnippet
+
+snippet ctos "parse Vec<char> to String"
+let ${2:s} = ${1:cs}.into_iter().collect::<String>();
+${0:${VISUAL}}
+endsnippet
+
+snippet ntoc "parse number to Vec<char>"
+let ${2:cs} = ${1:n}.to_string().chars().collect::<Vec<_>>();
+${0:${VISUAL}}
+endsnippet
+
+snippet cton "parse Vec<char> to number"
+let ${2:n} = ${1:cs}.into_iter().collect::<String>().parse::<usize>().unwrap();
+${0:${VISUAL}}
 endsnippet
 
 snippet con "concat String"
-[${1:s}, ${2:t}].concat()${0:${VISUAL}}
+let ${3:s} = [${1:s}, ${2:t}].concat();
+${0:${VISUAL}}
 endsnippet
 
-snippet join "Same as 'concat', concat String"
-[${1:s}, ${2:t}].concat()${0:${VISUAL}}
+snippet join "same as 'con', concat String"
+let ${3:s} = [${1:s}, ${2:t}].concat();
+${0:${VISUAL}}
 endsnippet
 
 snippet revs "reverse string"
-${1:s}.into_iter().rev().collect::<String>()${0:${VISUAL}}
+let ${2:s} = ${1:s}.chars().rev().collect::<Vec<_>>().into_iter().collect::<String>();
+${0:${VISUAL}}
 endsnippet
 
-snippet imax "get max value from Iterator"
-${1:a}.into_iter().max().unwrap()
+snippet maxi "get max value from Iterator"
+let ${2:max_x} = ${1:x}.into_iter().max().unwrap();
+${0:${VISUAL}}
 endsnippet
 
-snippet imaxm "get max value from multiple Iterator"
-${1:a}.into_iter().map(|x| x.into_iter().max().unwrap()).max().unwrap()
+snippet maxmi "get max value from multiple Iterator"
+let ${2:max_x} = ${1:x}.into_iter().map(|x| x.into_iter().max().unwrap()).max().unwrap();
+${0:${VISUAL}}
 endsnippet
 
-snippet imin "get min value from Iterator"
-${1:a}.into_iter().min().unwrap()
+snippet maxv "get max value from HashMap"
+let ${2:v} = ${1:x}.values().max().unwrap();
 endsnippet
 
-snippet iminm "get min value from multiple Iterator"
-${1:a}.into_iter().map(|x| x.into_iter().min().unwrap()).min().unwrap()
+snippet maxk "get max key from HashMap"
+let ${2:k} = ${1:x}.into_iter().max_by_key(|x| x.1).unwrap().0;
 endsnippet
 
-snippet iind "get index from Iterator"
-${1:a}.into_iter().position(|x| x == ${2:v}).unwrap()
+snippet mini "get min value from Iterator"
+let ${2:min_x} = ${1:x}.into_iter().min().unwrap();
+${0:${VISUAL}}
 endsnippet
 
-snippet ipos "Same as iindex, get index from Iterator"
-${1:a}.into_iter().position(|x| x == ${2:v}).unwrap()
+snippet minmi "get min value from multiple Iterator"
+let ${2:min_x} = ${1:x}.into_iter().map(|x| x.into_iter().min().unwrap()).min().unwrap();
+${0:${VISUAL}}
 endsnippet
 
-snippet hmaxk "get max key from HashMap"
-${1:hm}.into_iter().max_by_key(|x| x.1).unwrap().0
+snippet minv "get min value from HashMap"
+let ${2:v} = ${1:x}.values().min().unwrap();
 endsnippet
 
-snippet hmaxv "get max value from HashMap"
-${1:hm}.values().max().unwrap()
+snippet mink "get min key from HashMap"
+let ${2:k} = ${1:x}.into_iter().min_by_key(|x| x.1).unwrap().0;
 endsnippet
 
-snippet hmink "get min key from HashMap"
-${1:hm}.into_iter().min_by_key(|x| x.1).unwrap().0
-endsnippet
-
-snippet hminv "get min value from HashMap"
-${1:hm}.values().min().unwrap()
+snippet indi "get index from Iterator"
+let ${3:idx} = ${1:x}.into_iter().position(|x| x == ${2:v}).unwrap();
+${0:${VISUAL}}
 endsnippet
 
 snippet hcou "count in HashMap" b
-*${1:hm}.entry(k).or_insert(0) += 1;
+*${1:x}.entry(${2:k}).or_insert(0) += 1;
 endsnippet
 
-snippet fold "An iterator method that applies a function, producing a single, final value."
-${1:a}.iter().fold($1[0], |acc, &x| gcd(acc, x))${0:${VISUAL}}
+snippet fol "an iterator method that applies a function, producing a single, final value."
+${1:x}.iter().fold($1[0], |acc, &x| gcd(acc, x));
+${0:${VISUAL}}
 endsnippet
 
-snippet reduce "Same as 'fold', An iterator method that applies a function, producing a single, final value."
-${1:a}.iter().fold($1[0], |acc, &x| gcd(acc, x))${0:${VISUAL}}
+snippet redu "Same as 'fold', an iterator method that applies a function, producing a single, final value."
+${1:x}.iter().fold($1[0], |acc, &x| gcd(acc, x));
+${0:${VISUAL}}
 endsnippet
 
 snippet map "map function"
-let ${1:b}: Vec<${2:usize}> = ${3:a}.into_iter().map(|x| x * 2).collect();
+let ${3:x} = ${1:x}.into_iter().map(|x| x * 2).collect::<Vec<${2:usize}>>();
 ${0:${VISUAL}}
 endsnippet
 
 snippet fil "filter function"
-let ${1:b}: Vec<${2:usize}> = ${3:a}.into_iter().filter(|x| x % 2 == 0).collect();
+let ${3:x} = ${1:x}.into_iter().filter(|x| x % 2 == 0).collect::<Vec<${2:usize}>>();
 ${0:${VISUAL}}
 endsnippet
 
 snippet sum "get sum value"
-${1:a}.into_iter().sum::<${2:usize}>()${0:${VISUAL}}
-endsnippet
-
-snippet sumf "get sum value by fold"
-${1:a}.into_iter().fold(0, |acc, x| acc + x)${0:${VISUAL}}
+let ${3:sum_x} = ${1:x}.into_iter().sum::<${2:usize}>();
+${0:${VISUAL}}
 endsnippet
 
 snippet csum "get cumulative sum" b
-let csum = ${1:a}.into_iter().cumsum().collect::<Vec<${2:usize}>>();
+let ${3:csum_x} = ${1:x}.into_iter().cumsum().collect::<Vec<${2:usize}>>();
 endsnippet
 
 snippet csumz "get cumulative sum with inserting zero" b
-let csum = std::iter::once(&0)
-    .chain(&${1:a})
+let ${3:csum_x} = std::iter::once(&0)
+    .chain(&${1:x})
     .cumsum()
     .collect::<Vec<${2:usize}>>();
 endsnippet
 
 snippet sort "sort Vector" b
-let mut ${1:a} = $1;
+let mut ${1:x} = $1;
 $1.sort();
 ${0:${VISUAL}}
 endsnippet
 
 snippet sortr "sort Vector reversely" b
-let mut ${1:a} = $1;
-$1.sort_by(|a, b| b.cmp(a));
+let mut ${1:x} = $1;
+$1.sort();
+$1.reverse();
 ${0:${VISUAL}}
 endsnippet
 
@@ -204,12 +255,12 @@ ${0:${VISUAL}}
 endsnippet
 
 snippet bis "binary search" b
-let idx = ${1:a}.binary_search(&${2:x}).unwrap_or_else(|x| x);
+let ${3:idx} = ${1:x}.binary_search(&${2:v}).unwrap_or_else(|x| x);
 ${0:${VISUAL}}
 endsnippet
 
 snippet bisf "binary search by function" b
-let idx = ${1:a}.binary_search_by(|x| ((1 + x) * x / 2).cmp(&(n + 1))).unwrap_or_else(|x| x);
+let ${2:idx} = ${1:x}.binary_search_by(|x| ((1 + x) * x / 2).cmp(&(n + 1))).unwrap_or_else(|x| x);
 ${0:${VISUAL}}
 endsnippet
 
@@ -227,12 +278,12 @@ ${0:${VISUAL}}
 endsnippet
 
 snippet gcd "get GCD(Greatest Common Divisor)" b
-gcd(a, b)
+let ${3:g} = gcd(${1:x}, ${2:y});
 ${0:${VISUAL}}
 endsnippet
 
 snippet lcm "get LCM(Least Common Multiple)" b
-lcm(a, b)
+let ${3:l} = lcm(${1:x}, ${2:y});
 ${0:${VISUAL}}
 endsnippet
 
@@ -621,17 +672,18 @@ ${0:${VISUAL}}
 endsnippet
 
 snippet sin "sin(...)" b
-(PI / 2f64).sin()
+let ${1:x} = (PI / 2f64).sin();
 ${0:${VISUAL}}
 endsnippet
 
 snippet cos "math.cos(...)" b
-(PI / 2f64).cos()
+let ${1:x} = (PI / 2f64).cos();
 ${0:${VISUAL}}
 endsnippet
 
 snippet fac "get factorial value" b
-(2..=${1:n}).fold(1, |acc, x| acc * x)${0:${VISUAL}}
+let ${2:f} = (2..=${1:n}).fold(1, |acc, x| acc * x);
+${0:${VISUAL}}
 endsnippet
 
 snippet fib "get fibonacci value" b
