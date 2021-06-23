@@ -80,16 +80,16 @@ while ${1:n > 0} {
 }
 endsnippet
 
-snippet pars "parse String to number"
-${1:s}.parse::<${2:usize}>().unwrap())${0:${VISUAL}}
-endsnippet
-
-snippet ston "same as 'pars', parse String to number"
-${1:s}.parse::<${2:usize}>().unwrap())${0:${VISUAL}}
-endsnippet
-
 snippet ctos "parse Vec<char> to String"
-${1:s}.into_iter().collect::<String>()
+${1:cs}.into_iter().collect::<String>()${0:${VISUAL}}
+endsnippet
+
+snippet ston "parse String to number"
+${1:s}.parse::<${2:usize}>().unwrap()${0:${VISUAL}}
+endsnippet
+
+snippet stoc "parse String to Vec<char>"
+${1:s}.chars().collect::<Vec<_>>()${0:${VISUAL}}
 endsnippet
 
 snippet con "concat String"
