@@ -627,18 +627,18 @@ for ${2:i} in 0..(1 << ${1:k}) {
 ${0:${VISUAL}}
 endsnippet
 
-snippet dq "use deque in collections" b
-let mut dq = VecDeque::new();
-dq.push_back(1);
-dq.push_back(2);
-dq.push_back(3);
-while let Some(v) = dq.pop_front() {
+snippet que "queue by VecDeque" b
+let mut qu = VecDeque::new();
+qu.push_back(1);
+qu.push_back(2);
+qu.push_back(3);
+while let Some(v) = qu.pop_front() {
     println!("{}", v);
 }
 ${0:${VISUAL}}
 endsnippet
 
-snippet st "use deque for stack in collections" b
+snippet sta "stack by VecDeque" b
 let mut st = VecDeque::new();
 st.push_back(1);
 st.push_back(2);
@@ -746,16 +746,16 @@ ${0:${VISUAL}}
 endsnippet
 
 snippet bfs "Breadth First Search in graph"
-let mut dq = VecDeque::new();
-dq.push_back(0);
+let mut qu = VecDeque::new();
+qu.push_back(0);
 let mut seen = HashSet::new();
 seen.insert(0);
-while let Some(v) = dq.pop_front() {
+while let Some(v) = qu.pop_front() {
     for &nx in g[v].iter() {
         if seen.contains(&nx) {
             continue;
         }
-        dq.push_back(nx);
+        qu.push_back(nx);
         seen.insert(nx);
     }
 }
