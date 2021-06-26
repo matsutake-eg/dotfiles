@@ -734,7 +734,7 @@ st.push_back(0);
 let mut seen = HashSet::new();
 seen.insert(0);
 while let Some(v) = st.pop_back() {
-    for &nx in g[v].iter() {
+    for &nx in &g[v] {
         if seen.contains(&nx) {
             continue;
         }
@@ -751,7 +751,7 @@ qu.push_back(0);
 let mut seen = HashSet::new();
 seen.insert(0);
 while let Some(v) = qu.pop_front() {
-    for &nx in g[v].iter() {
+    for &nx in &g[v] {
         if seen.contains(&nx) {
             continue;
         }
@@ -772,7 +772,7 @@ while let Some((Reverse(d), v)) = pq.pop() {
     if d > ds[v] {
         continue;
     }
-    for &(nx, c) in g[v].iter() {
+    for &(nx, c) in &g[v] {
         if d + c < ds[nx] {
             ds[nx] = d + c;
             pq.push((Reverse(ds[nx]), nx));
