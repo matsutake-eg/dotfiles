@@ -33,18 +33,27 @@ zstyle ':vcs_info:*' enable git svn hg bzr
 zstyle ':vcs_info:git:*' check-for-changes true
 zstyle ':vcs_info:git:*' stagedstr "%F{magenta}+"
 zstyle ':vcs_info:git:*' unstagedstr "%F{magenta}!"
-zstyle ':vcs_info:*' formats "%F{red}%b%u%c%f "
+zstyle ':vcs_info:*' formats "%F{red}%b%m%u%c%f "
 zstyle ':vcs_info:*' actionformats '%b|%a '
-### git: Show marker if there are untracked files in repository
-# Make sure you have added staged to your 'formats':  %c
-zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
-+vi-git-untracked(){
+zstyle ':vcs_info:git*+set-message:*' hooks git-misc
++vi-git-misc(){
+    local ahead behind
+    local -a gitstatus
+
+    # for git prior to 1.7
+    # ahead=$(git rev-list origin/${hook_com[branch]}..HEAD | wc -l)
+    ahead=$(git rev-list ${hook_com[branch]}@{upstream}..HEAD 2>/dev/null | wc -l | tr -d ' ')
+    (( $ahead )) && gitstatus+=( "%F{blue}<-${ahead}" )
+
+    # for git prior to 1.7
+    # behind=$(git rev-list HEAD..origin/${hook_com[branch]} | wc -l)
+    behind=$(git rev-list HEAD..${hook_com[branch]}@{upstream} 2>/dev/null | wc -l | tr -d ' ')
+    (( $behind )) && gitstatus+=( "%F{blue}->${behind}" )
+
+    hook_com[misc]+=${(j:/:)gitstatus}
+
     if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == 'true' ]] && \
         git status --porcelain | grep '??' &> /dev/null ; then
-        # This will show the marker if there are any untracked files in repo.
-        # If instead you want to show the marker only if there are untracked
-        # files in $PWD, use:
-        #[[ -n $(git ls-files --others --exclude-standard) ]] ; then
         hook_com[staged]+="%F{magenta}?"
     fi
 }
