@@ -762,6 +762,26 @@ while let Some(v) = qu.pop_front() {
 ${0:${VISUAL}}
 endsnippet
 
+snippet di "Dijkstra's algorithm"
+const INF: usize = std::usize::MAX;
+let mut ds = vec![INF; n];
+ds[x] = 0;
+let mut pq = BinaryHeap::new();
+pq.push((Reverse(0), x));
+while let Some((Reverse(d), v)) = pq.pop() {
+    if d > ds[v] {
+        continue;
+    }
+    for &(nx, c) in g[v].iter() {
+        if d + c < ds[nx] {
+            ds[nx] = d + c;
+            pq.push((Reverse(ds[nx]), nx));
+        }
+    }
+}
+${0:${VISUAL}}
+endsnippet
+
 snippet uft "union find tree" b
 let mut uft = unionfind::UnionFind::new(n);
 for (a, b) in ab {
