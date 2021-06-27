@@ -681,6 +681,34 @@ let ${1:x} = (PI / 2f64).cos();
 ${0:${VISUAL}}
 endsnippet
 
+snippet dfsf "Depth First Search by function"
+    dfs("", n);
+
+fn dfs(s: &str, n: usize) {
+    if s.len() == n {
+        let mut cnt = 0i32;
+        for c in s.chars() {
+            if c == '(' {
+                cnt += 1;
+            } else {
+                cnt -= 1;
+            }
+            if cnt < 0 {
+                return;
+            }
+        }
+        if cnt == 0 {
+            println!("{}", s);
+        }
+        return;
+    }
+
+    dfs(&[s, "("].concat(), n);
+    dfs(&[s, ")"].concat(), n);
+}
+${0:${VISUAL}}
+endsnippet
+
 snippet fac "get factorial value" b
 let ${2:f} = (2..=${1:n}).fold(1, |acc, x| acc * x);
 ${0:${VISUAL}}
