@@ -172,6 +172,11 @@ snippet maxk "get max key from HashMap"
 let ${2:k} = ${1:x}.into_iter().max_by_key(|x| x.1).unwrap().0;
 endsnippet
 
+snippet maxkv "get max key from Vec"
+let ${2:max_x} = ${1:x}.iter().max().unwrap();
+let ${3:k} = $1.iter().position(|x| x == $2).unwrap();
+endsnippet
+
 snippet mini "get min value from Iterator"
 let ${2:min_x} = ${1:x}.into_iter().min().unwrap();
 ${0:${VISUAL}}
@@ -188,6 +193,11 @@ endsnippet
 
 snippet mink "get min key from HashMap"
 let ${2:k} = ${1:x}.into_iter().min_by_key(|x| x.1).unwrap().0;
+endsnippet
+
+snippet minkv "get min key from Vec"
+let ${2:min_x} = ${1:x}.iter().min().unwrap();
+let ${3:k} = $1.iter().position(|x| x == $2).unwrap();
 endsnippet
 
 snippet indi "get index from Iterator"
