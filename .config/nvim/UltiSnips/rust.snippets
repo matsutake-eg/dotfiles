@@ -334,15 +334,16 @@ fn prime_fac(mut x: usize) -> HashSet<usize> {
 endsnippet
 
 snippet mod "use ModInt" b
-let n = mod_int(n);
-println!("{}", n.value());
+let mut ${1:ans} = mod_int($1);
+$1 += 1_000_000_007;
+println!("{}", $1.value());
 ${0:${VISUAL}}
 use std::ops::{
     Add, AddAssign, BitAnd, Div, DivAssign, Mul, MulAssign, RemAssign, ShrAssign, Sub, SubAssign,
 };
 
-fn mod_int(v: ${1:usize}) -> ModInt<$1> {
-    ModInt::new(v, ${2:1_000_000_007})
+fn mod_int(v: ${2:usize}) -> ModInt<$2> {
+    ModInt::new(v, ${3:1_000_000_007})
 }
 pub struct ModInt<T> {
     v: T,
