@@ -144,11 +144,6 @@ let ${3:s} = [${1:s}, ${2:t}].concat();
 ${0:${VISUAL}}
 endsnippet
 
-snippet join "same as 'con', concat String"
-let ${3:s} = [${1:s}, ${2:t}].concat();
-${0:${VISUAL}}
-endsnippet
-
 snippet revs "reverse string"
 let ${2:s} = ${1:s}.chars().rev().collect::<Vec<_>>().into_iter().collect::<String>();
 ${0:${VISUAL}}
@@ -210,11 +205,6 @@ snippet hcou "count in HashMap" b
 endsnippet
 
 snippet fol "an iterator method that applies a function, producing a single, final value."
-${1:x}.iter().fold($1[0], |acc, &x| gcd(acc, x));
-${0:${VISUAL}}
-endsnippet
-
-snippet redu "Same as 'fold', an iterator method that applies a function, producing a single, final value."
 ${1:x}.iter().fold($1[0], |acc, &x| gcd(acc, x));
 ${0:${VISUAL}}
 endsnippet
