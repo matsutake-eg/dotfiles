@@ -116,7 +116,7 @@ set completeopt-=preview
 let g:ctrlp_working_path_mode = 'a'
 let g:ctrlp_custom_ignore = {
 \   'dir':  '\v[\/](node_modules|build|dist|target|\.(git|hg|svn))$',
-\   'file': '\v\.(exe|so|dll|swp|zip|gif|jpg|png)$',
+\   'file': '\v\.(exe|so|dll|swp|zip|gif|jpg|png|db)$',
 \   'link': 'some_bad_symbolic_links',
 \}
 let g:go_fmt_command = "goimports"
