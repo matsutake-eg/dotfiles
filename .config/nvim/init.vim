@@ -52,6 +52,8 @@ if has("autocmd")
   autocmd FileType rust nnoremap <Space>S :T cargo atcoder submit --skip-test %:t:r<CR>
   autocmd FileType rust nnoremap <Space>t :T cargo atcoder test %:t:r<CR>
   autocmd FileType rust nnoremap <Space>f :T cargo run --bin %:t:r<CR><C-w>ja
+	autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd guibg=black ctermbg=235
+	autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=lightgray ctermbg=236
 endif
 
 inoremap jj <Esc>
@@ -88,6 +90,7 @@ if dein#load_state('/Users/matsutake/.cache/dein')
   call dein#add('tpope/vim-fugitive')
   call dein#add('leafgarland/typescript-vim')
   call dein#add('pangloss/vim-javascript')
+  call dein#add('digitaltoad/vim-jade')
   call dein#add('posva/vim-vue')
   call dein#add('fatih/vim-go')
   call dein#add('editorconfig/editorconfig-vim')
@@ -189,8 +192,6 @@ let g:lightline = {
 highlight ALEError ctermbg=DarkMagenta
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_auto_colors = 0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd guibg=black ctermbg=235
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=lightgray ctermbg=236
 let g:neoterm_default_mod = 'botright'
 let g:neoterm_size = 15
 let g:neoterm_autoscroll = 1
