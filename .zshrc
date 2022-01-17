@@ -4,8 +4,11 @@ if [[ -t 0 ]]; then
 fi
 
 export NVM_DIR=~/.nvm
+export PATH=$HOME/.nvm/versions/node/v14.16.0/bin:$PATH
 export GOPATH=$HOME/dev/go
 export PATH=$GOPATH/bin:$PATH
+export PATH=/usr/local/opt/php@7.4/bin:$PATH
+export PATH=/usr/local/opt/php@7.4/sbin:$PATH
 
 alias ls='ls -FG'
 alias ll='ls -ahlFG'
