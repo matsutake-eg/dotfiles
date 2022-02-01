@@ -94,7 +94,7 @@ if dein#load_state('/Users/matsutake/.cache/dein')
   call dein#add('posva/vim-vue')
   call dein#add('fatih/vim-go')
   call dein#add('editorconfig/editorconfig-vim')
-  call dein#add('w0rp/ale')
+  call dein#add('dense-analysis/ale')
   call dein#add('townk/vim-autoclose')
   call dein#add('tpope/vim-commentary')
   call dein#add('nathanaelkane/vim-indent-guides')
@@ -152,7 +152,7 @@ let g:ale_linters = {
 \   'javascript': ['eslint', 'tsserver'],
 \   'typescript': ['eslint', 'tsserver'],
 \   'vue': ['eslint', 'vls'],
-\   'python': ['flake8', 'pyls', 'bandit', 'mypy'],
+\   'python': ['flake8', 'pylsp', 'mypy', 'pylint', 'pyright'],
 \   'rust': ['rustc', 'rls'],
 \   'php': ['langserver'],
 \}
