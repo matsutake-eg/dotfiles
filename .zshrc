@@ -15,6 +15,8 @@ alias ll='ls -ahlFG'
 alias v='nvim'
 alias g='git'
 alias ggrep='grep -r --exclude-dir={node_modules,.webpack}'
+alias python='python3'
+alias pip='pip3'
 
 source $(brew --prefix nvm)/nvm.sh
 
