@@ -149,11 +149,11 @@ let g:ale_python_pyls_config = {
 \   },
 \}
 let g:ale_linters = {
+\   'rust': ['rustc', 'rls'],
+\   'python': ['flake8', 'pylsp'],
 \   'javascript': ['eslint', 'tsserver'],
 \   'typescript': ['eslint', 'tsserver'],
 \   'vue': ['eslint', 'vls'],
-\   'python': ['flake8', 'pylsp', 'mypy', 'pylint', 'pyright'],
-\   'rust': ['rustc', 'rls'],
 \   'php': ['langserver'],
 \}
 let g:ale_lint_on_text_changed = 0
@@ -161,6 +161,8 @@ let g:ale_lint_on_enter = 1
 let g:ale_lint_on_insert_leave = 0
 let g:ale_lint_on_save = 1
 let g:ale_fixers = {
+\   'rust': ['rustfmt'],
+\   'python': ['black', 'isort'],
 \   'javascript': ['prettier'],
 \   'typescript': ['prettier'],
 \   'html': ['prettier'],
@@ -170,8 +172,6 @@ let g:ale_fixers = {
 \   'scss': ['prettier'],
 \   'json': ['prettier'],
 \   'yaml': ['prettier'],
-\   'python': ['autopep8', 'black', 'isort'],
-\   'rust': ['rustfmt'],
 \}
 let g:ale_rename_tsserver_find_in_comments = 1
 let g:ale_rename_tsserver_find_in_strings = 1
