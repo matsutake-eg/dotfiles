@@ -132,17 +132,28 @@ let g:go_metalinter_autosave = 1
 let g:python3_host_prog = '/usr/local/bin/python3'
 let g:ale_php_langserver_use_global = 1
 let g:ale_php_langserver_executable = $HOME.'/vendor/felixfbecker/language-server/bin/php-language-server.php'
-let g:ale_python_pyls_executable = "pylsp"
-let g:ale_python_pyls_config = {
+let g:ale_python_pylsp_config = {
 \   'pylsp': {
 \     'plugins': {
+\       'flake8': {
+\         'enabled': v:false,
+\       },
+\       'mccabe': {
+\         'enabled': v:false,
+\       },
 \       'pycodestyle': {
+\         'enabled': v:false,
+\       },
+\       'pydocstyle': {
 \         'enabled': v:false,
 \       },
 \       'pyflakes': {
 \         'enabled': v:false,
 \       },
-\       'pydocstyle': {
+\       'pylint': {
+\         'enabled': v:false,
+\       },
+\       'yapf': {
 \         'enabled': v:false,
 \       },
 \     },
