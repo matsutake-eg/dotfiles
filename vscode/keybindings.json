@@ -11,9 +11,9 @@
     "when": "neovim.mode == normal && editorTextFocus"
   },
   {
-	  "key": "right",
-	  "command": "editor.action.goToDeclaration",
-	  "when": "neovim.mode == normal && editorTextFocus"
+    "key": "right",
+    "command": "editor.action.goToDeclaration",
+    "when": "neovim.mode == normal && editorTextFocus"
   },
   {
     "key": "left",
