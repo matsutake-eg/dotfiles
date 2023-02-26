@@ -86,5 +86,10 @@
     "key": "o",
     "command": "list.select",
     "when": "listFocus && !inputFocus"
+  },
+  {
+    "key": "x",
+    "command": "list.collapse",
+    "when": "listFocus && treeElementCanCollapse && !inputFocus || listFocus && treeElementHasParent && !inputFocus"
   }
 ]
