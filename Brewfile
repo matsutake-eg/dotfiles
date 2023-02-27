@@ -8,8 +8,6 @@ brew "glib"
 brew "libpng"
 brew "neovim"
 brew "nvm"
-brew "python@3.8", link: false
-brew "python@3.9"
 brew "tmux"
 cask "docker"
 cask "slack"
