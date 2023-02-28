@@ -1,10 +1,12 @@
 {
+    "files.insertFinalNewline": true,
+    "workbench.startupEditor": "newUntitledFile",
     "workbench.colorTheme": "Monokai",
+    "workbench.iconTheme": "material-icon-theme",
     "editor.cursorBlinking": "solid",
     "editor.fontFamily": "Ricty Diminished",
     "editor.fontSize": 14,    
-    "terminal.integrated.fontSize": 14, 
-    "scrolloff.scrolloff": 5,
     "editor.wordWrap": "on",
-    "workbench.startupEditor": "newUntitledFile",
+    "terminal.integrated.fontSize": 14, 
+    "scrolloff.scrolloff": 5
 }
