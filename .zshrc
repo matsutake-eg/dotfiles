@@ -13,6 +13,7 @@ export PATH=/usr/local/opt/php@7.4/sbin:$PATH
 alias ls='ls -FG'
 alias ll='ls -ahlFG'
 alias v='code'
+alias nv='nvim'
 alias g='git'
 alias ggrep='grep -r --exclude-dir={node_modules,.webpack}'
 alias python='python3'
