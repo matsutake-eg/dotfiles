@@ -11,22 +11,22 @@
     "when": "neovim.mode == normal && editorTextFocus"
   },
   {
-    "key": "right",
+    "key": "ctrl+g",
     "command": "editor.action.goToDeclaration",
     "when": "neovim.mode == normal && editorTextFocus"
   },
   {
-    "key": "left",
+    "key": "ctrl+b",
     "command": "workbench.action.navigateBack",
     "when": "neovim.mode == normal && editorTextFocus"
   },
   {
-    "key": "up",
+    "key": "ctrl+y",
     "command": "editor.action.referenceSearch.trigger",
     "when": "neovim.mode == normal && editorTextFocus"
   },
   {
-    "key": "down",
+    "key": "ctrl+u",
     "command": "editor.action.rename",
     "when": "neovim.mode == normal && editorTextFocus"
   },
