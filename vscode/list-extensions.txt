@@ -1,0 +1,8 @@
+AdamCaviness.theme-monokai-dark-soda
+asvetliakov.vscode-neovim
+eamodio.gitlens
+ms-azuretools.vscode-docker
+MS-CEINTL.vscode-language-pack-ja
+ms-vscode-remote.remote-containers
+PKief.material-icon-theme
+tickleforce.scrolloff
