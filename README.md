@@ -8,6 +8,10 @@ Mac PCを想定してます。
 ### 手動インストール
 パッケージマネージャで管理できないツールを手動でインストールします。
 
+#### フォント(Myrica)
+[公式](https://myrica.estable.jp/) から `Myrica.ttc` をダウンロードします。  
+ダウンロードしたファイルを解凍し、 `Myrica.TTC` ファイルを実行して `Myrica M` のフォントをインストールします。
+
 #### Google Chrome
 [公式](https://www.google.com/intl/ja_jp/chrome/) からインストールします。  
 [DeepLのアドオン](https://www.deepl.com/ja/chrome-extension) も一緒に入れておくと良いです。
