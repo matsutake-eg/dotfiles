@@ -1,12 +1,25 @@
 {
-    "files.insertFinalNewline": true,
-    "workbench.startupEditor": "newUntitledFile",
-    "workbench.colorTheme": "Monokai Dark Soda",
-    "workbench.iconTheme": "material-icon-theme",
-    "editor.cursorBlinking": "solid",
-    "editor.fontFamily": "Ricty Diminished",
-    "editor.fontSize": 14,    
-    "editor.wordWrap": "on",
-    "terminal.integrated.fontSize": 14, 
-    "scrolloff.scrolloff": 5
+  "files.insertFinalNewline": true,
+  "workbench.startupEditor": "newUntitledFile",
+  "workbench.colorTheme": "Monokai Dark Soda",
+  "workbench.iconTheme": "material-icon-theme",
+  "editor.cursorBlinking": "solid",
+  "editor.fontFamily": "Ricty Diminished",
+  "editor.fontSize": 14,
+  "editor.wordWrap": "on",
+  "editor.renderWhitespace": "trailing",
+  "terminal.integrated.fontSize": 14,
+  "scrolloff.scrolloff": 5,
+  "indentRainbow.colors": [
+    "rgba(236,236,236,0)",
+    "rgba(236,236,236,0.03)"
+  ],
+  "whitespacepp.renderWS": false,
+  "whitespacepp.changeBackColorEOF": true,
+  "whitespacepp.foreColorEOF": "#464646",
+  "whitespacepp.foreColorTAB": "#646464",
+  "whitespacepp.foreColorLF": "#646464",
+  "whitespacepp.backColorEOF": "#8c8c8c",
+  "whitespacepp.textTAB": ".",
+  "whitespacepp.textLF": "◂"
 }
