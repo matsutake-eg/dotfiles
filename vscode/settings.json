@@ -7,19 +7,23 @@
   "editor.fontFamily": "Ricty Diminished",
   "editor.fontSize": 14,
   "editor.wordWrap": "on",
-  "editor.renderWhitespace": "trailing",
   "terminal.integrated.fontSize": 14,
   "scrolloff.scrolloff": 5,
   "indentRainbow.colors": [
     "rgba(236,236,236,0)",
     "rgba(236,236,236,0.03)"
   ],
+  "whitespacepp.renderLF": false,
   "whitespacepp.renderWS": false,
   "whitespacepp.changeBackColorEOF": true,
   "whitespacepp.foreColorEOF": "#464646",
   "whitespacepp.foreColorTAB": "#646464",
-  "whitespacepp.foreColorLF": "#646464",
   "whitespacepp.backColorEOF": "#8c8c8c",
   "whitespacepp.textTAB": ".",
-  "whitespacepp.textLF": "◂"
+  "trailing-spaces.backgroundColor": "rgba(211,32,31)",
+  "trailing-spaces.borderColor": "rgba(255,238,153)",
+  "trailing-spaces.syntaxIgnore": [
+    "markdown"
+  ],
+  "trailing-spaces.highlightCurrentLine": false
 }
