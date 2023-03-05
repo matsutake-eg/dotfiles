@@ -9,6 +9,7 @@ export GOPATH=$HOME/dev/go
 export PATH=$GOPATH/bin:$PATH
 export PATH=/usr/local/opt/php@7.4/bin:$PATH
 export PATH=/usr/local/opt/php@7.4/sbin:$PATH
+export PATH="$HOME/.rbenv/bin:$PATH"
 
 alias ls='ls -FG'
 alias ll='ls -ahlFG'

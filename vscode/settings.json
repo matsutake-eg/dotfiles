@@ -23,5 +23,15 @@
   "trailing-spaces.syntaxIgnore": [
     "markdown"
   ],
-  "trailing-spaces.highlightCurrentLine": false
+  "trailing-spaces.highlightCurrentLine": false,
+  "[ruby]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "misogi.ruby-rubocop"
+  },
+  "ruby.intellisense": "rubyLocate",
+  "ruby.useLanguageServer": true,
+  "ruby.lint": {
+    "rubocop": true
+  },
+  "ruby.format": "rubocop"
 }
