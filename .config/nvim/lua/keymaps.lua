@@ -16,3 +16,9 @@ vim.keymap.set('n', '<C-k>', '5k')
 -- VSCodeのプラグインが対応していないので、別途設定する必要があるため注意(https://github.com/vscode-neovim/vscode-neovim#composite-escape-keys)
 -- ノーマルモードに戻る
 vim.keymap.set('i', 'jj', '<Esc>')
+
+-- ビジュアルモード
+-- 下に少しスクロール
+vim.keymap.set('v', '<C-j>', '5j')
+-- 上に少しスクロール
+vim.keymap.set('v', '<C-k>', '5k')
