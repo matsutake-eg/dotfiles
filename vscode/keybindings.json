@@ -21,12 +21,12 @@
     "when": "neovim.mode == normal && editorTextFocus"
   },
   {
-    "key": "ctrl+y",
+    "key": "ctrl+u",
     "command": "editor.action.referenceSearch.trigger",
     "when": "neovim.mode == normal && editorTextFocus"
   },
   {
-    "key": "ctrl+u",
+    "key": "ctrl+y",
     "command": "editor.action.rename",
     "when": "neovim.mode == normal && editorTextFocus"
   },
