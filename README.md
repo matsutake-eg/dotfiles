@@ -14,7 +14,6 @@ Mac PCを想定してます。
 
 #### Google Chrome
 [公式](https://www.google.com/intl/ja_jp/chrome/) からインストールします。  
-[DeepLのアドオン](https://www.deepl.com/ja/chrome-extension) も一緒に入れておくと良いです。
 
 #### Karabiner-Elements
 デュアルキーボードのための仮想キーボードマネージャです。  
