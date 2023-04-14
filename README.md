@@ -32,8 +32,7 @@ Logi Optionsを起動して、マウスが認識されているか確認した�
 スクショの撮影・編集や画面操作の録画ができる便利なツールです。  
 [Mac App Store](https://apps.apple.com/jp/app/monosnap-screenshot-editor/id540348655?mt=12) からインストールします。  
 インストールしたら、Preferencesを開いて、以下の設定を変更しておきます。
-- 「Advanced」について、「Image File Format」->「JPEG」, 「JPEG Quality」->「90%」
-- 「Fonts」->「Main font」->「Helvetica」
+- 「Advanced」を、「Image File Format」->「JPEG」, 「JPEG Quality」->「90%」
 
 #### その他会社から指定されているもの
 会社から指定されたツール(Zoomやらを)入れます。  
