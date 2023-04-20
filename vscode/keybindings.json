@@ -11,39 +11,24 @@
     "when": "neovim.mode == normal && editorTextFocus"
   },
   {
-    "key": "ctrl+g",
+    "key": "ctrl+n",
     "command": "editor.action.goToDeclaration",
     "when": "neovim.mode == normal && editorTextFocus"
   },
   {
-    "key": "ctrl+d",
+    "key": "ctrl+p",
     "command": "workbench.action.navigateBack",
     "when": "neovim.mode == normal && editorTextFocus"
   },
   {
-    "key": "ctrl+u",
+    "key": "ctrl+g",
     "command": "editor.action.referenceSearch.trigger",
     "when": "neovim.mode == normal && editorTextFocus"
   },
   {
-    "key": "ctrl+y",
+    "key": "ctrl+u",
     "command": "editor.action.rename",
     "when": "neovim.mode == normal && editorTextFocus"
-  },
-  {
-    "key": "ctrl+h",
-    "command": "workbench.action.focusSideBar",
-    "when": "neovim.mode == normal && editorTextFocus"
-  },
-  {
-    "key": "ctrl+h",
-    "command": "workbench.action.toggleSidebarVisibility",
-    "when": "filesExplorerFocus"
-  },
-  {
-    "key": "ctrl+l",
-    "command": "workbench.action.focusFirstEditorGroup",
-    "when": "filesExplorerFocus"
   },
   {
     "key": "o",
@@ -56,12 +41,12 @@
     "when": "listFocus && treeElementCanCollapse && !inputFocus || listFocus && treeElementHasParent && !inputFocus"
   },
   {
-    "key": "ctrl+n",
+    "key": "ctrl+l",
     "command": "workbench.action.nextEditor",
     "when": "neovim.mode == normal && editorTextFocus"
   },
   {
-    "key": "ctrl+p",
+    "key": "ctrl+h",
     "command": "workbench.action.previousEditor",
     "when": "neovim.mode == normal && editorTextFocus"
   },
