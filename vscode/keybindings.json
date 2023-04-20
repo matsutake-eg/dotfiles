@@ -63,7 +63,7 @@
   {
     "key": "ctrl+t",
     "command": "workbench.action.terminal.toggleTerminal",
-    "when": "neovim.mode == normal && editorTextFocus"
+    "when": "filesExplorerFocus || (neovim.mode == normal && editorTextFocus)"
   },
   {
     "key": "ctrl+t",
