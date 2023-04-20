@@ -67,14 +67,21 @@
   },
   {
     "key": "ctrl+e",
-    "command": "workbench.actions.view.problems"
+    "command": "workbench.actions.view.problems",
+    "when": "neovim.mode == normal && editorTextFocus"
+  },
+  {
+    "key": "ctrl+e",
+    "command": "workbench.action.focusFirstEditorGroup",
+    "when": "problemFocus"
   },
   {
     "key": "ctrl+t",
-    "command": "workbench.action.terminal.toggleTerminal"
+    "command": "workbench.action.terminal.toggleTerminal",
+    "when": "neovim.mode == normal && editorTextFocus"
   },
   {
-    "key": "ctrl+k",
+    "key": "ctrl+t",
     "command": "workbench.action.focusFirstEditorGroup",
     "when": "terminalFocus"
   },
