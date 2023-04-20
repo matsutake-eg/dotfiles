@@ -16,7 +16,7 @@ alias ll='ls -ahlFG'
 alias v='code'
 alias nv='nvim'
 alias g='git'
-alias ggrep='grep -r --exclude-dir={node_modules,.webpack}'
+alias gg='git grep'
 alias python='python3'
 alias pip='pip3'
 
