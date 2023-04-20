@@ -3,24 +3,12 @@ if [[ -t 0 ]]; then
   stty start undef
 fi
 
-export NVM_DIR=~/.nvm
-export PATH=$HOME/.nvm/versions/node/v14.16.0/bin:$PATH
-export GOPATH=$HOME/dev/go
-export PATH=$GOPATH/bin:$PATH
-export PATH=/usr/local/opt/php@7.4/bin:$PATH
-export PATH=/usr/local/opt/php@7.4/sbin:$PATH
-export PATH="$HOME/.rbenv/bin:$PATH"
-
 alias ls='ls -FG'
 alias ll='ls -ahlFG'
 alias v='code'
 alias nv='nvim'
 alias g='git'
 alias gg='git grep'
-alias python='python3'
-alias pip='pip3'
-
-source $(brew --prefix nvm)/nvm.sh
 
 fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
 autoload -U compinit
