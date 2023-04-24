@@ -7,6 +7,7 @@
   "editor.fontFamily": "Myrica M",
   "editor.fontSize": 14,
   "editor.wordWrap": "on",
+  "editor.minimap.enabled": false,
   "terminal.integrated.fontSize": 14,
   "scrolloff.scrolloff": 5,
   "indentRainbow.colors": [
@@ -34,5 +35,6 @@
   "ruby.lint": {
     "rubocop": true
   },
-  "ruby.format": "rubocop"
+  "ruby.format": "rubocop",
+  "git.openRepositoryInParentFolders": "always"
 }
