@@ -104,8 +104,11 @@ Visual Studio Codeを起動します。
 「管理」->「キーボードショートカット」->「キーボードショートカットを開く(JSON)」で設定ファイルを開き、解凍したファイルのvscode/keybindings.jsonの中身で上書きします。  
 
 ### Ruby
-拡張機能を有効にするために、以下のコマンドでsolargraphをインストールしておく必要があります。
+拡張機能を有効にするために、以下のコマンドでgemをインストールしておく必要があります。
 
 ```
 gem install solargraph
+gem install rubocop-rails
+gem install rubocop-rspec
+gem install rubocop-performance
 ```
