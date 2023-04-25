@@ -71,6 +71,11 @@
     "when": "terminalFocus"
   },
   {
+    "key": "ctrl+s",
+    "command": "workbench.action.terminal.toggleTerminal",
+    "when": "terminalFocus"
+  },
+  {
     "key": "cmd+h",
     "command": "workbench.action.moveEditorToLeftGroup",
     "when": "neovim.mode == normal && editorTextFocus"
@@ -94,6 +99,11 @@
     "key": "cmd+e",
     "command": "workbench.view.explorer",
     "when": "viewContainer.workbench.view.explorer.enabled"
+  },
+  {
+    "key": "cmd+h",
+    "command": "workbench.action.toggleSidebarVisibility",
+    "when": "filesExplorerFocus"
   },
   {
     "key": "cmd+g",
