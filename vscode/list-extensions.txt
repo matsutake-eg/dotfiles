@@ -6,7 +6,6 @@ castwide.solargraph
 chihiro718.whitespacepp
 eamodio.gitlens
 kaiwood.endwise
-misogi.ruby-rubocop
 ms-azuretools.vscode-docker
 MS-CEINTL.vscode-language-pack-ja
 ms-vscode-remote.remote-containers

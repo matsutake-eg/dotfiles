@@ -107,8 +107,9 @@ Visual Studio Codeを起動します。
 拡張機能を有効にするために、以下のコマンドでgemをインストールしておく必要があります。
 
 ```
-gem install solargraph
+gem install rubocop
 gem install rubocop-rails
 gem install rubocop-rspec
 gem install rubocop-performance
+gem install solargraph
 ```
