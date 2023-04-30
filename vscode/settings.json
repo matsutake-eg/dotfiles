@@ -8,7 +8,21 @@
   "editor.fontSize": 14,
   "editor.wordWrap": "on",
   "editor.minimap.enabled": false,
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.formatOnSave": true,
+  "[ruby]": {
+    "editor.defaultFormatter": "castwide.solargraph"
+  },
+  "[python]": {
+    "editor.tabSize": 4,
+  },
+  "[go]": {
+    "editor.tabSize": 4,
+    "editor.insertSpaces": false
+  },
   "terminal.integrated.fontSize": 14,
+  "git.openRepositoryInParentFolders": "always",
   "scrolloff.scrolloff": 5,
   "indentRainbow.colors": [
     "rgba(236,236,236,0)",
@@ -25,16 +39,14 @@
     "markdown"
   ],
   "trailing-spaces.highlightCurrentLine": false,
-  "[ruby]": {
-    "editor.tabSize": 2,
-    "editor.formatOnSave": true,
-    "editor.defaultFormatter": "misogi.ruby-rubocop"
-  },
-  "ruby.intellisense": "rubyLocate",
-  "ruby.useLanguageServer": true,
-  "ruby.lint": {
-    "rubocop": true
-  },
   "ruby.format": "rubocop",
-  "git.openRepositoryInParentFolders": "always"
+  "ruby.intellisense": "rubyLocate",
+  "ruby.locate": {
+    "exclude": "{**/@(test|spec|tmp|.*),**/@(test|spec|tmp|.*)/**,**/*_spec.rb}",
+    "include": "**/*.rb"
+  },
+  "ruby.useLanguageServer": true,
+  "solargraph.formatting": true,
+  "solargraph.autoformat": true,
+  "solargraph.diagnostics": true
 }
