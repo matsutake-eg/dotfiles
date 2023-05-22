@@ -8,7 +8,7 @@
   {
     "key": "ctrl+p",
     "command": "workbench.action.quickOpen",
-    "when": "neovim.mode == normal && editorTextFocus"
+    "when": "neovim.mode == normal && editorTextFocus || !editorIsOpen"
   },
   {
     "key": "ctrl+i",
