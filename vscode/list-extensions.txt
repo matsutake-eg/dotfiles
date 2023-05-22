@@ -4,10 +4,14 @@ bung87.rails
 bung87.vscode-gemfile
 castwide.solargraph
 chihiro718.whitespacepp
+dbaeumer.vscode-eslint
 eamodio.gitlens
+esbenp.prettier-vscode
 kaiwood.endwise
 ms-azuretools.vscode-docker
 MS-CEINTL.vscode-language-pack-ja
+ms-python.python
+ms-python.vscode-pylance
 ms-vscode-remote.remote-containers
 oderwat.indent-rainbow
 PKief.material-icon-theme
