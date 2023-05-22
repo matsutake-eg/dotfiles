@@ -6,6 +6,11 @@
     "args": "j"
   },
   {
+    "key": "ctrl+p",
+    "command": "workbench.action.quickOpen",
+    "when": "neovim.mode == normal && editorTextFocus"
+  },
+  {
     "key": "ctrl+i",
     "command": "editor.action.showHover",
     "when": "neovim.mode == normal && editorTextFocus"
@@ -16,7 +21,7 @@
     "when": "neovim.mode == normal && editorTextFocus"
   },
   {
-    "key": "ctrl+p",
+    "key": "ctrl+t",
     "command": "workbench.action.navigateBack",
     "when": "neovim.mode == normal && editorTextFocus"
   },
@@ -101,7 +106,7 @@
     "when": "!multipleEditorGroups && neovim.mode == normal && editorTextFocus"
   },
   {
-    "key": "cmd+e",
+    "key": "cmd+p",
     "command": "workbench.actions.view.toggleProblems"
   },
   {
@@ -119,7 +124,7 @@
     "when": "terminalFocus"
   },
   {
-    "key": "cmd+x",
+    "key": "cmd+e",
     "command": "workbench.view.explorer",
     "when": "viewContainer.workbench.view.explorer.enabled"
   },
