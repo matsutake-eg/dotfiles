@@ -31,6 +31,99 @@
     "when": "neovim.mode == normal && editorTextFocus"
   },
   {
+    "key": "ctrl+l",
+    "command": "workbench.action.nextEditorInGroup",
+    "when": "neovim.mode == normal && editorTextFocus"
+  },
+  {
+    "key": "ctrl+h",
+    "command": "workbench.action.previousEditorInGroup",
+    "when": "neovim.mode == normal && editorTextFocus"
+  },
+  {
+    "key": "cmd+shift+l",
+    "command": "workbench.action.moveEditorToRightGroup",
+    "when": "neovim.mode == normal && editorTextFocus"
+  },
+  {
+    "key": "cmd+l",
+    "command": "workbench.action.focusRightGroup",
+    "when": "!!multipleEditorGroups && neovim.mode == normal && editorTextFocus"
+  },
+  {
+    "key": "cmd+l",
+    "command": "workbench.action.moveEditorToRightGroup",
+    "when": "!multipleEditorGroups && neovim.mode == normal && editorTextFocus"
+  },
+  {
+    "key": "cmd+shift+h",
+    "command": "workbench.action.moveEditorToLeftGroup",
+    "when": "neovim.mode == normal && editorTextFocus"
+  },
+  {
+    "key": "cmd+h",
+    "command": "workbench.action.focusLeftGroup",
+    "when": "!!multipleEditorGroups && neovim.mode == normal && editorTextFocus"
+  },
+  {
+    "key": "cmd+h",
+    "command": "workbench.action.moveEditorToLeftGroup",
+    "when": "!multipleEditorGroups && neovim.mode == normal && editorTextFocus"
+  },
+  {
+    "key": "cmd+shift+j",
+    "command": "workbench.action.moveEditorToBelowGroup",
+    "when": "neovim.mode == normal && editorTextFocus"
+  },
+  {
+    "key": "cmd+j",
+    "command": "workbench.action.focusBelowGroup",
+    "when": "!!multipleEditorGroups && neovim.mode == normal && editorTextFocus"
+  },
+  {
+    "key": "cmd+j",
+    "command": "workbench.action.moveEditorToBelowGroup",
+    "when": "!multipleEditorGroups && neovim.mode == normal && editorTextFocus"
+  },
+  {
+    "key": "cmd+shift+k",
+    "command": "workbench.action.moveEditorToAboveGroup",
+    "when": "neovim.mode == normal && editorTextFocus"
+  },
+  {
+    "key": "cmd+k",
+    "command": "workbench.action.focusAboveGroup",
+    "when": "!!multipleEditorGroups && neovim.mode == normal && editorTextFocus"
+  },
+  {
+    "key": "cmd+k",
+    "command": "workbench.action.moveEditorToAboveGroup",
+    "when": "!multipleEditorGroups && neovim.mode == normal && editorTextFocus"
+  },
+  {
+    "key": "cmd+e",
+    "command": "workbench.actions.view.toggleProblems"
+  },
+  {
+    "key": "cmd+k",
+    "command": "workbench.action.focusFirstEditorGroup",
+    "when": "problemFocus"
+  },
+  {
+    "key": "cmd+t",
+    "command": "workbench.action.terminal.toggleTerminal"
+  },
+  {
+    "key": "cmd+k",
+    "command": "workbench.action.focusFirstEditorGroup",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "cmd+x",
+    "command": "workbench.view.explorer",
+    "when": "viewContainer.workbench.view.explorer.enabled"
+  },
+  {
     "key": "o",
     "command": "list.select",
     "when": "listFocus && !inputFocus"
@@ -41,83 +134,18 @@
     "when": "listFocus && treeElementCanCollapse && !inputFocus || listFocus && treeElementHasParent && !inputFocus"
   },
   {
-    "key": "ctrl+l",
-    "command": "workbench.action.nextEditor",
-    "when": "neovim.mode == normal && editorTextFocus"
-  },
-  {
-    "key": "ctrl+h",
-    "command": "workbench.action.previousEditor",
-    "when": "neovim.mode == normal && editorTextFocus"
-  },
-  {
-    "key": "ctrl+e",
-    "command": "workbench.actions.view.problems",
-    "when": "neovim.mode == normal && editorTextFocus"
-  },
-  {
-    "key": "ctrl+e",
-    "command": "workbench.action.focusFirstEditorGroup",
-    "when": "problemFocus"
-  },
-  {
-    "key": "ctrl+t",
-    "command": "workbench.action.terminal.toggleTerminal",
-    "when": "filesExplorerFocus || (neovim.mode == normal && editorTextFocus)"
-  },
-  {
-    "key": "ctrl+t",
-    "command": "workbench.action.focusFirstEditorGroup",
-    "when": "terminalFocus"
-  },
-  {
-    "key": "ctrl+s",
-    "command": "workbench.action.terminal.toggleTerminal",
-    "when": "terminalFocus"
-  },
-  {
-    "key": "cmd+h",
-    "command": "workbench.action.moveEditorToLeftGroup",
-    "when": "neovim.mode == normal && editorTextFocus"
+    "key": "shift+x",
+    "command": "list.collapseAll",
+    "when": "listFocus && !inputFocus"
   },
   {
     "key": "cmd+l",
-    "command": "workbench.action.moveEditorToRightGroup",
-    "when": "neovim.mode == normal && editorTextFocus"
-  },
-  {
-    "key": "cmd+j",
-    "command": "workbench.action.moveEditorToBelowGroup",
-    "when": "neovim.mode == normal && editorTextFocus"
-  },
-  {
-    "key": "cmd+k",
-    "command": "workbench.action.moveEditorToAboveGroup",
-    "when": "neovim.mode == normal && editorTextFocus"
-  },
-  {
-    "key": "cmd+e",
-    "command": "workbench.view.explorer",
-    "when": "viewContainer.workbench.view.explorer.enabled"
+    "command": "workbench.action.focusFirstEditorGroup",
+    "when": "listFocus && !inputFocus && workbench.explorer.openEditorsView.active"
   },
   {
     "key": "cmd+h",
     "command": "workbench.action.toggleSidebarVisibility",
-    "when": "filesExplorerFocus"
-  },
-  {
-    "key": "cmd+g",
-    "command": "workbench.view.scm",
-    "when": "workbench.scm.active"
-  },
-  {
-    "key": "cmd+d",
-    "command": "workbench.view.debug",
-    "when": "viewContainer.workbench.view.debug.enabled"
-  },
-  {
-    "key": "cmd+x",
-    "command": "workbench.view.extensions",
-    "when": "viewContainer.workbench.view.extensions.enabled"
+    "when": "listFocus && !inputFocus"
   }
 ]
