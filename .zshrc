@@ -8,7 +8,7 @@ alias ll='ls -ahlFG'
 alias v='code'
 alias nv='nvim'
 alias g='git'
-alias gg='git grep'
+alias gg='git grep -n'
 
 fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
 autoload -U compinit
