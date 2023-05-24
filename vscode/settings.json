@@ -1,9 +1,11 @@
 {
   "files.insertFinalNewline": true,
   "workbench.startupEditor": "newUntitledFile",
-  "workbench.colorTheme": "Monokai Dark Soda",
+  "workbench.colorTheme": "Monokai",
   "workbench.colorCustomizations": {
-    "terminal.background":"#272822",
+    "editor.background": "#1C1C1C",
+    "sideBar.background": "#1C1C1C",
+    "terminal.background":"#1C1C1C",
     "terminal.foreground":"#FFFFFF",
     "terminalCursor.background":"#FFFFFF",
     "terminalCursor.foreground":"#999999",
@@ -22,7 +24,7 @@
     "terminal.ansiCyan":"#5FB7C6",
     "terminal.ansiBrightCyan":"#66D9EF",
     "terminal.ansiWhite":"#BFBFBF",
-    "terminal.ansiBrightWhite":"#E5E5E5",
+    "terminal.ansiBrightWhite":"#E5E5E5"
   },
   "workbench.iconTheme": "material-icon-theme",
   "editor.cursorBlinking": "solid",
@@ -30,6 +32,7 @@
   "editor.fontSize": 14,
   "editor.wordWrap": "on",
   "editor.minimap.enabled": false,
+  "editor.renderLineHighlight": "none",
   "editor.tabSize": 2,
   "editor.insertSpaces": true,
   "editor.formatOnSave": false,
