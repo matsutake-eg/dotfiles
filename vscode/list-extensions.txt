@@ -1,4 +1,3 @@
-AdamCaviness.theme-monokai-dark-soda
 asvetliakov.vscode-neovim
 bung87.rails
 bung87.vscode-gemfile
