@@ -3,9 +3,9 @@
   "workbench.startupEditor": "newUntitledFile",
   "workbench.colorTheme": "Monokai",
   "workbench.colorCustomizations": {
-    "editor.background": "#1C1C1C",
-    "sideBar.background": "#1C1C1C",
-    "terminal.background":"#1C1C1C",
+    "editor.background": "#272822",
+    "sideBar.background": "#272822",
+    "terminal.background":"#272822",
     "terminal.foreground":"#FFFFFF",
     "terminalCursor.background":"#FFFFFF",
     "terminalCursor.foreground":"#999999",
