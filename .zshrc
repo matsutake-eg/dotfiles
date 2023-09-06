@@ -54,4 +54,4 @@ zstyle ':vcs_info:git*+set-message:*' hooks git-misc
 }
 precmd () { vcs_info }
 
-PROMPT='%F{cyan}%n%f%F{white}@%m%f %F{green}%~%f %F{red}$vcs_info_msg_0_%f%F{yellow}$%f '
+PROMPT='%F{white}%D{%Y-%m-%dT%H:%M:%S+09:00}%f %F{cyan}%n%f%F{gray}@%m%f %F{green}%~%f %F{red}$vcs_info_msg_0_%f%F{yellow}$%f '
