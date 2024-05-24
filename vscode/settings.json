@@ -84,5 +84,10 @@
   "ruby.useLanguageServer": true,
   "solargraph.formatting": true,
   "solargraph.autoformat": true,
-  "solargraph.diagnostics": true
+  "solargraph.diagnostics": true,
+  "vscode-neovim.compositeKeys": {
+    "jj": {
+        "command": "vscode-neovim.escape"
+    }
+  }
 }
