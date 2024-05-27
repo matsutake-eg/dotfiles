@@ -6,7 +6,7 @@ vim.keymap.set('n', '+', '<C-a>')
 -- 数値デクリメント
 vim.keymap.set('n', '-', '<C-x>')
 -- 検索ハイライト解除
-vim.keymap.set('n', '<Esc>', ':noh<CR>')
+vim.keymap.set('n', '<Space>', ':noh<CR>')
 -- 下に少しスクロール
 vim.keymap.set('n', '<C-j>', '5j')
 -- 上に少しスクロール
