@@ -9,6 +9,7 @@ alias v='code'
 alias nv='nvim'
 alias g='git'
 alias gg='git grep -n'
+alias t='tmux'
 
 fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
 autoload -U compinit
